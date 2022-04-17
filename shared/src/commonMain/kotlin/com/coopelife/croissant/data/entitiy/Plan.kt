@@ -9,8 +9,8 @@ class Plan(
     val participantIds: List<Int>,
     val meetingTime: Long,
     val status: PlanStatus
-)
-
-enum class PlanStatus(val code: Int) {
-    NOT_ESTABLISHED(0), ESTABLISHED(1), FINISHED(2)
+) {
+    enum class PlanStatus(val code: Int) {
+        NOT_ESTABLISHED(0), ESTABLISHED(1), FINISHED(2)
+    }
 }
