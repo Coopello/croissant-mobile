@@ -4,7 +4,7 @@ class Plan(
     val id: Int,
     val shopName: String,
     val maxNumberOfPeople: Int,
-    val minNumberOfPeople: Int?,
+    val minNumberOfPeople: Int,
     val proposerId: Int,
     val participantIds: List<Int>,
     val meetingTime: Long,
