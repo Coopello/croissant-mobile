@@ -4,6 +4,12 @@
 
 ## アーキテクチャ
 
+- Repository 層から Entity 層までを KMM で共通化した。
+- ViewModel / Reactor を共通化しても、 iOS / Android で wrapper クラスを作成する必要があるため、 View 層（ ViewModel, View ）は iOS / Android それぞれで実装した。
+
+<img src="https://user-images.githubusercontent.com/49048577/163720296-3bc2790c-5338-4b4c-ba6c-dca46e69784b.png" width="600dp" />
+
+
 ## 開発規則
 
 ### ブランチ戦略
