@@ -26,3 +26,36 @@ GitHub flow
 - perf: パフォーマンス向上関連
 - test: テスト関連
 - chore: ビルド、補助ツール、ライブラリ関連
+
+
+## 画面構成
+
+Screen > Section > ...
+
+- Screen に ViewModel を持たせる(親 Fragment )
+- Section (子 Fragment ) 
+
+### UIのディレクトリ構造
+
+
+```
+   ui
+    ├── component
+    │   ├── common
+    │   ├── home
+    │   │   ├── FormedPlanSection.kt
+    │   │   └── UnformedPlanSection.kt
+    │   └── mypage
+    │       ├── FormedPlanSection.kt
+    │       ├── PlanHistorySection.kt
+    │       └── UnformedPlanSection.kt
+    └── screen
+        ├── home
+        │   ├── HomeScreen.kt
+        │   └── HomeScreenViewModel.kt
+        └── mypage
+            ├── MypageScreen.kt
+            └── MypageScreenViewModel.kt
+```
+
+
