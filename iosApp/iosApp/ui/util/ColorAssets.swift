@@ -8,5 +8,6 @@ import SwiftUI
 
 extension UIColor {
     static let primaryOrange = UIColor(named: "primary_orange")
+    static let primaryYellow = UIColor(named: "primary_yellow")
 }
 

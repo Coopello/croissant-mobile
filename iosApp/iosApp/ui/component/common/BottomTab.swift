@@ -7,24 +7,41 @@ import Foundation
 import SwiftUI
 
 struct BottomTab: View {
-    init() {
-        UITabBar.appearance().backgroundColor = UIColor.primaryOrange
-    }
+    @State var selectedIndex = 0
+
+    let itemDictionary: [(key: Int, value: (String, String))] = [
+        0: ("wallet.pass", "募集一覧"),
+        1: ("plus.circle.fill", ""),
+        2: ("person.circle", "マイページ")
+    ].sorted { $0.key < $1.key }
 
     var body: some View {
-        TabView {
-            Text("The First Tab")
-                    .tabItem {
-                        Image(systemName: "plans")
-                        Text("募集一覧")
-                                .foregroundColor(.white)
+        let imageNames = itemDictionary.map {
+            $0.value.0
+        }
+        let texts = itemDictionary.map {
+            $0.value.1
+        }
+
+        VStack {
+            Spacer()
+            HStack {
+                ForEach(imageNames.indices) { index in
+                    Button(action: {
+                        selectedIndex = index
+                    }) {
+                        Spacer()
+                        VStack {
+                            Image(systemName: imageNames[index])
+                            if !texts[index].isEmpty {
+                                Text(texts[index])
+                            }
+                        }
+                        Spacer()
                     }
-            Text("The Second Tab")
-                    .tabItem {
-                        Image(systemName: "plans")
-                        Text("募集一覧")
-                                .foregroundColor(.white)
-                    }
+                }
+            }
         }
     }
 }
+
