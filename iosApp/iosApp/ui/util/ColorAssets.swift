@@ -6,8 +6,8 @@
 import Foundation
 import SwiftUI
 
-extension UIColor {
-    static let primaryOrange = UIColor(named: "primary_orange")
-    static let primaryYellow = UIColor(named: "primary_yellow")
+extension Color {
+    static let primaryOrange = Color("primary_orange")
+    static let primaryYellow = Color("primary_yellow")
 }
 

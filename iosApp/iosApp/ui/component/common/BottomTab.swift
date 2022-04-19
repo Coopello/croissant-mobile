@@ -13,7 +13,9 @@ struct BottomTab: View {
         0: ("wallet.pass", "募集一覧"),
         1: ("plus.circle.fill", ""),
         2: ("person.circle", "マイページ")
-    ].sorted { $0.key < $1.key }
+    ].sorted {
+        $0.key < $1.key
+    }
 
     var body: some View {
         let imageNames = itemDictionary.map {
@@ -33,14 +35,17 @@ struct BottomTab: View {
                         Spacer()
                         VStack {
                             Image(systemName: imageNames[index])
+                                    .renderingMode(.template)
+                                    .foregroundColor(.white)
                             if !texts[index].isEmpty {
                                 Text(texts[index])
+                                        .foregroundColor(.white)
                             }
                         }
                         Spacer()
-                    }
+                    }.padding()
                 }
-            }
+            }.background(Color.primaryOrange)
         }
     }
 }
