@@ -30,6 +30,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.1.1"
     }
+    // TODO: 後で調べる
+    packagingOptions {
+        resources.excludes.add("META-INF/AL2.0")
+        resources.excludes.add("META-INF/LGPL2.1")
+    }
 }
 
 dependencies {
@@ -40,4 +45,5 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:1.1.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
     implementation("androidx.compose.ui:ui-test-junit4:1.1.1")
+    implementation("com.google.accompanist:accompanist-appcompat-theme:0.16.0")
 }
