@@ -46,4 +46,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
     implementation("androidx.compose.ui:ui-test-junit4:1.1.1")
     implementation("com.google.accompanist:accompanist-appcompat-theme:0.16.0")
+
+    // Bottom Navigation
+    implementation("androidx.navigation:navigation-compose:2.4.2")
 }
