@@ -11,7 +11,7 @@ struct BottomTab: View {
 
     let itemDictionary: [(key: Int, value: (String, String))] = [
         0: ("wallet.pass", "募集一覧"),
-        1: ("plus.circle.fill", ""),
+        1: ("bottom_tab_plus", ""),
         2: ("person.circle", "マイページ")
     ].sorted {
         $0.key < $1.key
@@ -34,12 +34,18 @@ struct BottomTab: View {
                     }) {
                         Spacer()
                         VStack {
-                            Image(systemName: imageNames[index])
-                                    .renderingMode(.template)
-                                    .foregroundColor(.white)
                             if !texts[index].isEmpty {
-                                Text(texts[index])
+                                Image(systemName: imageNames[index])
+                                        .renderingMode(.template)
+                                        .resizable()
                                         .foregroundColor(.white)
+                                        .frame(width: 28, height: 28)
+                                Text(texts[index])
+                                        .font(.caption)
+                                        .foregroundColor(.white)
+
+                            } else {
+                                Image(imageNames[index])
                             }
                         }
                         Spacer()
