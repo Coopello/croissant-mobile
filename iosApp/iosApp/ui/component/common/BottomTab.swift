@@ -11,7 +11,7 @@ struct BottomTab: View {
 
     let itemDictionary: [(key: Int, value: (String, String))] = [
         0: ("wallet.pass", "募集一覧"),
-        1: ("bottom_tab_plus", ""),
+        1: ("bottom_tab_button", ""),
         2: ("person.circle", "マイページ")
     ].sorted {
         $0.key < $1.key
