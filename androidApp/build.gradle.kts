@@ -39,13 +39,28 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.activity:activity-compose:1.4.0")
-    implementation("androidx.compose.material:material:1.1.1")
-    implementation("androidx.compose.animation:animation:1.1.1")
+
+    implementation("androidx.compose.ui:ui:1.1.1")
+
+    // Tooling support (Previews, etc.)
     implementation("androidx.compose.ui:ui-tooling:1.1.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
-    implementation("androidx.compose.ui:ui-test-junit4:1.1.1")
-    implementation("com.google.accompanist:accompanist-appcompat-theme:0.16.0")
+
+    // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+    implementation("androidx.compose.foundation:foundation:1.1.1")
+
+    // Material Design
+    implementation("androidx.compose.material:material:1.1.1")
+
+    // Material design icons
+    implementation("androidx.compose.material:material-icons-core:1.1.1")
+    implementation("androidx.compose.material:material-icons-extended:1.1.1")
+
+    // Integration with observables
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
+    implementation("androidx.compose.runtime:runtime-rxjava2:1.1.1") // TODO: Coroutine に変更する
+
+    // UI Tests
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 
     // Bottom Navigation
     implementation("androidx.navigation:navigation-compose:2.4.2")
