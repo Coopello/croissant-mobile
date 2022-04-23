@@ -7,26 +7,29 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class KotlinNativeFlow<T>(source: Flow<T>) : Flow<T> by source {
-    fun collect(onEach: (T) -> Unit, onCompletion: (cause: Throwable?) -> Unit): Cancellable {
-        val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+/**
+この関数がSwift側のOnCollectというエイリアスに入る
+(typealias OnCollect<Output, Failure> = (@escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Cancellable)
+の部分と対応している
+ */
+fun <T> Flow<T>.collect(onEach: (T) -> Unit, onCompletion: (cause: Throwable?) -> Unit): Cancellable {
+    val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
-        scope.launch {
-            try {
-                collect {
-                    onEach(it)
-                }
-
-                onCompletion(null)
-            } catch (e: Throwable) {
-                onCompletion(e)
+    scope.launch {
+        try {
+            collect {
+                onEach(it)
             }
+
+            onCompletion(null)
+        } catch (e: Throwable) {
+            onCompletion(e)
         }
+    }
 
-        return object : Cancellable {
-            override fun cancel() {
-                scope.cancel()
-            }
+    return object : Cancellable {
+        override fun cancel() {
+            scope.cancel()
         }
     }
 }
