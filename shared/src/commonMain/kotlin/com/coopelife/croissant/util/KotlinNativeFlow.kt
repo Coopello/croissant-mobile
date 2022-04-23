@@ -10,7 +10,6 @@ import kotlinx.coroutines.launch
 /**
 この関数がSwift側のOnCollectというエイリアスに入る
 (typealias OnCollect<Output, Failure> = (@escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Cancellable)
-の部分と対応している
  */
 fun <T> Flow<T>.collect(onEach: (T) -> Unit, onCompletion: (cause: Throwable?) -> Unit): Cancellable {
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
