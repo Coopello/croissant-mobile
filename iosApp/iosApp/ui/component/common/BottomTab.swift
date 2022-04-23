@@ -51,7 +51,7 @@ struct BottomTab: View {
                         Spacer()
                     }.padding()
                 }
-            }.background(Color.primaryOrange)
+            }.background(Color("primary_orange"))
         }
     }
 }
