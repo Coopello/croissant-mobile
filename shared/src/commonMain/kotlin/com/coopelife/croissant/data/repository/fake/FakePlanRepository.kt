@@ -9,7 +9,7 @@ class FakePlanRepository : PlanRepository {
     private val aHourSeconds = 3600
     private val threeDaysSeconds = 259200
 
-    override fun fetchRecentPlans(): List<Plan> = listOf(
+    override suspend fun fetchRecentPlans(): List<Plan> = listOf(
         Plan(
             id = 1,
             shopName = "おにやんま",
