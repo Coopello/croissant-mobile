@@ -15,3 +15,11 @@ xcassets:
         output: Image-Constants.swift
         params:
           enumName: Images
+strings:
+    inputs: mainactivity.strings
+    outputs:
+      - templateName: structured-swift5
+        output: MainActivityString-Constants.swift
+        params:
+          enumName: MainActivityString
+     

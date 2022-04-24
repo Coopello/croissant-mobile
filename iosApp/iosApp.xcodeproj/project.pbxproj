@@ -16,6 +16,8 @@
 		5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F42815281400EE8303 /* Image-Constants.swift */; };
 		5526F7FA2815281400EE8303 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7F62815281400EE8303 /* Image.xcassets */; };
 		5526F7FB2815281400EE8303 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7F72815281400EE8303 /* Color.xcassets */; };
+		5526F7FD281528F700EE8303 /* mainactivity.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7FC281528F700EE8303 /* mainactivity.strings */; };
+		5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */; };
 		5583958C2810794C0019D9D6 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 5583958B2810794C0019D9D6 /* ui */; };
 		617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB67D80E5EA8C3973532C /* BottomTab.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
@@ -30,6 +32,8 @@
 		5526F7F42815281400EE8303 /* Image-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image-Constants.swift"; sourceTree = "<group>"; };
 		5526F7F62815281400EE8303 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
 		5526F7F72815281400EE8303 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		5526F7FC281528F700EE8303 /* mainactivity.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = mainactivity.strings; sourceTree = "<group>"; };
+		5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainActivityString-Constants.swift"; sourceTree = "<group>"; };
 		5583958B2810794C0019D9D6 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		617DB67D80E5EA8C3973532C /* BottomTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTab.swift; path = ui/component/common/BottomTab.swift; sourceTree = "<group>"; };
 		74D850667C3FAFF4B9F38D19 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +93,7 @@
 		5526F7F22815281400EE8303 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */,
 				5526F7F32815281400EE8303 /* Color-Constants.swift */,
 				5526F7F42815281400EE8303 /* Image-Constants.swift */,
 			);
@@ -100,6 +105,7 @@
 			children = (
 				5526F7F62815281400EE8303 /* Image.xcassets */,
 				5526F7F72815281400EE8303 /* Color.xcassets */,
+				5526F7FC281528F700EE8303 /* mainactivity.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -198,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
+				5526F7FD281528F700EE8303 /* mainactivity.strings in Resources */,
 				5583958C2810794C0019D9D6 /* ui in Resources */,
 				5526F7FA2815281400EE8303 /* Image.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
@@ -240,6 +247,7 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				5526F7F82815281400EE8303 /* Color-Constants.swift in Sources */,
+				5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */,
 				5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */,

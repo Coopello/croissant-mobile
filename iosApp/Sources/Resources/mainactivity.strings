@@ -1,0 +1,12 @@
+/* 
+  mainactivity.strings
+  iosApp
+
+  Created by Kohei Inoue on 2022/04/24.
+  Copyright © 2022 orgName. All rights reserved.
+*/
+
+"image_path_of_wallet" = "wallet.pass";
+"image_path_of_person" = "person.circle";
+"plan_list" = "募集一覧";
+"mypage" = "マイページ";
