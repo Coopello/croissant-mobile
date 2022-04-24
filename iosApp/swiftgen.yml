@@ -1,0 +1,25 @@
+input_dir: Sources/Resources
+output_dir: Sources/Generated/
+xcassets:
+  - inputs:
+      - Color.xcassets
+    outputs:
+      - templateName: swift5
+        output: Color-Constants.swift
+        params:
+          enumName: Colors
+  - inputs:
+      - Image.xcassets
+    outputs:
+      - templateName: swift5
+        output: Image-Constants.swift
+        params:
+          enumName: Images
+strings:
+    inputs: mainactivity.strings
+    outputs:
+      - templateName: structured-swift5
+        output: MainActivityString-Constants.swift
+        params:
+          enumName: MainActivityString
+     

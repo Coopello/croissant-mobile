@@ -10,9 +10,9 @@ struct BottomTab: View {
     @State var selectedIndex = 0
 
     let itemDictionary: [(key: Int, value: (String, String))] = [
-        0: ("wallet.pass", "募集一覧"),
-        1: ("bottom_tab_button", ""),
-        2: ("person.circle", "マイページ")
+        0: (MainActivityString.imagePathOfWallet, MainActivityString.planList),
+        1: (Images.bottomTabButton.name, String()),
+        2: (MainActivityString.imagePathOfPerson, MainActivityString.mypage)
     ].sorted {
         $0.key < $1.key
     }
@@ -51,7 +51,7 @@ struct BottomTab: View {
                         Spacer()
                     }.padding()
                 }
-            }.background(Color("primary_orange"))
+            }.background(Color(Colors.primaryOrange.name))
         }
     }
 }

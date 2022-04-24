@@ -1,8 +1,14 @@
 PODS:
   - shared (1.0)
+  - SwiftGen (6.5.1)
 
 DEPENDENCIES:
   - shared (from `../shared`)
+  - SwiftGen (~> 6.0)
+
+SPEC REPOS:
+  trunk:
+    - SwiftGen
 
 EXTERNAL SOURCES:
   shared:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   shared: 7b4d6aa8aa7ada5f9dae3229e2524d316cb9f063
+  SwiftGen: a6d22010845f08fe18fbdf3a07a8e380fd22e0ea
 
-PODFILE CHECKSUM: f282da88f39e69507b0a255187c8a6b644477756
+PODFILE CHECKSUM: b409f86ff4951510714dae7c33b0c83cfb443da1
 
 COCOAPODS: 1.10.2

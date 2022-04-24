@@ -11,10 +11,14 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		2B06E25B84ECD87DDBEAC914 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B4C197FA59B96F39C4F5E /* Pods_iosApp.framework */; };
+		5526F7F02815280400EE8303 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7EF2815280400EE8303 /* swiftgen.yml */; };
+		5526F7F82815281400EE8303 /* Color-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F32815281400EE8303 /* Color-Constants.swift */; };
+		5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F42815281400EE8303 /* Image-Constants.swift */; };
+		5526F7FA2815281400EE8303 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7F62815281400EE8303 /* Image.xcassets */; };
+		5526F7FB2815281400EE8303 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7F72815281400EE8303 /* Color.xcassets */; };
+		5526F7FD281528F700EE8303 /* mainactivity.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7FC281528F700EE8303 /* mainactivity.strings */; };
+		5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */; };
 		5583958C2810794C0019D9D6 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 5583958B2810794C0019D9D6 /* ui */; };
-		5583959228107CA30019D9D6 /* Image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5583959128107CA30019D9D6 /* Image.xcassets */; };
-		5583959428107D060019D9D6 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5583959328107D060019D9D6 /* Color.xcassets */; };
-		617DB76884AA94EC18AFFE35 /* ColorAssets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DBE00EA82B1439D6B0D4C /* ColorAssets.swift */; };
 		617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB67D80E5EA8C3973532C /* BottomTab.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -23,11 +27,15 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		5526F7EF2815280400EE8303 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		5526F7F32815281400EE8303 /* Color-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color-Constants.swift"; sourceTree = "<group>"; };
+		5526F7F42815281400EE8303 /* Image-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image-Constants.swift"; sourceTree = "<group>"; };
+		5526F7F62815281400EE8303 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
+		5526F7F72815281400EE8303 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		5526F7FC281528F700EE8303 /* mainactivity.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = mainactivity.strings; sourceTree = "<group>"; };
+		5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainActivityString-Constants.swift"; sourceTree = "<group>"; };
 		5583958B2810794C0019D9D6 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
-		5583959128107CA30019D9D6 /* Image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Image.xcassets; sourceTree = "<group>"; };
-		5583959328107D060019D9D6 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		617DB67D80E5EA8C3973532C /* BottomTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTab.swift; path = ui/component/common/BottomTab.swift; sourceTree = "<group>"; };
-		617DBE00EA82B1439D6B0D4C /* ColorAssets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ColorAssets.swift; path = ui/utill/ColorAssets.swift; sourceTree = "<group>"; };
 		74D850667C3FAFF4B9F38D19 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,9 +81,41 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		5526F7F12815281400EE8303 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				5526F7F22815281400EE8303 /* Generated */,
+				5526F7F52815281400EE8303 /* Resources */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5526F7F22815281400EE8303 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */,
+				5526F7F32815281400EE8303 /* Color-Constants.swift */,
+				5526F7F42815281400EE8303 /* Image-Constants.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		5526F7F52815281400EE8303 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				058557BA273AAA24004C7B11 /* Assets.xcassets */,
+				5526F7F62815281400EE8303 /* Image.xcassets */,
+				5526F7F72815281400EE8303 /* Color.xcassets */,
+				5526F7FC281528F700EE8303 /* mainactivity.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				5526F7F12815281400EE8303 /* Sources */,
+				5526F7EF2815280400EE8303 /* swiftgen.yml */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
 				44991769D33BF971BD988CF5 /* Pods */,
@@ -95,15 +135,11 @@
 			isa = PBXGroup;
 			children = (
 				5583958B2810794C0019D9D6 /* ui */,
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				617DB67D80E5EA8C3973532C /* BottomTab.swift */,
-				617DBE00EA82B1439D6B0D4C /* ColorAssets.swift */,
-				5583959128107CA30019D9D6 /* Image.xcassets */,
-				5583959328107D060019D9D6 /* Color.xcassets */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -168,10 +204,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
-				5583959228107CA30019D9D6 /* Image.xcassets in Resources */,
-				5583959428107D060019D9D6 /* Color.xcassets in Resources */,
+				5526F7FD281528F700EE8303 /* mainactivity.strings in Resources */,
 				5583958C2810794C0019D9D6 /* ui in Resources */,
+				5526F7FA2815281400EE8303 /* Image.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				5526F7F02815280400EE8303 /* swiftgen.yml in Resources */,
+				5526F7FB2815281400EE8303 /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,9 +246,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				5526F7F82815281400EE8303 /* Color-Constants.swift in Sources */,
+				5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */,
-				617DB76884AA94EC18AFFE35 /* ColorAssets.swift in Sources */,
+				5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
