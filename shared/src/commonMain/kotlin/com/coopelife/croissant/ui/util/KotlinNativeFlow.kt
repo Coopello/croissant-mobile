@@ -1,4 +1,4 @@
-package com.coopelife.croissant.util
+package com.coopelife.croissant.ui.util
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
