@@ -7,11 +7,11 @@ xcassets:
       - templateName: swift5
         output: Color-Constants.swift
         params:
-          enumName: Color
+          enumName: Colors
   - inputs:
       - Image.xcassets
     outputs:
       - templateName: swift5
         output: Image-Constants.swift
         params:
-          enumName: Image
+          enumName: Images
