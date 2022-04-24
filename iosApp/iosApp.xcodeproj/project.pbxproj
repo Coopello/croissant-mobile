@@ -20,6 +20,7 @@
 		5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */; };
 		5583958C2810794C0019D9D6 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 5583958B2810794C0019D9D6 /* ui */; };
 		617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB67D80E5EA8C3973532C /* BottomTab.swift */; };
+		617DBADA77F209BAB37B7EBE /* DateCircleUnselected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB4D8E63049BBEEE88546 /* DateCircleUnselected.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		5526F7FC281528F700EE8303 /* mainactivity.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = mainactivity.strings; sourceTree = "<group>"; };
 		5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainActivityString-Constants.swift"; sourceTree = "<group>"; };
 		5583958B2810794C0019D9D6 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
+		617DB4D8E63049BBEEE88546 /* DateCircleUnselected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateCircleUnselected.swift; path = ui/component/homescreen/DateCircleUnselected.swift; sourceTree = "<group>"; };
 		617DB67D80E5EA8C3973532C /* BottomTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTab.swift; path = ui/component/common/BottomTab.swift; sourceTree = "<group>"; };
 		74D850667C3FAFF4B9F38D19 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +142,7 @@
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				617DB67D80E5EA8C3973532C /* BottomTab.swift */,
+				617DB4D8E63049BBEEE88546 /* DateCircleUnselected.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */,
 				5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */,
+				617DBADA77F209BAB37B7EBE /* DateCircleUnselected.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

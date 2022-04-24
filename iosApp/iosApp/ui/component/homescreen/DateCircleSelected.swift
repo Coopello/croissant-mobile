@@ -7,10 +7,15 @@ import Foundation
 import SwiftUI
 
 struct DateCircleSelected: View {
+    let dateText: String
+    init(dateText: String) {
+        self.dateText = dateText
+    }
+    
     var body: some View {
         ZStack {
             Circle().foregroundColor(Color(Colors.primaryOrange.name))
-            Text("7/15")
+            Text(dateText)
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
