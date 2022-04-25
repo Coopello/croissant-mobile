@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 この関数がSwift側のOnCollectというエイリアスに入る
 (typealias OnCollect<Output, Failure> = (@escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Cancellable)
  */
-fun <T> Flow<T>.collect(onEach: (T) -> Unit, onCompletion: (cause: Throwable?) -> Unit): Cancellable {
+fun <T> Flow<T>.observe(onEach: (T) -> Unit, onCompletion: (cause: Throwable?) -> Unit): Closeable {
     val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     scope.launch {
@@ -26,13 +26,13 @@ fun <T> Flow<T>.collect(onEach: (T) -> Unit, onCompletion: (cause: Throwable?) -
         }
     }
 
-    return object : Cancellable {
+    return object : Closeable {
         override fun cancel() {
             scope.cancel()
         }
     }
 }
 
-interface Cancellable {
+interface Closeable {
     fun cancel()
 }
