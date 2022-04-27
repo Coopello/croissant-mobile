@@ -10,22 +10,22 @@ import shared
 typealias OnEach<Output> = (Output) -> Void
 typealias OnCompletion<Failure> = (Failure?) -> Void
 
-typealias OnCollect<Output, Failure> = (@escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Cancellable
+typealias OnCollect<Output, Failure> = (@escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Closeable
 
-func collect<Output, Failure>(_ onCollect: @escaping OnCollect<Output, Failure>) -> Publishers.KotlinNativePublisher<Output, Failure> {
-    return Publishers.KotlinNativePublisher(onCollect: onCollect)
+func observe<Output, Failure>(_ onCollect: @escaping OnCollect<Output, Failure>) -> Publishers.KotlinNativePublisher<Output, Failure> {
+    Publishers.KotlinNativePublisher(onCollect: onCollect)
 }
 
-typealias OnCollect1<T1, Output, Failure> = (T1, @escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Cancellable
+typealias OnCollect1<T1, Output, Failure> = (T1, @escaping OnEach<Output>, @escaping OnCompletion<Failure>) -> shared.Closeable
 
-func collect<T1, Output, Failure>(_ onCollect: @escaping OnCollect1<T1, Output, Failure>, with arg1: T1) -> Publishers.KotlinNativePublisher<Output, Failure> {
-    return Publishers.KotlinNativePublisher { onCollect(arg1, $0, $1) }
+func observe<T1, Output, Failure>(_ onCollect: @escaping OnCollect1<T1, Output, Failure>, with arg1: T1) -> Publishers.KotlinNativePublisher<Output, Failure> {
+    Publishers.KotlinNativePublisher { onCollect(arg1, $0, $1) }
 }
 
 class KotlinNativeSubscription: Subscription {
     private var isCancelled: Bool = false
 
-    var cancellable: shared.Cancellable? {
+    var cancellable: shared.Closeable? {
         didSet {
             if isCancelled {
                 cancellable?.cancel()
