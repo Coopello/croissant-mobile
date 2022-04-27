@@ -9,11 +9,19 @@ import shared
 
 class HomeScreenViewModel: ObservableObject {
     private let fetchRecentPlansUseCase: FetchRecentPlansUseCase
+    private var closeables: [Closeable]
     
     init(
         fetchRecentPlansUseCase: FetchRecentPlansUseCase
     ) {
         self.fetchRecentPlansUseCase = fetchRecentPlansUseCase
+        closeables = []
+    }
+    
+    deinit {
+        closeables.forEach { closeable in
+            closeable.cancel()
+        }
     }
     
     @Published var state: HomeScreenState = HomeScreenState(
@@ -30,4 +38,20 @@ class HomeScreenViewModel: ObservableObject {
         default: HomeScreenEvent.DoNothing()
         }
     }
+    
+    func onViewCreated() {
+        do {
+            let onCollect: OnCollect<[Plan], Error> = { onEach, onCompletion in
+                self.fetchRecentPlansUseCase.fetchRecentPlans(onEach: { (plans: [Plan]) in
+
+                }, onCompletion: { (throwable: KotlinThrowable?) in
+
+                })
+            }
+            observe(onCollect)
+        } catch {
+            // エラー時にどうハンドリングするかを考える
+        }
+    }
 }
+
