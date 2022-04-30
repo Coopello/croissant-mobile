@@ -16,3 +16,8 @@ jobs:
           command: ./gradlew androidApp:testDebugUnitTest
       - android/save-gradle-cache
       - android/save-build-cache
+
+workflows:
+  build-all:
+    jobs:
+      - build-android
