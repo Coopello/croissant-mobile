@@ -6,26 +6,30 @@
 import Foundation
 import SwiftUI
 import shared
+import Combine
 
 class HomeScreenViewModel: ObservableObject {
     private let fetchRecentPlansUseCase: FetchRecentPlansUseCase
-    private var closeables: [Closeable]
+    private var cancellables = Set<AnyCancellable>()
     
     init(
         fetchRecentPlansUseCase: FetchRecentPlansUseCase
     ) {
         self.fetchRecentPlansUseCase = fetchRecentPlansUseCase
-        closeables = []
     }
     
     deinit {
-        closeables.forEach { closeable in
+        cancellables.forEach { closeable in
             closeable.cancel()
         }
     }
     
     @Published var state: HomeScreenState = HomeScreenState(
-        howManyDaysLaterIsBeingClicked: 0
+            howManyDaysLaterIsBeingClicked: 0,
+            error: ErrorState(
+                    errorOccurred: false,
+                    message: nil
+            )
     )
 
     func onTriggerEvent(event: HomeScreenEvent) {
@@ -33,7 +37,11 @@ class HomeScreenViewModel: ObservableObject {
         case is HomeScreenEvent.ClickDate:
             let howManyDaysLater = (event as! HomeScreenEvent.ClickDate).howManyDaysLater
             state = HomeScreenState(
-                    howManyDaysLaterIsBeingClicked: howManyDaysLater
+                    howManyDaysLaterIsBeingClicked: howManyDaysLater,
+                    error: ErrorState(
+                            errorOccurred: false,
+                            message: nil
+                    )
             )
         default: HomeScreenEvent.DoNothing()
         }
@@ -41,16 +49,20 @@ class HomeScreenViewModel: ObservableObject {
     
     func onViewCreated() {
         do {
-            let onCollect: OnCollect<[Plan], Error> = { onEach, onCompletion in
-                self.fetchRecentPlansUseCase.fetchRecentPlans(onEach: { (plans: [Plan]) in
+            createPublisher(flowWrapper: fetchRecentPlansUseCase.fetchRecentPlans())
+                    .sink(
+                            receiveCompletion: { completion in
 
-                }, onCompletion: { (throwable: KotlinThrowable?) in
+                            },
+                            receiveValue: { plan in
 
-                })
-            }
-            observe(onCollect)
+                            }
+                    )
+                    .store(in: &cancellables)
         } catch {
-            // エラー時にどうハンドリングするかを考える
+            state = state.errorOccurred(
+                    message: error.localizedDescription
+            )
         }
     }
 }

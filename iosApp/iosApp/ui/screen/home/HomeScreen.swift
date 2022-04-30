@@ -16,11 +16,12 @@ struct HomeScreen: View {
     init() {
         planRepository = FakePlanRepository()
         fetchRecentPlansUseCase = FetchRecentPlansUseCase(
-            planRepository: planRepository
+                planRepository: planRepository
         )
         viewModel = HomeScreenViewModel(
             fetchRecentPlansUseCase: fetchRecentPlansUseCase
         )
+        viewModel.onViewCreated()
     }
     
     private let dateArray: [String] = ["7/16", "7/17", "7/18", "7/19", "7/20"]
