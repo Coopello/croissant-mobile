@@ -1,0 +1,18 @@
+version: 2.1
+
+orbs:
+  android: circleci/android@1.0.3
+
+jobs:
+  build-android:
+    executor: android/android
+
+    steps:
+      - checkout
+      - android/restore-build-cache
+      - android/restore-gradle-cache
+      - run:
+          name: Run Android tests
+          command: ./gradlew androidApp:testDebugUnitTest
+      - android/save-gradle-cache
+      - android/save-build-cache
