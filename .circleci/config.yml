@@ -34,6 +34,11 @@ jobs:
           command: |
             cd iosApp
             bundle install
+      - run:
+          name: Fastlane Tests
+          command: |
+            cd iosApp
+            fastlane scan
 
 workflows:
   build-all:
