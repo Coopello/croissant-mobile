@@ -96,8 +96,6 @@ private struct TextWithTitle: View {
                 .font(.custom(MainActivityString.primaryFontMedium, size: 16))
             Text(description)
                 .font(.custom(MainActivityString.primaryFontBold, size: 24))
-                .fontWeight(.bold)
-                .bold()
         }
     }
 }
@@ -129,7 +127,7 @@ private struct ConfirmButton: View {
                 .foregroundColor(.white)
                 .frame(
                     width: metrics.size.width * 0.4,
-                    height: metrics.size.width * 0.1,
+                    height: metrics.size.height * 0.1,
                     alignment: .center
                 )
         }.background(Color(Colors.primaryOrange.name))

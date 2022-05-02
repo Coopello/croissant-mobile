@@ -27,6 +27,7 @@
 		558A0036281F7A120063AC34 /* MPLUS1p-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558A002E281F7A120063AC34 /* MPLUS1p-Medium.ttf */; };
 		558A0037281F7A120063AC34 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 558A002F281F7A120063AC34 /* OFL.txt */; };
 		558A0038281F7A120063AC34 /* MPLUS1p-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558A0030281F7A120063AC34 /* MPLUS1p-Regular.ttf */; };
+		617DB75B3CE78E349437B6D9 /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DBAFB37A880322C1A13A3 /* TabButton.swift */; };
 		617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB67D80E5EA8C3973532C /* BottomTab.swift */; };
 		617DBF60AAFA8B06459D0994 /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DBFA65888677BB46FDCC9 /* PlanCard.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
@@ -53,6 +54,7 @@
 		558A002F281F7A120063AC34 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		558A0030281F7A120063AC34 /* MPLUS1p-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Regular.ttf"; sourceTree = "<group>"; };
 		617DB67D80E5EA8C3973532C /* BottomTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTab.swift; path = ui/component/common/BottomTab.swift; sourceTree = "<group>"; };
+		617DBAFB37A880322C1A13A3 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabButton.swift; path = ui/component/common/TabButton.swift; sourceTree = "<group>"; };
 		617DBFA65888677BB46FDCC9 /* PlanCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanCard.swift; path = ui/component/common/PlanCard.swift; sourceTree = "<group>"; };
 		74D850667C3FAFF4B9F38D19 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 				058557D7273AAEEB004C7B11 /* Preview Content */,
 				617DB67D80E5EA8C3973532C /* BottomTab.swift */,
 				617DBFA65888677BB46FDCC9 /* PlanCard.swift */,
+				617DBAFB37A880322C1A13A3 /* TabButton.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				617DB89DA96C63B7F8E1EDAC /* BottomTab.swift in Sources */,
 				5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */,
 				617DBF60AAFA8B06459D0994 /* PlanCard.swift in Sources */,
+				617DB75B3CE78E349437B6D9 /* TabButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

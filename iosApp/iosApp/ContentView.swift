@@ -3,7 +3,13 @@ import shared
 
 struct ContentView: View {
 	var body: some View {
- 		BottomTab()
+        GeometryReader { metrics in
+            TabButton (
+                metrics: metrics,
+                leftText: "未成立",
+                rightText: "成立済"
+            )
+        }
 	}
 }
 
