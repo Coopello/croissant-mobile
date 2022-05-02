@@ -23,11 +23,23 @@ struct TabButton: View {
 
     var body: some View {
         ZStack {
-            BackGroundRoundView(
-                    metrics: self.metrics,
-                    leftText: self.leftText,
-                    rightText: self.rightText
-            )
+            ZStack(alignment: .leading) {
+                BackGroundRoundView(metrics: metrics)
+                ToggleView(metrics: metrics)
+                    .padding(4)
+            }
+            HStack {
+                Spacer()
+                Text(leftText)
+                    .font(.custom(MainActivityString.primaryFontBold, size: 24))
+                    .foregroundColor(.white)
+                Spacer()
+                Spacer()
+                Text(rightText)
+                    .font(.custom(MainActivityString.primaryFontBold, size: 24))
+                    .foregroundColor(.white)
+                Spacer()
+            }
         }
         .frame(
             maxWidth: metrics.size.width * 0.9,
@@ -38,39 +50,41 @@ struct TabButton: View {
 
 private struct BackGroundRoundView: View {
     private let metrics: GeometryProxy
-    private let leftText: String
-    private let rightText: String
 
-    private let textArray: [String]
-
-    init(
-        metrics: GeometryProxy,
-        leftText: String,
-        rightText: String
-    ) {
+    init(metrics: GeometryProxy) {
         self.metrics = metrics
-        self.leftText = leftText
-        self.rightText = rightText
-        self.textArray = [leftText, rightText]
     }
 
     var body: some View {
-        HStack {
-            Spacer()
-            Text(leftText)
-                .font(.custom(MainActivityString.primaryFontBold, size: 24))
-                .foregroundColor(.white)
-            Spacer()
-            Text(rightText)
-                .font(.custom(MainActivityString.primaryFontBold, size: 24))
-                .foregroundColor(.white)
-            Spacer()
-        }
+        RoundedRectangle(
+            cornerRadius: 32
+        )
+        .fill(Color(Colors.primaryYellow.name))
         .frame(
             maxWidth: .infinity,
             maxHeight: .infinity
         )
-        .background(RoundedRectangle(cornerRadius: 32).fill(Color(Colors.primaryYellow.name)))
+    }
+}
+
+private struct ToggleView: View {
+    private let metrics: GeometryProxy
+    
+    init(
+        metrics: GeometryProxy
+    ) {
+        self.metrics = metrics
+    }
+    
+    var body: some View {
+        RoundedRectangle(
+            cornerRadius: 32
+        )
+        .fill(Color(Colors.primaryOrange.name))
+        .frame(
+            maxWidth: metrics.size.width * 0.45,
+            maxHeight: .infinity
+        )
     }
 }
 
