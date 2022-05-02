@@ -22,6 +22,8 @@ internal enum MainActivityString {
   internal static let meetingTime = MainActivityString.tr("mainactivity", "meeting_time")
   /// マイページ
   internal static let mypage = MainActivityString.tr("mainactivity", "mypage")
+  /// 参加する
+  internal static let participate = MainActivityString.tr("mainactivity", "participate")
   /// 最低人数/最高人数
   internal static let peopleNumbers = MainActivityString.tr("mainactivity", "people_numbers")
   /// 募集一覧
