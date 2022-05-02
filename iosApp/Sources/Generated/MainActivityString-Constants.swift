@@ -10,12 +10,20 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum MainActivityString {
+  /// 行くお店
+  internal static let destinationShop = MainActivityString.tr("mainactivity", "destination_shop")
   /// person.circle
   internal static let imagePathOfPerson = MainActivityString.tr("mainactivity", "image_path_of_person")
   /// wallet.pass
   internal static let imagePathOfWallet = MainActivityString.tr("mainactivity", "image_path_of_wallet")
+  /// 集合場所
+  internal static let meetingPlace = MainActivityString.tr("mainactivity", "meeting_place")
+  /// 集合時間
+  internal static let meetingTime = MainActivityString.tr("mainactivity", "meeting_time")
   /// マイページ
   internal static let mypage = MainActivityString.tr("mainactivity", "mypage")
+  /// 最低人数/最高人数
+  internal static let peopleNumbers = MainActivityString.tr("mainactivity", "people_numbers")
   /// 募集一覧
   internal static let planList = MainActivityString.tr("mainactivity", "plan_list")
   /// MPLUS1p-Black
@@ -30,6 +38,8 @@ internal enum MainActivityString {
   internal static let primaryFontMedium = MainActivityString.tr("mainactivity", "primary_font_medium")
   /// MPLUS1p-Regular
   internal static let primaryFontRegular = MainActivityString.tr("mainactivity", "primary_font_regular")
+  /// 所要時間
+  internal static let theTimeRequired = MainActivityString.tr("mainactivity", "the_time_required")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces

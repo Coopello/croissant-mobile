@@ -16,3 +16,8 @@
 "primary_font_black" = "MPLUS1p-Black";
 "primary_font_medium" = "MPLUS1p-Medium";
 "primary_font_regular" = "MPLUS1p-Regular";
+"destination_shop" = "行くお店";
+"meeting_place" = "集合場所";
+"meeting_time" = "集合時間";
+"the_time_required" = "所要時間";
+"people_numbers" = "最低人数/最高人数";
