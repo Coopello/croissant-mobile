@@ -10,3 +10,9 @@
 "image_path_of_person" = "person.circle";
 "plan_list" = "募集一覧";
 "mypage" = "マイページ";
+"primary_font_bold" = "MPLUS1p-Bold";
+"primary_font_extra_bold" = "MPLUS1p-ExtraBold";
+"primary_font_light" = "MPLUS1p-Light";
+"primary_font_black" = "MPLUS1p-Black";
+"primary_font_medium" = "MPLUS1p-Medium";
+"primary_font_regular" = "MPLUS1p-Regular";

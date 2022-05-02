@@ -18,6 +18,18 @@ internal enum MainActivityString {
   internal static let mypage = MainActivityString.tr("mainactivity", "mypage")
   /// 募集一覧
   internal static let planList = MainActivityString.tr("mainactivity", "plan_list")
+  /// MPLUS1p-Black
+  internal static let primaryFontBlack = MainActivityString.tr("mainactivity", "primary_font_black")
+  /// MPLUS1p-Bold
+  internal static let primaryFontBold = MainActivityString.tr("mainactivity", "primary_font_bold")
+  /// MPLUS1p-ExtraBold
+  internal static let primaryFontExtraBold = MainActivityString.tr("mainactivity", "primary_font_extra_bold")
+  /// MPLUS1p-Light
+  internal static let primaryFontLight = MainActivityString.tr("mainactivity", "primary_font_light")
+  /// MPLUS1p-Medium
+  internal static let primaryFontMedium = MainActivityString.tr("mainactivity", "primary_font_medium")
+  /// MPLUS1p-Regular
+  internal static let primaryFontRegular = MainActivityString.tr("mainactivity", "primary_font_regular")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
