@@ -37,7 +37,7 @@ struct HomeScreen: View {
     
     var body: some View {
         VStack {
-            DateCircleContainer(
+            DateSelectorContainer(
                 viewModel: viewModel,
                 dateTextList: mockDateArray,
                 metrics: metrics

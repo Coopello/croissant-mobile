@@ -7,7 +7,7 @@ import Foundation
 import SwiftUI
 import shared
 
-struct DateCircleContainer: View {
+struct DateSelectorContainer: View {
     private let viewModel: HomeScreenViewModel
     private let metrics: GeometryProxy
     private let dateTextList: [String]
@@ -36,14 +36,14 @@ struct DateCircleContainer: View {
 
                     switch isSelected {
                     case true:
-                        DateCircleSelected(
+                        DateSelectorWhenSelected(
                             dateText: dateText,
                             metrics: metrics,
                             index: Int32(index),
                             onClickDateCircle: onClickDateCircle
                         )
                     default:
-                        DateCircleUnselected(
+                        DateSelectorWhenNotselected(
                             dateText: dateText,
                             metrics: metrics,
                             index: Int32(index),
@@ -57,7 +57,7 @@ struct DateCircleContainer: View {
     }
 }
 
-private struct DateCircleSelected: View {
+private struct DateSelectorWhenSelected: View {
     private let metrics: GeometryProxy
     private let dateText: String
     private let index: Int32
@@ -89,7 +89,7 @@ private struct DateCircleSelected: View {
     }
 }
 
-private struct DateCircleUnselected: View {
+private struct DateSelectorWhenNotselected: View {
     private let metrics: GeometryProxy
     private let dateText: String
     private let index: Int32
