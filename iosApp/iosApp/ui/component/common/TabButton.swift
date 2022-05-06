@@ -10,10 +10,25 @@ struct TabButton: View {
     private let metrics: GeometryProxy
     private let leftText: String
     private let rightText: String
+    private let togglePadding: CGFloat = 4
+    private let cornerRadius: CGFloat = 32
 
-    @State private var tabPositionX: CGFloat = 0
+    private func getFrameWidth() -> CGFloat {
+        return metrics.size.width * 0.9
+    }
+    
+    private func getFrameHeight() -> CGFloat {
+        return metrics.size.height * 0.08
+    }
+    
+    @State private var togglePositionX: CGFloat = 0
     private func onTabClicked(tabIndex: Int32) {
-        // TODO: tabIndexによってtabPositionXを切り替える処理をここに実装
+        switch tabIndex {
+        case 0:
+            togglePositionX = 0
+        default:
+            togglePositionX = getFrameWidth() / 2 - (togglePadding * 2)
+        }
     }
     
     init(
@@ -27,17 +42,23 @@ struct TabButton: View {
     }
 
     var body: some View {
-        let frameWidth = metrics.size.width * 0.9
-        let frameHeight = metrics.size.height * 0.08
+        let frameWidth = getFrameWidth()
+        let frameHeight = getFrameHeight()
         
         ZStack {
             ZStack(alignment: .leading) {
-                BackGroundRoundView(metrics: metrics)
-                ToggleView(metrics: metrics)
-                    .padding(4)
+                BackGroundRoundView(cornerRadius: cornerRadius)
+                ToggleView(
+                    frameWidth: frameWidth / 2,
+                    cornerRadius: cornerRadius
+                )
+                .padding(togglePadding)
+                .offset(x: togglePositionX)
+                .animation(.easeInOut(duration: 0.2), value: togglePositionX)
             }
             HStack {
                 Spacer()
+                // TODO: fontをthemeみたいなものを作って統一する
                 Text(leftText)
                     .font(.custom(MainActivityString.primaryFontBold, size: 24))
                     .foregroundColor(.white)
@@ -63,15 +84,15 @@ struct TabButton: View {
 }
 
 private struct BackGroundRoundView: View {
-    private let metrics: GeometryProxy
-
-    init(metrics: GeometryProxy) {
-        self.metrics = metrics
+    private let cornerRadius: CGFloat
+    
+    init(cornerRadius: CGFloat) {
+        self.cornerRadius = cornerRadius
     }
-
+    
     var body: some View {
         RoundedRectangle(
-            cornerRadius: 32
+            cornerRadius: cornerRadius
         )
         .fill(Color(Colors.primaryYellow.name))
         .frame(
@@ -82,23 +103,24 @@ private struct BackGroundRoundView: View {
 }
 
 private struct ToggleView: View {
-    private let metrics: GeometryProxy
+    private let frameWidth: CGFloat
+    private let cornerRadius: CGFloat
     
     init(
-        metrics: GeometryProxy
+        frameWidth: CGFloat,
+        cornerRadius: CGFloat
     ) {
-        self.metrics = metrics
+        self.frameWidth = frameWidth
+        self.cornerRadius = cornerRadius
     }
     
     var body: some View {
-        RoundedRectangle(
-            cornerRadius: 32
-        )
-        .fill(Color(Colors.primaryOrange.name))
-        .frame(
-            maxWidth: metrics.size.width * 0.45,
-            maxHeight: .infinity
-        )
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .fill(Color(Colors.primaryOrange.name))
+            .frame(
+                maxWidth: frameWidth,
+                maxHeight: .infinity
+            )
     }
 }
 
