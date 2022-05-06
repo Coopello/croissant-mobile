@@ -8,12 +8,13 @@ import SwiftUI
 import shared
 
 struct HomeScreen: View {
+    private let metrics: GeometryProxy
     private let planRepository: PlanRepository
     private let fetchRecentPlansUseCase: FetchRecentPlansUseCase
     
     @ObservedObject var viewModel: HomeScreenViewModel
     
-    init() {
+    init(metrics: GeometryProxy) {
         planRepository = FakePlanRepository()
         fetchRecentPlansUseCase = FetchRecentPlansUseCase(
                 planRepository: planRepository
@@ -21,39 +22,28 @@ struct HomeScreen: View {
         viewModel = HomeScreenViewModel(
             fetchRecentPlansUseCase: fetchRecentPlansUseCase
         )
+        self.metrics = metrics
+        
         viewModel.onViewCreated()
     }
     
-    private let dateArray: [String] = ["7/16", "7/17", "7/18", "7/19", "7/20"]
+    private let dateArray: [(dateText: String, isSelected: Bool)] = [
+        ("7/16", true),
+        ("7/17", false),
+        ("7/18", false),
+        ("7/19", false),
+        ("7/20", false)
+    ]
     
     var body: some View {
-        GeometryReader { metrics in
-            VStack {
-                HStack {
-                    ForEach(0..<dateArray.count) { index in
-                        if index == viewModel.state.howManyDaysLaterIsBeingClicked {
-                            DateCircleSelected(dateText: dateArray[index]).onTapGesture {
-                                viewModel.onTriggerEvent(
-                                    event: HomeScreenEvent.ClickDate(
-                                        howManyDaysLater: Int32(index)
-                                    )
-                                )
-                            }
-                        } else {
-                            DateCircleUnselected(dateText: dateArray[index]).onTapGesture {
-                                viewModel.onTriggerEvent(
-                                    event: HomeScreenEvent.ClickDate(
-                                        howManyDaysLater: Int32(index)
-                                    )
-                                )
-                            }
-                        }
-                    }
-                }
-                .frame(height: metrics.size.height * 0.15)
-                
-                Spacer()
-            }
+        VStack {
+            DateCircleContainer(
+                dateTextList: dateArray,
+                metrics: metrics
+            )
+            .frame(height: metrics.size.height * 0.15)
+            
+            Spacer()
         }
     }
 }
