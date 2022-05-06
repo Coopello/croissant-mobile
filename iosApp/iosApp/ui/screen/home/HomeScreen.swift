@@ -40,7 +40,9 @@ struct HomeScreen: View {
             DateCircleContainer(
                 dateTextList: dateArray,
                 metrics: metrics
-            )
+            ) { index in
+                
+            }
             .frame(height: metrics.size.height * 0.15)
             
             Spacer()

@@ -8,14 +8,18 @@ import SwiftUI
 
 struct DateCircleContainer: View {
     private let metrics: GeometryProxy
+    // FIXME: 本来はこのリストをViewModelで管理するので更新処理は @ObservedObject をつけてViewModel内部で行う
     private let dateTextList: [(dateText: String, isSelected: Bool)]
+    private let onClickDateCircle: (Int) -> Void
 
     init(
         dateTextList: [(dateText: String, isSelected: Bool)],
-        metrics: GeometryProxy
+        metrics: GeometryProxy,
+        onClickDateCircle: @escaping (Int) -> Void
     ) {
         self.dateTextList = dateTextList
         self.metrics = metrics
+        self.onClickDateCircle = onClickDateCircle
     }
 
     var body: some View {
@@ -29,13 +33,17 @@ struct DateCircleContainer: View {
 
                     if isSelected {
                         DateCircleSelected(
-                                dateText: dateText,
-                                metrics: metrics
+                            dateText: dateText,
+                            metrics: metrics,
+                            index: index,
+                            onClickDateCircle: onClickDateCircle
                         )
                     } else {
                         DateCircleUnselected(
-                                dateText: dateText,
-                                metrics: metrics
+                            dateText: dateText,
+                            metrics: metrics,
+                            index: index,
+                            onClickDateCircle: onClickDateCircle
                         )
                     }
                     Spacer()
@@ -48,13 +56,19 @@ struct DateCircleContainer: View {
 private struct DateCircleSelected: View {
     private let metrics: GeometryProxy
     private let dateText: String
+    private let index: Int
+    private let onClickDateCircle: (Int) -> Void
 
     init(
         dateText: String,
-        metrics: GeometryProxy
+        metrics: GeometryProxy,
+        index: Int,
+        onClickDateCircle: @escaping (Int) -> Void
     ) {
         self.dateText = dateText
         self.metrics = metrics
+        self.index = index
+        self.onClickDateCircle = onClickDateCircle
     }
 
     var body: some View {
@@ -65,20 +79,28 @@ private struct DateCircleSelected: View {
         }.frame(
             maxWidth: metrics.size.width * 0.20,
             maxHeight: .infinity
-        )
+        ).onTapGesture {
+            onClickDateCircle(index)
+        }
     }
 }
 
 private struct DateCircleUnselected: View {
     private let metrics: GeometryProxy
     private let dateText: String
+    private let index: Int
+    private let onClickDateCircle: (Int) -> Void
 
     init(
         dateText: String,
-        metrics: GeometryProxy
+        metrics: GeometryProxy,
+        index: Int,
+        onClickDateCircle: @escaping (Int) -> Void
     ) {
         self.dateText = dateText
         self.metrics = metrics
+        self.index = index
+        self.onClickDateCircle = onClickDateCircle
     }
 
     var body: some View {
@@ -91,6 +113,8 @@ private struct DateCircleUnselected: View {
         }.frame(
             maxWidth: metrics.size.width * 0.14,
             maxHeight: .infinity
-        )
+        ).onTapGesture {
+            onClickDateCircle(index)
+        }
     }
 }
