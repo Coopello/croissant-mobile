@@ -6,8 +6,8 @@ struct ContentView: View {
         GeometryReader { metrics in
             TabButton (
                 metrics: metrics,
-                leftText: "未成立",
-                rightText: "成立済"
+                leftText: MainActivityString.unformed,
+                rightText: MainActivityString.formed
             ) { (toggleIndex: Int32) in
                 
             }

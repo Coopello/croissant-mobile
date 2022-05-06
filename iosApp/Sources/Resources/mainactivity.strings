@@ -22,3 +22,5 @@
 "the_time_required" = "所要時間";
 "people_numbers" = "最低人数/最高人数";
 "participate" = "参加する";
+"unformed" = "未成立";
+"formed" = "成立";

@@ -12,6 +12,8 @@ import Foundation
 internal enum MainActivityString {
   /// 行くお店
   internal static let destinationShop = MainActivityString.tr("mainactivity", "destination_shop")
+  /// 成立
+  internal static let formed = MainActivityString.tr("mainactivity", "formed")
   /// person.circle
   internal static let imagePathOfPerson = MainActivityString.tr("mainactivity", "image_path_of_person")
   /// wallet.pass
@@ -42,6 +44,8 @@ internal enum MainActivityString {
   internal static let primaryFontRegular = MainActivityString.tr("mainactivity", "primary_font_regular")
   /// 所要時間
   internal static let theTimeRequired = MainActivityString.tr("mainactivity", "the_time_required")
+  /// 未成立
+  internal static let unformed = MainActivityString.tr("mainactivity", "unformed")
 }
 // swiftlint:enable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:enable nesting type_body_length type_name vertical_whitespace_opening_braces
