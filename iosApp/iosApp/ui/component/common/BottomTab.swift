@@ -41,8 +41,7 @@ struct BottomTab: View {
                                         .foregroundColor(.white)
                                         .frame(width: 28, height: 28)
                                 Text(texts[index])
-                                        .font(.caption)
-                                        .foregroundColor(.white)
+                                    .modifier(ExtraSmallText(textColor: .white))
 
                             } else {
                                 Image(imageNames[index])

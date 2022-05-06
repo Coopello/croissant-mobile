@@ -62,15 +62,10 @@ struct TabButton: View {
             }
             HStack {
                 Spacer()
-                // TODO: fontをthemeみたいなものを作って統一する
-                Text(leftText)
-                    .font(.custom(MainActivityString.primaryFontBold, size: 24))
-                    .foregroundColor(.white)
+                Text(leftText).modifier(LargeText(textColor: .white))
                 Spacer()
                 Spacer()
-                Text(rightText)
-                    .font(.custom(MainActivityString.primaryFontBold, size: 24))
-                    .foregroundColor(.white)
+                Text(rightText).modifier(LargeText(textColor: .white))
                 Spacer()
             }
         }

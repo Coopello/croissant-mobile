@@ -93,9 +93,9 @@ private struct TextWithTitle: View {
     var body: some View {
         VStack {
             Text(title)
-                .font(.custom(MainActivityString.primaryFontMedium, size: 16))
-            Text(description)
-                .font(.custom(MainActivityString.primaryFontBold, size: 24))
+                .modifier(SmallText(textColor: .black))
+            Text (description)
+                .modifier(LargeText(textColor: .black))
         }
     }
 }
@@ -118,16 +118,10 @@ private struct ConfirmButton: View {
     var body: some View {
         Button(action: action) {
             Text(text)
-                .font(
-                    .custom(
-                        MainActivityString.primaryFontBold,
-                        size: 20
-                    )
-                )
-                .foregroundColor(.white)
+                .modifier(MediumText(textColor: .white))
                 .frame(
                     width: metrics.size.width * 0.4,
-                    height: metrics.size.height * 0.1,
+                    height: metrics.size.height * 0.05,
                     alignment: .center
                 )
         }.background(Color(Colors.primaryOrange.name))
