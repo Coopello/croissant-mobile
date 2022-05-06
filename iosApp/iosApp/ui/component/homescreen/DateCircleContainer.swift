@@ -50,8 +50,8 @@ private struct DateCircleSelected: View {
     private let dateText: String
 
     init(
-            dateText: String,
-            metrics: GeometryProxy
+        dateText: String,
+        metrics: GeometryProxy
     ) {
         self.dateText = dateText
         self.metrics = metrics
@@ -61,8 +61,11 @@ private struct DateCircleSelected: View {
         ZStack {
             Circle().foregroundColor(Color(Colors.primaryOrange.name))
             Text(dateText)
-                .modifier(MediumText(textColor: .white))
-        }
+                .modifier(LargeText(textColor: .white))
+        }.frame(
+            maxWidth: metrics.size.width * 0.20,
+            maxHeight: .infinity
+        )
     }
 }
 
@@ -71,8 +74,8 @@ private struct DateCircleUnselected: View {
     private let dateText: String
 
     init(
-            dateText: String,
-            metrics: GeometryProxy
+        dateText: String,
+        metrics: GeometryProxy
     ) {
         self.dateText = dateText
         self.metrics = metrics
@@ -84,7 +87,10 @@ private struct DateCircleUnselected: View {
                 .stroke(Color(Colors.primaryOrange.name), lineWidth: 2)
                 .foregroundColor(.white)
             Text(dateText)
-                .modifier(MediumText(textColor: Color(Colors.primaryOrange.name)))
-        }
+                .modifier(SmallMediumText(textColor: Color(Colors.primaryOrange.name)))
+        }.frame(
+            maxWidth: metrics.size.width * 0.14,
+            maxHeight: .infinity
+        )
     }
 }

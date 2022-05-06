@@ -40,6 +40,23 @@ struct MediumText: ViewModifier {
     }
 }
 
+struct SmallMediumText: ViewModifier {
+    private let textColor: Color
+    
+    init(textColor: Color) {
+        self.textColor = textColor
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.custom(
+                MainActivityString.primaryFontMedium,
+                size: 16
+            ))
+            .foregroundColor(textColor)
+    }
+}
+
 struct SmallText: ViewModifier {
     private let textColor: Color
     
