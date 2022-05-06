@@ -11,10 +11,15 @@ struct TabButton: View {
     private let leftText: String
     private let rightText: String
 
+    @State private var tabPositionX: CGFloat = 0
+    private func onTabClicked(tabIndex: Int32) {
+        // TODO: tabIndexによってtabPositionXを切り替える処理をここに実装
+    }
+    
     init(
-            metrics: GeometryProxy,
-            leftText: String,
-            rightText: String
+        metrics: GeometryProxy,
+        leftText: String,
+        rightText: String
     ) {
         self.metrics = metrics
         self.leftText = leftText
@@ -22,6 +27,9 @@ struct TabButton: View {
     }
 
     var body: some View {
+        let frameWidth = metrics.size.width * 0.9
+        let frameHeight = metrics.size.height * 0.08
+        
         ZStack {
             ZStack(alignment: .leading) {
                 BackGroundRoundView(metrics: metrics)
@@ -42,8 +50,14 @@ struct TabButton: View {
             }
         }
         .frame(
-            maxWidth: metrics.size.width * 0.9,
-            maxHeight: metrics.size.height * 0.08
+            maxWidth: frameWidth,
+            maxHeight: frameHeight
+        ).gesture(
+            DragGesture(minimumDistance: 0).onEnded { value in
+                let centralBorder: CGFloat = (frameWidth / 2)
+                let tabIndex: Int32 = value.location.x < centralBorder ? 0 : 1
+                onTabClicked(tabIndex: tabIndex)
+            }
         )
     }
 }
