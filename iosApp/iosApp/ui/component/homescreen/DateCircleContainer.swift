@@ -11,13 +11,13 @@ struct DateCircleContainer: View {
     private let viewModel: HomeScreenViewModel
     private let metrics: GeometryProxy
     private let dateTextList: [String]
-    private let onClickDateCircle: (Int) -> Void
+    private let onClickDateCircle: (Int32) -> Void
 
     init(
         viewModel: HomeScreenViewModel,
         dateTextList: [String],
         metrics: GeometryProxy,
-        onClickDateCircle: @escaping (Int) -> Void
+        onClickDateCircle: @escaping (Int32) -> Void
     ) {
         self.viewModel = viewModel
         self.dateTextList = dateTextList
@@ -32,19 +32,21 @@ struct DateCircleContainer: View {
                 ForEach(dateTextList.indices) { (index: Int) in
                     let dateText = dateTextList[index]
                     let selectedIndex: Int32 = viewModel.state.howManyDaysLaterIsBeingClicked
+                    let isSelected: Bool = Int32(index) == selectedIndex
 
-                    if index == selectedIndex {
+                    switch isSelected {
+                    case true:
                         DateCircleSelected(
                             dateText: dateText,
                             metrics: metrics,
-                            index: index,
+                            index: Int32(index),
                             onClickDateCircle: onClickDateCircle
                         )
-                    } else {
+                    default:
                         DateCircleUnselected(
                             dateText: dateText,
                             metrics: metrics,
-                            index: index,
+                            index: Int32(index),
                             onClickDateCircle: onClickDateCircle
                         )
                     }
@@ -58,14 +60,14 @@ struct DateCircleContainer: View {
 private struct DateCircleSelected: View {
     private let metrics: GeometryProxy
     private let dateText: String
-    private let index: Int
-    private let onClickDateCircle: (Int) -> Void
+    private let index: Int32
+    private let onClickDateCircle: (Int32) -> Void
 
     init(
         dateText: String,
         metrics: GeometryProxy,
-        index: Int,
-        onClickDateCircle: @escaping (Int) -> Void
+        index: Int32,
+        onClickDateCircle: @escaping (Int32) -> Void
     ) {
         self.dateText = dateText
         self.metrics = metrics
@@ -90,14 +92,14 @@ private struct DateCircleSelected: View {
 private struct DateCircleUnselected: View {
     private let metrics: GeometryProxy
     private let dateText: String
-    private let index: Int
-    private let onClickDateCircle: (Int) -> Void
+    private let index: Int32
+    private let onClickDateCircle: (Int32) -> Void
 
     init(
         dateText: String,
         metrics: GeometryProxy,
-        index: Int,
-        onClickDateCircle: @escaping (Int) -> Void
+        index: Int32,
+        onClickDateCircle: @escaping (Int32) -> Void
     ) {
         self.dateText = dateText
         self.metrics = metrics
