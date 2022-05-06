@@ -8,7 +8,9 @@ struct ContentView: View {
                 metrics: metrics,
                 leftText: "未成立",
                 rightText: "成立済"
-            )
+            ) { (toggleIndex: Int32) in
+                
+            }
         }
 	}
 }
