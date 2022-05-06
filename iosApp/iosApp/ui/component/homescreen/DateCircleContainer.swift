@@ -5,18 +5,21 @@
 
 import Foundation
 import SwiftUI
+import shared
 
 struct DateCircleContainer: View {
+    private let viewModel: HomeScreenViewModel
     private let metrics: GeometryProxy
-    // FIXME: 本来はこのリストをViewModelで管理するので更新処理は @ObservedObject をつけてViewModel内部で行う
-    private let dateTextList: [(dateText: String, isSelected: Bool)]
+    private let dateTextList: [String]
     private let onClickDateCircle: (Int) -> Void
 
     init(
-        dateTextList: [(dateText: String, isSelected: Bool)],
+        viewModel: HomeScreenViewModel,
+        dateTextList: [String],
         metrics: GeometryProxy,
         onClickDateCircle: @escaping (Int) -> Void
     ) {
+        self.viewModel = viewModel
         self.dateTextList = dateTextList
         self.metrics = metrics
         self.onClickDateCircle = onClickDateCircle
@@ -27,11 +30,10 @@ struct DateCircleContainer: View {
             HStack {
                 Spacer()
                 ForEach(dateTextList.indices) { (index: Int) in
-                    let item = dateTextList[index]
-                    let dateText = item.dateText
-                    let isSelected = item.isSelected
+                    let dateText = dateTextList[index]
+                    let selectedIndex: Int32 = viewModel.state.howManyDaysLaterIsBeingClicked
 
-                    if isSelected {
+                    if index == selectedIndex {
                         DateCircleSelected(
                             dateText: dateText,
                             metrics: metrics,

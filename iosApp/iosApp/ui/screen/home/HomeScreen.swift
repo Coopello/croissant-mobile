@@ -27,21 +27,24 @@ struct HomeScreen: View {
         viewModel.onViewCreated()
     }
     
-    private let dateArray: [(dateText: String, isSelected: Bool)] = [
-        ("7/16", true),
-        ("7/17", false),
-        ("7/18", false),
-        ("7/19", false),
-        ("7/20", false)
+    private let mockDateArray: [String] = [
+        "7/16",
+        "7/17",
+        "7/18",
+        "7/19",
+        "7/20"
     ]
     
     var body: some View {
         VStack {
             DateCircleContainer(
-                dateTextList: dateArray,
+                viewModel: viewModel,
+                dateTextList: mockDateArray,
                 metrics: metrics
             ) { index in
-                
+                viewModel.onTriggerEvent(
+                    event: HomeScreenEvent.ClickDate(howManyDaysLater: Int32(index))
+                )
             }
             .frame(height: metrics.size.height * 0.15)
             
