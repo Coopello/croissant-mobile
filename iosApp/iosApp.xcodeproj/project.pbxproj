@@ -35,6 +35,7 @@
 		617DBB395E5CF4DE22185450 /* CombineWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB5E803C544D07880CB3F /* CombineWrappers.swift */; };
 		617DBC0615E8986A8377DCAF /* DateSelectorContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB4799420884E49EEBDA6 /* DateSelectorContainer.swift */; };
 		617DBC07AA5EFF04075E4C9B /* TextThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB9F9851566B9A54F5985 /* TextThemes.swift */; };
+		617DBDEB16632C2444F698AD /* PlanCardCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DBAABFC86F542C487ACB3 /* PlanCardCarousel.swift */; };
 		617DBF60AAFA8B06459D0994 /* PlanCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DBFA65888677BB46FDCC9 /* PlanCard.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,7 @@
 		617DB5E803C544D07880CB3F /* CombineWrappers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CombineWrappers.swift; path = ui/util/SwiftCoroutines/CombineWrappers.swift; sourceTree = "<group>"; };
 		617DB67D80E5EA8C3973532C /* BottomTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BottomTab.swift; path = ui/component/common/BottomTab.swift; sourceTree = "<group>"; };
 		617DB9F9851566B9A54F5985 /* TextThemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextThemes.swift; path = ui/util/Theme/TextThemes.swift; sourceTree = "<group>"; };
+		617DBAABFC86F542C487ACB3 /* PlanCardCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanCardCarousel.swift; path = ui/component/homescreen/PlanCardCarousel.swift; sourceTree = "<group>"; };
 		617DBAFB37A880322C1A13A3 /* TabButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabButton.swift; path = ui/component/common/TabButton.swift; sourceTree = "<group>"; };
 		617DBBB6001EA53545E5C5A4 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreen.swift; path = ui/screen/home/HomeScreen.swift; sourceTree = "<group>"; };
 		617DBFA65888677BB46FDCC9 /* PlanCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlanCard.swift; path = ui/component/common/PlanCard.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				617DB5E803C544D07880CB3F /* CombineWrappers.swift */,
 				617DB416A410D36EBC8E75EA /* KotlinError.swift */,
 				617DB4799420884E49EEBDA6 /* DateSelectorContainer.swift */,
+				617DBAABFC86F542C487ACB3 /* PlanCardCarousel.swift */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				617DBB395E5CF4DE22185450 /* CombineWrappers.swift in Sources */,
 				617DB65307C4D9803ACFF76C /* KotlinError.swift in Sources */,
 				617DBC0615E8986A8377DCAF /* DateSelectorContainer.swift in Sources */,
+				617DBDEB16632C2444F698AD /* PlanCardCarousel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

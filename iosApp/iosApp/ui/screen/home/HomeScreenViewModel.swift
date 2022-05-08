@@ -65,5 +65,9 @@ class HomeScreenViewModel: ObservableObject {
             )
         }
     }
+
+    func onPlanParticipateButtonClicked(plan: Plan) {
+
+    }
 }
 
