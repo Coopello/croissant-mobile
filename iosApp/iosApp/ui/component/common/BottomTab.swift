@@ -7,7 +7,12 @@ import Foundation
 import SwiftUI
 
 struct BottomTab: View {
+    private let metrics: GeometryProxy
     @State var selectedIndex = 0
+    
+    init(metrics: GeometryProxy) {
+        self.metrics = metrics
+    }
 
     let itemDictionary: [(key: Int, value: (String, String))] = [
         0: (MainActivityString.imagePathOfWallet, MainActivityString.planList),
@@ -52,5 +57,9 @@ struct BottomTab: View {
                 }
             }.background(Color(Colors.primaryOrange.name))
         }
+        .frame(
+            maxWidth: .infinity,
+            maxHeight: metrics.size.height * 0.1
+        )
     }
 }

@@ -48,6 +48,14 @@ struct HomeScreen: View {
             }
             .frame(height: metrics.size.height * 0.15)
             
+            TabButton(
+                metrics: metrics,
+                leftText: MainActivityString.formed,
+                rightText: MainActivityString.unformed
+            ) { index in
+                
+            }
+            
             Spacer()
         }
     }
