@@ -1,9 +1,9 @@
-package com.coopelife.croissant.android.ui.screen.home
+package com.coopelife.croissant.android.ui.screen.mypage
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,28 +14,26 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 
 @Composable
-fun HomeScreen(
-    nacController: NavController,
-    viewModel: HomeScreenViewModel = viewModel()
+fun MypageScreen(
+    navController: NavController,
+    viewModel: MypageScreenViewModel = viewModel()
 ) {
     val previewText: String by viewModel.previewText.observeAsState("")
 
-    HomeContent(screenName = previewText, onClick = { viewModel.onButtonClicked() })
+    MypageContent(previewText = previewText, onValueChanged = { viewModel.onValueChanged(it) })
 }
 
 @Composable
-private fun HomeContent(screenName: String, onClick: () -> Unit) {
+fun MypageContent(previewText: String, onValueChanged: (String) -> Unit) {
     Column(modifier = Modifier.padding(16.dp)) {
         Text(
-            text = screenName,
+            text = previewText,
             modifier = Modifier.padding(bottom = 8.dp),
             style = MaterialTheme.typography.h3
         )
-        Button(onClick = onClick) {
-            Text(
-                text = "Click me!",
-                modifier = Modifier.padding(4.dp)
-            )
-        }
+        OutlinedTextField(
+            value = previewText,
+            onValueChange = onValueChanged,
+        )
     }
 }

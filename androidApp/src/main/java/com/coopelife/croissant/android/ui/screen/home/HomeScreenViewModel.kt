@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class HomeScreenViewModel : ViewModel() {
-    private val _screenName = MutableLiveData("HomeScreen")
-    val screenName: LiveData<String> = _screenName
+    private val _previewText = MutableLiveData<String>("HomeScreen")
+    val previewText: LiveData<String> = _previewText
 
     fun onButtonClicked() {
-        _screenName.value = "Clicked!"
+        _previewText.value = "Clicked!"
     }
 }

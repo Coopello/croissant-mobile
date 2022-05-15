@@ -4,7 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.StringRes
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
@@ -12,12 +16,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.coopelife.croissant.android.ui.screen.home.HomeScreen
+import com.coopelife.croissant.android.ui.screen.mypage.MypageScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -71,13 +75,7 @@ fun App() {
     ) {
         NavHost(navController, startDestination = "home") {
             composable("home") { HomeScreen(nacController = navController) }
-            composable("mypage") { Mypage(navController = navController) }
+            composable("mypage") { MypageScreen(navController = navController) }
         }
     }
-}
-
-// TODO: ui.screen.mypageに移動する
-@Composable
-fun Mypage(navController: NavController) {
-    Text(text = "mypage")
 }
