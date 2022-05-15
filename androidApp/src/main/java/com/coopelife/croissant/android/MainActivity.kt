@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.coopelife.croissant.android.ui.screen.home.HomeScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,17 +70,13 @@ fun App() {
         }
     ) {
         NavHost(navController, startDestination = "home") {
-            composable("home") { Home(navController = navController) }
+            composable("home") { HomeScreen(nacController = navController) }
             composable("mypage") { Mypage(navController = navController) }
         }
     }
 }
 
-@Composable
-fun Home(navController: NavController) {
-    Text(text = "home")
-}
-
+// TODO: ui.screen.mypageに移動する
 @Composable
 fun Mypage(navController: NavController) {
     Text(text = "mypage")
