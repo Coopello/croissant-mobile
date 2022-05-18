@@ -26,6 +26,7 @@ class HomeScreenViewModel: ObservableObject {
     
     @Published var state: HomeScreenState = HomeScreenState(
             howManyDaysLaterIsBeingClicked: 0,
+            allPlans: [],
             error: ErrorState(
                     errorOccurred: false,
                     message: nil
@@ -38,6 +39,7 @@ class HomeScreenViewModel: ObservableObject {
             let howManyDaysLater = (event as! HomeScreenEvent.ClickDate).howManyDaysLater
             state = HomeScreenState(
                     howManyDaysLaterIsBeingClicked: howManyDaysLater,
+                    allPlans: self.state.allPlans,
                     error: ErrorState(
                             errorOccurred: false,
                             message: nil
@@ -49,13 +51,32 @@ class HomeScreenViewModel: ObservableObject {
     
     func onViewCreated() {
         do {
+            try createPublisher(flowWrapper: fetchRecentPlansUseCase.fetchRecentPlans())
+                    .sink(receiveValue: { [weak self] (planArray: NSArray) in
+                        planArray.forEach { throwable in
+                            print("ここです \(throwable is Plan)")
+                        }
+
+                        if let plans : [Plan] = planArray as? [Plan] {
+                            // FIXME: ここに問題があるっぽい
+                            self?.state = HomeScreenState(
+                                    howManyDaysLaterIsBeingClicked: 0,
+                                    allPlans: [],
+                                    error: ErrorState(
+                                            errorOccurred: false,
+                                            message: nil
+                                    )
+                            )
+                        }
+                    })
+                    .store(in: &cancellables)
+
             createPublisher(flowWrapper: fetchRecentPlansUseCase.fetchRecentPlans())
                     .sink(
-                            receiveCompletion: { completion in
-
-                            },
-                            receiveValue: { plan in
-
+                            receiveValue: { [weak self] (planArray: NSArray) in
+                                planArray.forEach { throwable in
+                                    print("ここです \(throwable is Plan)")
+                                }
                             }
                     )
                     .store(in: &cancellables)

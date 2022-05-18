@@ -21,7 +21,7 @@ class FakePlanRepository : PlanRepository {
             status = Plan.PlanStatus.ESTABLISHED
         ),
         Plan(
-            id = 1,
+            id = 2,
             shopName = "Maru",
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,
