@@ -19,26 +19,13 @@ struct BottomTab: View {
         self.onClickTab = onClickTab
     }
     
-    private let tabItemContents: [TabItemContent] = [
-        TabItemContent(
-            imagePath: MainActivityString.imagePathOfWallet,
-            text: MainActivityString.planList
-        ),
-        TabItemContent(
-            imagePath: MainActivityString.imagePathOfPerson,
-            text: MainActivityString.mypage
-        )
-    ]
-    
     var body: some View {
         VStack {
             Spacer()
             HStack {
                 TabItem(
-                    content: TabItemContent(
-                        imagePath: MainActivityString.imagePathOfWallet,
-                        text: MainActivityString.planList
-                    ),
+                    imagePath: MainActivityString.imagePathOfWallet,
+                    text: MainActivityString.planList,
                     index: 0,
                     onClick: { index in
                         selectedIndex = index
@@ -50,10 +37,8 @@ struct BottomTab: View {
                 Image(Images.bottomTabButton.name).padding()
                 
                 TabItem(
-                    content: TabItemContent(
-                        imagePath: MainActivityString.imagePathOfPerson,
-                        text: MainActivityString.mypage
-                    ),
+                    imagePath: MainActivityString.imagePathOfPerson,
+                    text: MainActivityString.mypage,
                     index: 1,
                     onClick: { index in
                         selectedIndex = index
@@ -70,30 +55,20 @@ struct BottomTab: View {
     }
 }
 
-private struct TabItemContent {
-    let imagePath: String
-    let text: String
-    
-    init(
-        imagePath: String,
-        text: String
-    ) {
-        self.imagePath = imagePath
-        self.text = text
-    }
-}
-
 private struct TabItem: View {
-    private let content: TabItemContent
+    private let imagePath: String
+    private let text: String
     private let index: Int8
     private let onClick: (Int8) -> Void
     
     init(
-        content: TabItemContent,
+        imagePath: String,
+        text: String,
         index: Int8,
         onClick: @escaping (Int8) -> Void
     ) {
-        self.content = content
+        self.imagePath = imagePath
+        self.text = text
         self.index = index
         self.onClick = onClick
     }
@@ -104,12 +79,12 @@ private struct TabItem: View {
         }) {
             Spacer()
             VStack {
-                Image(systemName: content.imagePath)
+                Image(systemName: imagePath)
                         .renderingMode(.template)
                         .resizable()
                         .foregroundColor(.white)
                         .frame(width: 28, height: 28)
-                Text(content.text)
+                Text(text)
                     .modifier(ExtraSmallText(textColor: .white))
             }
             Spacer()
