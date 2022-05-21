@@ -10,17 +10,14 @@ import shared
 struct DateSelectorContainer: View {
     private let viewModel: HomeScreenViewModel
     private let metrics: GeometryProxy
-    private let dateTextList: [String]
     private let onClickDateCircle: (Int32) -> Void
 
     init(
         viewModel: HomeScreenViewModel,
-        dateTextList: [String],
         metrics: GeometryProxy,
         onClickDateCircle: @escaping (Int32) -> Void
     ) {
         self.viewModel = viewModel
-        self.dateTextList = dateTextList
         self.metrics = metrics
         self.onClickDateCircle = onClickDateCircle
     }
@@ -29,8 +26,8 @@ struct DateSelectorContainer: View {
         GeometryReader { metrics in
             HStack {
                 Spacer()
-                ForEach(dateTextList.indices) { (index: Int) in
-                    let dateText = dateTextList[index]
+                ForEach(viewModel.state.dates.indices) { (index: Int) in
+                    let dateText = viewModel.state.dates[index]
                     let selectedIndex: Int32 = viewModel.state.howManyDaysLaterIsBeingClicked
                     let isSelected: Bool = Int32(index) == selectedIndex
 

@@ -43,7 +43,7 @@ struct PlanCard: View {
                 TextWithTitle(
                     title: MainActivityString.meetingTime,
                     description: UnixTimeFormatter().unixTimeToString(
-                        unixTime: plan.meetingTime,
+                        unixTime: Double(plan.meetingTime),
                         format: MainActivityString.hourAndMinuteFormat
                     )
                 )

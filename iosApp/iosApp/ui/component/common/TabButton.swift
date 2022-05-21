@@ -12,7 +12,7 @@ struct TabButton: View {
     private let rightText: String
     private let togglePadding: CGFloat = 4
     private let cornerRadius: CGFloat = 32
-    private let onTabClickedBeforeAnimaiton: (Int32) -> Void
+    private let onTabClickedBeforeAnimaiton: (Int8) -> Void
 
     private func getFrameWidth() -> CGFloat {
         return metrics.size.width * 0.9
@@ -23,7 +23,7 @@ struct TabButton: View {
     }
     
     @State private var togglePositionX: CGFloat = 0
-    private func onTabClicked(tabIndex: Int32) {
+    private func onTabClicked(tabIndex: Int8) {
         onTabClickedBeforeAnimaiton(tabIndex)
         switch tabIndex {
         case 0:
@@ -37,7 +37,7 @@ struct TabButton: View {
         metrics: GeometryProxy,
         leftText: String,
         rightText: String,
-        onTabClicked: @escaping (Int32) -> Void
+        onTabClicked: @escaping (Int8) -> Void
     ) {
         self.metrics = metrics
         self.leftText = leftText
@@ -75,7 +75,7 @@ struct TabButton: View {
         ).gesture(
             DragGesture(minimumDistance: 0).onEnded { value in
                 let centralBorder: CGFloat = (frameWidth / 2)
-                let tabIndex: Int32 = value.location.x < centralBorder ? 0 : 1
+                let tabIndex: Int8 = value.location.x < centralBorder ? 0 : 1
                 onTabClicked(tabIndex: tabIndex)
             }
         )

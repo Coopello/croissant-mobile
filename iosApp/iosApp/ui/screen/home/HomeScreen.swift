@@ -27,19 +27,10 @@ struct HomeScreen: View {
         viewModel.onViewCreated()
     }
     
-    private let mockDateArray: [String] = [
-        "7/16",
-        "7/17",
-        "7/18",
-        "7/19",
-        "7/20"
-    ]
-    
     var body: some View {
         VStack {
             DateSelectorContainer(
                 viewModel: viewModel,
-                dateTextList: mockDateArray,
                 metrics: metrics
             ) { index in
                 viewModel.onTriggerEvent(

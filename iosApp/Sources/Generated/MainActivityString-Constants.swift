@@ -24,6 +24,8 @@ internal enum MainActivityString {
   internal static let meetingPlace = MainActivityString.tr("mainactivity", "meeting_place")
   /// 集合時間
   internal static let meetingTime = MainActivityString.tr("mainactivity", "meeting_time")
+  /// M/d
+  internal static let monthAndDay = MainActivityString.tr("mainactivity", "month_and_day")
   /// マイページ
   internal static let mypage = MainActivityString.tr("mainactivity", "mypage")
   /// 参加する
