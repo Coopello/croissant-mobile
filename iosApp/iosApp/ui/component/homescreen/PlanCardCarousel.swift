@@ -24,13 +24,22 @@ struct PlanCardCarousel: View {
     ) {
         self.metrics = metrics
         self.plans = plans
+        print(plans.map({ plan in
+            plan.shopName
+        }))
+        print(plans.map({ plan in
+            plan.status
+        }))
         self.viewModel = viewModel
     }
 
     var body: some View {
         HStack {
             ForEach(plans, id: \.id) { (plan: Plan) in
-                PlanCard(metrics: metrics) {
+                PlanCard(
+                    metrics: metrics,
+                    plan: plan
+                ) {
                     viewModel.onPlanParticipateButtonClicked(plan: plan)
                 }
             }

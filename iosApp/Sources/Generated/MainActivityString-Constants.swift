@@ -14,6 +14,8 @@ internal enum MainActivityString {
   internal static let destinationShop = MainActivityString.tr("mainactivity", "destination_shop")
   /// 成立
   internal static let formed = MainActivityString.tr("mainactivity", "formed")
+  /// h:mm
+  internal static let hourAndMinuteFormat = MainActivityString.tr("mainactivity", "hour_and_minute_format")
   /// person.circle
   internal static let imagePathOfPerson = MainActivityString.tr("mainactivity", "image_path_of_person")
   /// wallet.pass

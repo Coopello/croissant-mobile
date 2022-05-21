@@ -24,3 +24,4 @@
 "participate" = "参加する";
 "unformed" = "未成立";
 "formed" = "成立";
+"hour_and_minute_format" = "h:mm";

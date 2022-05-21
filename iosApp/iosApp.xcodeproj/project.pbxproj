@@ -11,6 +11,7 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		2B06E25B84ECD87DDBEAC914 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B4C197FA59B96F39C4F5E /* Pods_iosApp.framework */; };
+		55176DA52838ECDB0050D42C /* UnixTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */; };
 		5526F7F02815280400EE8303 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7EF2815280400EE8303 /* swiftgen.yml */; };
 		5526F7F82815281400EE8303 /* Color-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F32815281400EE8303 /* Color-Constants.swift */; };
 		5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F42815281400EE8303 /* Image-Constants.swift */; };
@@ -44,6 +45,7 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnixTimeFormatter.swift; path = iosApp/ui/util/UnixTimeFormatter.swift; sourceTree = "<group>"; };
 		5526F7EF2815280400EE8303 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		5526F7F32815281400EE8303 /* Color-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color-Constants.swift"; sourceTree = "<group>"; };
 		5526F7F42815281400EE8303 /* Image-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image-Constants.swift"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */,
 				5526F7F12815281400EE8303 /* Sources */,
 				5526F7EF2815280400EE8303 /* swiftgen.yml */,
 				7555FF7D242A565900829871 /* iosApp */,
@@ -320,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55176DA52838ECDB0050D42C /* UnixTimeFormatter.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				5526F7F82815281400EE8303 /* Color-Constants.swift in Sources */,
 				5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */,
