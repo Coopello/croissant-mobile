@@ -1,6 +1,6 @@
 package com.coopelife.croissant.ui.activity
 
-class MainActivityState(
+class HomeActivityState(
     val isHomeClicked: Boolean,
     val isMyPageClicked: Boolean
 )

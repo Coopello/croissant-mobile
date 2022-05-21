@@ -8,10 +8,15 @@ import SwiftUI
 
 struct BottomTab: View {
     private let metrics: GeometryProxy
-    @State var selectedIndex = 0
+    private let onClickTab: (Int8) -> Void
+    @State private var selectedIndex: Int8 = 0
     
-    init(metrics: GeometryProxy) {
+    init(
+        metrics: GeometryProxy,
+        onClickTab: @escaping (Int8) -> Void
+    ) {
         self.metrics = metrics
+        self.onClickTab = onClickTab
     }
 
     let itemDictionary: [(key: Int, value: (String, String))] = [
@@ -34,8 +39,10 @@ struct BottomTab: View {
             Spacer()
             HStack {
                 ForEach(imageNames.indices) { index in
+                    // FIXME: ここをクリックリスナーに差し替える
                     Button(action: {
-                        selectedIndex = index
+                        onClickTab(Int8(index))
+                        selectedIndex = Int8(index)
                     }) {
                         Spacer()
                         VStack {
