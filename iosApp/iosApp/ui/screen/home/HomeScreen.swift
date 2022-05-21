@@ -57,6 +57,17 @@ struct HomeScreen: View {
             }
             
             Spacer()
+            
+            PlanCardCarousel(
+                metrics: metrics,
+                plans: viewModel.state.plans,
+                viewModel: viewModel
+            ).frame(
+                width: metrics.size.width,
+                height: metrics.size.height * 0.6
+            )
+            
+            Spacer()
         }
     }
 }
