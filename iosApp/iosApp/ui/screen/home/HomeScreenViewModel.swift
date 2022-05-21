@@ -15,7 +15,26 @@ class HomeScreenViewModel: ObservableObject {
     init(
         fetchRecentPlansUseCase: FetchRecentPlansUseCase
     ) {
+        let aDaySeconds = 86400
+        let unixTimeFormatter = UnixTimeFormatter()
+    
+        let displayDates: [String] = [0, 1, 2, 3, 4].map { howManyDaysLater in
+            unixTimeFormatter.unixTimeToString(
+                unixTime: Double(aDaySeconds * howManyDaysLater) + Date().timeIntervalSince1970,
+                format: MainActivityString.monthAndDay
+            )
+        }
+        
         self.fetchRecentPlansUseCase = fetchRecentPlansUseCase
+        self.state = HomeScreenState(
+            howManyDaysLaterIsBeingClicked: 0,
+            error: ErrorState(
+                    errorOccurred: false,
+                    message: nil
+            ),
+            plans: [],
+            dates: displayDates
+        )
     }
     
     deinit {
@@ -24,14 +43,7 @@ class HomeScreenViewModel: ObservableObject {
         }
     }
     
-    @Published var state: HomeScreenState = HomeScreenState(
-            howManyDaysLaterIsBeingClicked: 0,
-            error: ErrorState(
-                    errorOccurred: false,
-                    message: nil
-            ),
-            plans: []
-    )
+    @Published var state: HomeScreenState
 
     func onTriggerEvent(event: HomeScreenEvent) {
         switch event {
@@ -40,7 +52,8 @@ class HomeScreenViewModel: ObservableObject {
             state = HomeScreenState(
                     howManyDaysLaterIsBeingClicked: howManyDaysLater,
                     error: self.state.error,
-                    plans: self.state.plans
+                    plans: self.state.plans,
+                    dates: self.state.dates
             )
         case is HomeScreenEvent.UpdatePlans:
             guard let plans: [Plan] = (event as? HomeScreenEvent.UpdatePlans)?.newPlans else { return }
@@ -48,7 +61,8 @@ class HomeScreenViewModel: ObservableObject {
             self.state = HomeScreenState(
                 howManyDaysLaterIsBeingClicked: self.state.howManyDaysLaterIsBeingClicked,
                 error: self.state.error,
-                plans: plans
+                plans: plans,
+                dates: self.state.dates
             )
             
         default: HomeScreenEvent.DoNothing()
