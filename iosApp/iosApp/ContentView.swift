@@ -4,9 +4,15 @@ import shared
 struct ContentView: View {
 	var body: some View {
         GeometryReader { metrics in
-            HomeScreen(
-                metrics: metrics
-            )
+            VStack {
+                HomeScreen(
+                    metrics: metrics
+                )
+                Spacer()
+                BottomTab(
+                    metrics: metrics
+                )
+            }
         }
 	}
 }

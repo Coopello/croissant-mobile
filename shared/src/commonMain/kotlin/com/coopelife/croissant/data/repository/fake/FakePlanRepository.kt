@@ -12,23 +12,25 @@ class FakePlanRepository : PlanRepository {
     override suspend fun fetchRecentPlans(): List<Plan> = listOf(
         Plan(
             id = 1,
-            shopName = "おにやんま",
+            shopName = "焼肉 JIN TOKYO",
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,
             proposerId = 3,
             participantIds = listOf(3, 4, 5),
             meetingTime = currentUnixTime + aHourSeconds,
-            status = Plan.PlanStatus.ESTABLISHED
+            status = Plan.PlanStatus.ESTABLISHED,
+            meetingPlace = "https://tabelog.com/tokyo/A1319/A131901/13114121/"
         ),
         Plan(
-            id = 1,
-            shopName = "Maru",
+            id = 2,
+            shopName = "魚いち",
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,
             proposerId = 3,
             participantIds = listOf(3, 4, 5),
             meetingTime = currentUnixTime + threeDaysSeconds,
-            status = Plan.PlanStatus.ESTABLISHED
+            status = Plan.PlanStatus.ESTABLISHED,
+            meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"
         )
     )
 }

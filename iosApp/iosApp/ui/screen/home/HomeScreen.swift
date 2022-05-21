@@ -48,6 +48,25 @@ struct HomeScreen: View {
             }
             .frame(height: metrics.size.height * 0.15)
             
+            TabButton(
+                metrics: metrics,
+                leftText: MainActivityString.formed,
+                rightText: MainActivityString.unformed
+            ) { index in
+                
+            }
+            
+            Spacer()
+            
+            PlanCardCarousel(
+                metrics: metrics,
+                plans: viewModel.state.plans,
+                viewModel: viewModel
+            ).frame(
+                width: metrics.size.width,
+                height: metrics.size.height * 0.6
+            )
+            
             Spacer()
         }
     }

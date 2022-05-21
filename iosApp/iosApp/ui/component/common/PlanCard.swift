@@ -10,49 +10,56 @@ import shared
 struct PlanCard: View {
     private let metrics: GeometryProxy
     private let confirmButtonAction: () -> Void
+    private let plan: Plan
 
     init(
         metrics: GeometryProxy,
+        plan: Plan,
         confirmButtonAction: @escaping () -> Void
     ) {
         self.metrics = metrics
+        self.plan = plan
         self.confirmButtonAction = confirmButtonAction
     }
     
     var body: some View {
+        // FIXME: ハードコーディング修正
         VStack {
             Group {
                 TextWithTitle(
                     title: MainActivityString.destinationShop,
-                    description: "Maru"
+                    description: plan.shopName
                 )
                 Spacer()
             }
             Group {
                 TextWithTitle(
                     title: MainActivityString.meetingPlace,
-                    description: "オフィスの下"
+                    description: plan.meetingPlace
                 )
                 Spacer()
             }
             Group {
                 TextWithTitle(
                     title: MainActivityString.meetingTime,
-                    description: "14:00"
+                    description: UnixTimeFormatter().unixTimeToString(
+                        unixTime: plan.meetingTime,
+                        format: MainActivityString.hourAndMinuteFormat
+                    )
                 )
                 Spacer()
             }
             Group {
                 TextWithTitle(
                     title: MainActivityString.theTimeRequired,
-                    description: "1時間(目安)"
+                    description: plan.shopName
                 )
                 Spacer()
             }
             Group {
                 TextWithTitle(
                     title: MainActivityString.peopleNumbers,
-                    description: "4人/3人"
+                    description: "\(plan.minNumberOfPeople)人/\(plan.maxNumberOfPeople)人"
                 )
                 Spacer()
             }

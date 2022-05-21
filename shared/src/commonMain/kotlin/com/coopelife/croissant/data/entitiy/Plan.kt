@@ -8,7 +8,8 @@ class Plan(
     val proposerId: Int,
     val participantIds: List<Int>,
     val meetingTime: Long,
-    val status: PlanStatus
+    val status: PlanStatus,
+    val meetingPlace: String
 ) {
     enum class PlanStatus(val code: Int) {
         NOT_ESTABLISHED(0), ESTABLISHED(1), FINISHED(2)
