@@ -29,7 +29,8 @@ class HomeScreenViewModel: ObservableObject {
             error: ErrorState(
                     errorOccurred: false,
                     message: nil
-            )
+            ),
+            plans: []
     )
 
     func onTriggerEvent(event: HomeScreenEvent) {
@@ -38,11 +39,18 @@ class HomeScreenViewModel: ObservableObject {
             let howManyDaysLater = (event as! HomeScreenEvent.ClickDate).howManyDaysLater
             state = HomeScreenState(
                     howManyDaysLaterIsBeingClicked: howManyDaysLater,
-                    error: ErrorState(
-                            errorOccurred: false,
-                            message: nil
-                    )
+                    error: self.state.error,
+                    plans: self.state.plans
             )
+        case is HomeScreenEvent.UpdatePlans:
+            guard let plans: [Plan] = (event as? HomeScreenEvent.UpdatePlans)?.newPlans else { return }
+            
+            self.state = HomeScreenState(
+                howManyDaysLaterIsBeingClicked: self.state.howManyDaysLaterIsBeingClicked,
+                error: self.state.error,
+                plans: plans
+            )
+            
         default: HomeScreenEvent.DoNothing()
         }
     }
@@ -50,15 +58,22 @@ class HomeScreenViewModel: ObservableObject {
     func onViewCreated() {
         do {
             createPublisher(flowWrapper: fetchRecentPlansUseCase.fetchRecentPlans())
-                    .sink(
-                            receiveCompletion: { completion in
-
-                            },
-                            receiveValue: { plan in
-
-                            }
-                    )
-                    .store(in: &cancellables)
+                .receive(on: DispatchQueue.main)
+                .sink(
+                    receiveCompletion: { [weak self] completion in
+                    },
+                    receiveValue: { [weak self] plans in
+                        guard let self = self else { return }
+                        guard let newPlans = (plans as? [Plan]) else { return }
+                        
+                        self.onTriggerEvent(
+                            event: HomeScreenEvent.UpdatePlans(
+                                newPlans: newPlans
+                            )
+                        )
+                    }
+                )
+                .store(in: &cancellables)
         } catch {
             state = state.errorOccurred(
                     message: error.localizedDescription
