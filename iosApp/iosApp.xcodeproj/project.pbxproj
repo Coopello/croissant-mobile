@@ -21,6 +21,7 @@
 		5526F7FB2815281400EE8303 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7F72815281400EE8303 /* Color.xcassets */; };
 		5526F7FD281528F700EE8303 /* mainactivity.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7FC281528F700EE8303 /* mainactivity.strings */; };
 		5526F7FF28152A3800EE8303 /* MainActivityString-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */; };
+		557E5B252839C3F00097D58F /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557E5B242839C3F00097D58F /* CircleImage.swift */; };
 		5583958C2810794C0019D9D6 /* ui in Resources */ = {isa = PBXBuildFile; fileRef = 5583958B2810794C0019D9D6 /* ui */; };
 		558A0031281F7A120063AC34 /* MPLUS1p-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558A0029281F7A120063AC34 /* MPLUS1p-ExtraBold.ttf */; };
 		558A0032281F7A120063AC34 /* MPLUS1p-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558A002A281F7A120063AC34 /* MPLUS1p-Light.ttf */; };
@@ -57,6 +58,7 @@
 		5526F7F72815281400EE8303 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		5526F7FC281528F700EE8303 /* mainactivity.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = mainactivity.strings; sourceTree = "<group>"; };
 		5526F7FE28152A3800EE8303 /* MainActivityString-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainActivityString-Constants.swift"; sourceTree = "<group>"; };
+		557E5B242839C3F00097D58F /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CircleImage.swift; path = iosApp/ui/component/common/CircleImage.swift; sourceTree = "<group>"; };
 		5583958B2810794C0019D9D6 /* ui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ui; sourceTree = "<group>"; };
 		558A0029281F7A120063AC34 /* MPLUS1p-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-ExtraBold.ttf"; sourceTree = "<group>"; };
 		558A002A281F7A120063AC34 /* MPLUS1p-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Light.ttf"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				557E5B242839C3F00097D58F /* CircleImage.swift */,
 				55176DAB2839013C0050D42C /* HomeActivity.swift */,
 				55176DA72838FDB80050D42C /* HomeActivityViewModel.swift */,
 				55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */,
@@ -329,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				557E5B252839C3F00097D58F /* CircleImage.swift in Sources */,
 				55176DAC2839013C0050D42C /* HomeActivity.swift in Sources */,
 				55176DA82838FDB80050D42C /* HomeActivityViewModel.swift in Sources */,
 				55176DA52838ECDB0050D42C /* UnixTimeFormatter.swift in Sources */,
