@@ -9,9 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.coopelife.croissant.android.R
 
 @Composable
 fun HomeScreen(
@@ -25,16 +26,16 @@ fun HomeScreen(
 
 @Composable
 private fun HomeContent(screenName: String, onClick: () -> Unit) {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_16dp))) {
         Text(
             text = screenName,
-            modifier = Modifier.padding(bottom = 8.dp),
+            modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_8dp)),
             style = MaterialTheme.typography.h3
         )
         Button(onClick = onClick) {
             Text(
                 text = "Click me!",
-                modifier = Modifier.padding(4.dp)
+                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_4dp))
             )
         }
     }
