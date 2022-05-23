@@ -32,9 +32,23 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-sealed class Screen(val route: String, @StringRes val resourceId: Int, val icon: ImageVector) {
-    object Home : Screen("home", R.string.home_title, Icons.Filled.Home)
-    object Mypage : Screen("mypage", R.string.mypage_title, Icons.Filled.Face)
+sealed class Screen(
+    @StringRes val routeStrResId: Int,
+    @StringRes val titleStrResId: Int,
+    val icon: ImageVector
+) {
+    object Home :
+        Screen(
+            routeStrResId = R.string.home_route,
+            titleStrResId = R.string.home_title,
+            icon = Icons.Filled.Home
+        )
+
+    object Mypage : Screen(
+        routeStrResId = R.string.mypage_route,
+        titleStrResId = R.string.mypage_title,
+        icon = Icons.Filled.Face
+    )
 }
 
 @Composable
@@ -50,15 +64,19 @@ fun App() {
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = navBackStackEntry?.destination?.route
                 screenItems.forEach { screen ->
+                    val route: String = stringResource(id = screen.titleStrResId)
+                    val isSelected: Boolean = currentRoute == route
                     BottomNavigationItem(
                         icon = {
                             Icon(
                                 imageVector = screen.icon,
-                                contentDescription = screen.route
+                                contentDescription = route
                             )
-                        }, label = { Text(stringResource(id = screen.resourceId)) },
-                        selected = currentRoute == screen.route, onClick = {
-                            navController.navigate(screen.route) {
+                        },
+                        label = { Text(route) },
+                        selected = isSelected,
+                        onClick = {
+                            navController.navigate(route) {
                                 navController.graph.startDestinationRoute?.let {
                                     popUpTo(it) {
                                         saveState = true
@@ -73,7 +91,8 @@ fun App() {
             }
         }
     ) {
-        NavHost(navController, startDestination = "home") {
+        NavHost(navController, startDestination = stringResource(id = R.string.home_route)) {
+            // TODO: ハードコーディングの解消
             composable("home") { HomeScreen(nacController = navController) }
             composable("mypage") { MypageScreen(navController = navController) }
         }
