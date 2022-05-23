@@ -9,9 +9,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.coopelife.croissant.android.R
 
 @Composable
 fun MypageScreen(
@@ -25,10 +26,10 @@ fun MypageScreen(
 
 @Composable
 fun MypageContent(previewText: String, onValueChanged: (String) -> Unit) {
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_16dp))) {
         Text(
             text = previewText,
-            modifier = Modifier.padding(bottom = 8.dp),
+            modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_8dp)),
             style = MaterialTheme.typography.h3
         )
         OutlinedTextField(
