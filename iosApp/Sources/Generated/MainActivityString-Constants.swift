@@ -16,6 +16,14 @@ internal enum MainActivityString {
   internal static let formed = MainActivityString.tr("mainactivity", "formed")
   /// h:mm
   internal static let hourAndMinuteFormat = MainActivityString.tr("mainactivity", "hour_and_minute_format")
+  /// 最低人数まであと%@人
+  internal static func howManyMorePeopleToTheMinimum(_ p1: Any) -> String {
+    return MainActivityString.tr("mainactivity", "how_many_more_people_to_the_minimum", String(describing: p1))
+  }
+  /// 他%@人
+  internal static func howManyOthers(_ p1: Any) -> String {
+    return MainActivityString.tr("mainactivity", "how_many_others", String(describing: p1))
+  }
   /// person.circle
   internal static let imagePathOfPerson = MainActivityString.tr("mainactivity", "image_path_of_person")
   /// wallet.pass

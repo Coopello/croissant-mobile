@@ -17,7 +17,7 @@ struct CircleText: View {
     
     var body: some View {
         Text(text)
-            .modifier(MediumText(textColor: baseColor))
+            .modifier(SmallText(textColor: baseColor))
             .foregroundColor(baseColor)
             .frame(
                 width: diameter,
