@@ -58,7 +58,7 @@ class FakePlanRepository : PlanRepository {
             meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"
         ),
         Plan(
-            id = 1,
+            id = 3,
             shopName = "焼肉 JIN TOKYO22",
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,
@@ -69,7 +69,7 @@ class FakePlanRepository : PlanRepository {
             meetingPlace = "https://tabelog.com/tokyo/A1319/A131901/13114121/"
         ),
         Plan(
-            id = 2,
+            id = 4,
             shopName = "魚いち22",
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,

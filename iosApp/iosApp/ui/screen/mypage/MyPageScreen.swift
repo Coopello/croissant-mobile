@@ -3,27 +3,33 @@ import shared
 
 struct MyPageScreen: View {
     private let metrics: GeometryProxy
+    private let planRepository: PlanRepository
+    private let fetchMyPlansUseCase: FetchMyPlansUseCase
+    
+    @ObservedObject var viewModel: MyPageScreenViewModel
     
     init(metrics: GeometryProxy) {
         self.metrics = metrics
+        
+        planRepository = FakePlanRepository()
+        fetchMyPlansUseCase = FetchMyPlansUseCase(
+            planRepository: planRepository
+        )
+        viewModel = MyPageScreenViewModel(
+            fetchMyPlansUseCase: fetchMyPlansUseCase
+        )
+        viewModel.onInit()
     }
     
     var body: some View {
-        let mockPlan = Plan(
-            id: 0,
-            shopName: "Maru",
-            maxNumberOfPeople: 9,
-            minNumberOfPeople: 8,
-            proposerId: 0,
-            participantIds: [0, 9, 8, 9, 9, 9],
-            meetingTime: 1653184751,
-            status: Plan.PlanStatus.established,
-            meetingPlace: ""
-        )
-        
-        MyPagePlanCell(
-            plan: mockPlan,
-            metrics: metrics
-        )
+        LazyVStack {
+            ForEach(viewModel.state.plans, id: \.id) { plan in
+                MyPagePlanCell(
+                    plan: plan,
+                    metrics: metrics
+                )
+                .padding()
+            }
+        }
     }
 }
