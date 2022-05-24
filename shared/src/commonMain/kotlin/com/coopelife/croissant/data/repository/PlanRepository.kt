@@ -4,4 +4,5 @@ import com.coopelife.croissant.data.entitiy.Plan
 
 interface PlanRepository {
     suspend fun fetchRecentPlans(): List<Plan>
+    suspend fun fetchMyPlans(): List<Plan>
 }
