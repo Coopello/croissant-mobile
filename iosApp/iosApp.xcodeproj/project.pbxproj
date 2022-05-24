@@ -12,6 +12,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		2B06E25B84ECD87DDBEAC914 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B4C197FA59B96F39C4F5E /* Pods_iosApp.framework */; };
 		550D5C4A283C50C10035FBAD /* MyPagePlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D5C49283C50C10035FBAD /* MyPagePlanCell.swift */; };
+		550D5C4C283C60CF0035FBAD /* MyPageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */; };
 		55176DA52838ECDB0050D42C /* UnixTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */; };
 		55176DA82838FDB80050D42C /* HomeActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DA72838FDB80050D42C /* HomeActivityViewModel.swift */; };
 		55176DAC2839013C0050D42C /* HomeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DAB2839013C0050D42C /* HomeActivity.swift */; };
@@ -51,6 +52,7 @@
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		550D5C49283C50C10035FBAD /* MyPagePlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPagePlanCell.swift; path = iosApp/ui/component/mypagescreen/MyPagePlanCell.swift; sourceTree = "<group>"; };
+		550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPageScreen.swift; path = iosApp/ui/screen/mypage/MyPageScreen.swift; sourceTree = "<group>"; };
 		55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnixTimeFormatter.swift; path = iosApp/ui/util/UnixTimeFormatter.swift; sourceTree = "<group>"; };
 		55176DA72838FDB80050D42C /* HomeActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeActivityViewModel.swift; path = iosApp/ui/activity/HomeActivityViewModel.swift; sourceTree = "<group>"; };
 		55176DAB2839013C0050D42C /* HomeActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeActivity.swift; path = iosApp/ui/component/homeactivity/HomeActivity.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */,
 				550D5C49283C50C10035FBAD /* MyPagePlanCell.swift */,
 				557E5B282839CE640097D58F /* MyPagePlanCard.swift */,
 				557E5B262839CA900097D58F /* CircleText.swift */,
@@ -340,6 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550D5C4C283C60CF0035FBAD /* MyPageScreen.swift in Sources */,
 				550D5C4A283C50C10035FBAD /* MyPagePlanCell.swift in Sources */,
 				557E5B272839CA900097D58F /* CircleText.swift in Sources */,
 				557E5B252839C3F00097D58F /* CircleImage.swift in Sources */,
