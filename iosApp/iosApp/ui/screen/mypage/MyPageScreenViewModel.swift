@@ -27,11 +27,9 @@ class MyPageScreenViewModel: ObservableObject {
     }
     
     func onTriggerEvent(event: MyPageScreenEvent) {
-        print("判定 \(event is MyPageScreenEvent.UpdatePlans)")
         switch event {
         case is MyPageScreenEvent.UpdatePlans:
             guard let plans: [Plan] = (event as? MyPageScreenEvent.UpdatePlans)?.newPlans else { return }
-            print("判定 \(plans.map({ plan in plan.shopName }))")
             
             self.state = MyPageScreenState(
                 plans: plans,
