@@ -50,7 +50,7 @@ struct BottomTab: View {
         }
         .frame(
             maxWidth: .infinity,
-            maxHeight: metrics.size.height * 0.1
+            maxHeight: .infinity
         )
     }
 }

@@ -60,5 +60,8 @@ struct HomeScreen: View {
             
             Spacer()
         }
+        .frame(
+            maxHeight: .infinity
+        )
     }
 }

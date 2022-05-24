@@ -31,5 +31,8 @@ struct MyPageScreen: View {
                 .padding()
             }
         }
+        .frame(
+            maxHeight: .infinity
+        )
     }
 }

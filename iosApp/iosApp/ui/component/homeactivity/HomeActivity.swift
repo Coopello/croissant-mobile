@@ -21,6 +21,9 @@ struct HomeActivity: View {
                         myPageScreen != nil ? myPageScreen! : MyPageScreen(metrics: metrics)
                     }
                 }
+                .frame(
+                    maxHeight: metrics.size.height * 0.9
+                )
                 
                 Spacer()
                 
@@ -33,6 +36,9 @@ struct HomeActivity: View {
                         )
                     )
                 }
+                .frame(
+                    maxHeight: metrics.size.height * 0.1
+                )
             }
         }
     }
