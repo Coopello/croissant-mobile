@@ -26,3 +26,8 @@
 "formed" = "成立";
 "hour_and_minute_format" = "h:mm";
 "month_and_day" = "M/d";
+"how_many_more_people_to_the_minimum" = "最低人数まであと%@人";
+"how_many_others" = "他%@人";
+"day_of_week" = "E";
+"day_of_month" = "d";
+

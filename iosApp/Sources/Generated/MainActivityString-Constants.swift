@@ -10,12 +10,24 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum MainActivityString {
+  /// d
+  internal static let dayOfMonth = MainActivityString.tr("mainactivity", "day_of_month")
+  /// E
+  internal static let dayOfWeek = MainActivityString.tr("mainactivity", "day_of_week")
   /// 行くお店
   internal static let destinationShop = MainActivityString.tr("mainactivity", "destination_shop")
   /// 成立
   internal static let formed = MainActivityString.tr("mainactivity", "formed")
   /// h:mm
   internal static let hourAndMinuteFormat = MainActivityString.tr("mainactivity", "hour_and_minute_format")
+  /// 最低人数まであと%@人
+  internal static func howManyMorePeopleToTheMinimum(_ p1: Any) -> String {
+    return MainActivityString.tr("mainactivity", "how_many_more_people_to_the_minimum", String(describing: p1))
+  }
+  /// 他%@人
+  internal static func howManyOthers(_ p1: Any) -> String {
+    return MainActivityString.tr("mainactivity", "how_many_others", String(describing: p1))
+  }
   /// person.circle
   internal static let imagePathOfPerson = MainActivityString.tr("mainactivity", "image_path_of_person")
   /// wallet.pass

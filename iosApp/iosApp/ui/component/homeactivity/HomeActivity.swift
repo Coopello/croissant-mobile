@@ -5,6 +5,7 @@ import shared
 struct HomeActivity: View {
     @ObservedObject var viewModel: HomeActivityViewModel
     private var homeScreen: HomeScreen?
+    private var myPageScreen: MyPageScreen?
     
     init() {
         viewModel = HomeActivityViewModel()
@@ -17,9 +18,12 @@ struct HomeActivity: View {
                     if viewModel.state.isHomeClicked {
                         homeScreen != nil ? homeScreen! : HomeScreen(metrics: metrics)
                     } else {
-                        // HomeMyPageScreen()
+                        myPageScreen != nil ? myPageScreen! : MyPageScreen(metrics: metrics)
                     }
                 }
+                .frame(
+                    maxHeight: metrics.size.height * 0.9
+                )
                 
                 Spacer()
                 
@@ -32,6 +36,9 @@ struct HomeActivity: View {
                         )
                     )
                 }
+                .frame(
+                    maxHeight: metrics.size.height * 0.1
+                )
             }
         }
     }
