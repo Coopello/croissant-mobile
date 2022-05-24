@@ -10,6 +10,10 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name vertical_whitespace_opening_braces
 internal enum MainActivityString {
+  /// d
+  internal static let dayOfMonth = MainActivityString.tr("mainactivity", "day_of_month")
+  /// E
+  internal static let dayOfWeek = MainActivityString.tr("mainactivity", "day_of_week")
   /// 行くお店
   internal static let destinationShop = MainActivityString.tr("mainactivity", "destination_shop")
   /// 成立

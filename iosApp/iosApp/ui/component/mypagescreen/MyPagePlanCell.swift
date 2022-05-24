@@ -3,16 +3,45 @@ import shared
 
 struct MyPagePlanCell: View {
     private let plan: Plan
+    private let metrics: GeometryProxy
     private let unixTimeFormatter = UnixTimeFormatter()
     
-    init (plan: Plan) {
+    init (
+        plan: Plan,
+        metrics: GeometryProxy
+    ) {
         self.plan = plan
+        self.metrics = metrics
     }
     
     var body: some View {
         HStack {
+            VStack {
+                Text(
+                    unixTimeFormatter.unixTimeToString(
+                        unixTime: Double(plan.meetingTime),
+                        format: MainActivityString.dayOfWeek
+                    )
+                )
+                .modifier(MediumText(textColor: .black))
+                
+                Text(
+                    unixTimeFormatter.unixTimeToString(
+                        unixTime: Double(plan.meetingTime),
+                        format: MainActivityString.dayOfMonth
+                    )
+                )
+                .modifier(MediumText(textColor: .black))
+            }
+            .frame(
+                maxHeight: .infinity,
+                alignment: .top
+            )
             MyPagePlanCard(plan: plan)
         }
+        .frame(
+            height: metrics.size.height * 0.28
+        )
     }
 }
 
@@ -83,7 +112,7 @@ private struct MyPagePlanCard: View {
         .padding()
         .overlay(
             RoundedRectangle(
-                cornerRadius: 5
+                cornerRadius: 20
             ).stroke(
                 Color(Colors.primaryGray.name),
                 lineWidth: 1
