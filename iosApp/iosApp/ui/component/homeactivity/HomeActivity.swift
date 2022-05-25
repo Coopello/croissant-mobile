@@ -4,8 +4,6 @@ import shared
 
 struct HomeActivity: View {
     @ObservedObject var viewModel: HomeActivityViewModel
-    private var homeScreen: HomeScreen?
-    private var myPageScreen: MyPageScreen?
     
     init() {
         viewModel = HomeActivityViewModel()
@@ -16,16 +14,15 @@ struct HomeActivity: View {
             VStack {
                 Group {
                     if viewModel.state.isHomeClicked {
-                        homeScreen != nil ? homeScreen! : HomeScreen(metrics: metrics)
+                        HomeScreen(metrics: metrics)
                     } else {
-                        myPageScreen != nil ? myPageScreen! : MyPageScreen(metrics: metrics)
+                        MyPageScreen(metrics: metrics)
                     }
                 }
                 .frame(
-                    maxHeight: metrics.size.height * 0.9
+                    maxHeight: metrics.size.height * 0.9,
+                    alignment: .top
                 )
-                
-                Spacer()
                 
                 BottomTab(
                     metrics: metrics
@@ -37,7 +34,8 @@ struct HomeActivity: View {
                     )
                 }
                 .frame(
-                    maxHeight: metrics.size.height * 0.1
+                    maxHeight: metrics.size.height * 0.1,
+                    alignment: .bottom
                 )
             }
         }
