@@ -35,6 +35,7 @@ struct MyPageScreen: View {
                 selectedTabIndex: $selectedTabIndex
             ) { index in
                 selectedTabIndex = index
+                viewModel.onTabClicked(tabIndex: index)
             }
             .frame(
                 maxHeight: metrics.size.height * 0.2,
