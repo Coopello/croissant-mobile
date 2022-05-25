@@ -5,6 +5,7 @@ struct MyPageScreen: View {
     private let metrics: GeometryProxy
     private let planRepository: PlanRepository
     private let fetchMyPlansUseCase: FetchMyPlansUseCase
+    @State var selectedTabIndex: Int = 0
     
     @ObservedObject var viewModel: MyPageScreenViewModel
     
@@ -30,8 +31,12 @@ struct MyPageScreen: View {
                     name: "井上晃平",
                     proposedPlanList: [90, 0, 2],
                     participatedPlanLIst: [12, 9, 0]
-                )
-            ).frame(
+                ),
+                selectedTabIndex: $selectedTabIndex
+            ) { index in
+                selectedTabIndex = index
+            }
+            .frame(
                 maxHeight: metrics.size.height * 0.2,
                 alignment: .top
             )

@@ -4,7 +4,8 @@ import shared
 struct MyPageHeader: View {
     private let metrics: GeometryProxy
     private let user: User
-    @State var selectedTabIndex: Int = 0
+    @Binding var selectedTabIndex: Int
+    private let onTabClicked: (Int) -> Void
     
     private let tabList = [
         Tab(
@@ -23,10 +24,14 @@ struct MyPageHeader: View {
     
     init(
         metrics: GeometryProxy,
-        user: User
+        user: User,
+        selectedTabIndex: Binding<Int>,
+        onTabClicked: @escaping (Int) -> Void
     ) {
         self.metrics = metrics
         self.user = user
+        self._selectedTabIndex = selectedTabIndex
+        self.onTabClicked = onTabClicked
     }
     
     var body: some View {
@@ -55,7 +60,7 @@ struct MyPageHeader: View {
                 metrics: metrics,
                 selectedTabIndex: $selectedTabIndex,
                 onTabClicked: { index in
-                    self.selectedTabIndex = index
+                    onTabClicked(index)
                 }
             )
             .frame(
