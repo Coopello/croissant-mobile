@@ -23,6 +23,19 @@ struct MyPageScreen: View {
     
     var body: some View {
         LazyVStack {
+            MyPageHeader(
+                metrics: metrics,
+                user: User(
+                    id: 12,
+                    name: "井上晃平",
+                    proposedPlanList: [90, 0, 2],
+                    participatedPlanLIst: [12, 9, 0]
+                )
+            ).frame(
+                maxHeight: metrics.size.height * 0.2,
+                alignment: .top
+            )
+            
             ForEach(viewModel.state.plans, id: \.id) { plan in
                 MyPagePlanCell(
                     plan: plan,
@@ -30,9 +43,13 @@ struct MyPageScreen: View {
                 )
                 .padding()
             }
-        }
-        .frame(
-            maxHeight: .infinity
+            .frame(
+                maxHeight: metrics.size.height * 0.7,
+                alignment: .bottom
+            )
+        }.frame(
+            maxHeight: metrics.size.height * 0.9,
+            alignment: .top
         )
     }
 }
