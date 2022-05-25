@@ -35,6 +35,7 @@
 		558A0036281F7A120063AC34 /* MPLUS1p-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558A002E281F7A120063AC34 /* MPLUS1p-Medium.ttf */; };
 		558A0037281F7A120063AC34 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 558A002F281F7A120063AC34 /* OFL.txt */; };
 		558A0038281F7A120063AC34 /* MPLUS1p-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 558A0030281F7A120063AC34 /* MPLUS1p-Regular.ttf */; };
+		55FEE1CD283DA6B6004A7BD6 /* MyPageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FEE1CC283DA6B6004A7BD6 /* MyPageHeader.swift */; };
 		617DB285D6E7C3CADBE95480 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DBBB6001EA53545E5C5A4 /* HomeScreen.swift */; };
 		617DB3037CDA7252F9106B07 /* HomeScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB524AF40DF6ED6603802 /* HomeScreenViewModel.swift */; };
 		617DB65307C4D9803ACFF76C /* KotlinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617DB416A410D36EBC8E75EA /* KotlinError.swift */; };
@@ -77,6 +78,7 @@
 		558A002E281F7A120063AC34 /* MPLUS1p-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Medium.ttf"; sourceTree = "<group>"; };
 		558A002F281F7A120063AC34 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		558A0030281F7A120063AC34 /* MPLUS1p-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MPLUS1p-Regular.ttf"; sourceTree = "<group>"; };
+		55FEE1CC283DA6B6004A7BD6 /* MyPageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPageHeader.swift; path = iosApp/ui/component/mypagescreen/MyPageHeader.swift; sourceTree = "<group>"; };
 		617DB416A410D36EBC8E75EA /* KotlinError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KotlinError.swift; path = ui/util/SwiftCoroutines/KotlinError.swift; sourceTree = "<group>"; };
 		617DB4799420884E49EEBDA6 /* DateSelectorContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateSelectorContainer.swift; path = ui/component/homescreen/DateSelectorContainer.swift; sourceTree = "<group>"; };
 		617DB524AF40DF6ED6603802 /* HomeScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScreenViewModel.swift; path = ui/screen/home/HomeScreenViewModel.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				55FEE1CC283DA6B6004A7BD6 /* MyPageHeader.swift */,
 				550D5C4F283C6EBC0035FBAD /* MyPageScreenViewModel.swift */,
 				550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */,
 				550D5C49283C50C10035FBAD /* MyPagePlanCell.swift */,
@@ -346,6 +349,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55FEE1CD283DA6B6004A7BD6 /* MyPageHeader.swift in Sources */,
 				550D5C50283C6EBC0035FBAD /* MyPageScreenViewModel.swift in Sources */,
 				550D5C4C283C60CF0035FBAD /* MyPageScreen.swift in Sources */,
 				550D5C4A283C50C10035FBAD /* MyPagePlanCell.swift in Sources */,
