@@ -22,16 +22,18 @@ struct MyPageScreen: View {
         viewModel.onInit()
     }
     
+    private let mockUserData = User(
+        id: 12,
+        name: "井上晃平",
+        proposedPlanList: [90, 0, 2],
+        participatedPlanLIst: [12, 9, 0]
+    )
+    
     var body: some View {
         LazyVStack {
             MyPageHeader(
                 metrics: metrics,
-                user: User(
-                    id: 12,
-                    name: "井上晃平",
-                    proposedPlanList: [90, 0, 2],
-                    participatedPlanLIst: [12, 9, 0]
-                ),
+                user: mockUserData,
                 selectedTabIndex: $selectedTabIndex
             ) { index in
                 selectedTabIndex = index
@@ -42,12 +44,14 @@ struct MyPageScreen: View {
                 alignment: .top
             )
             
-            ForEach(viewModel.state.plans, id: \.id) { plan in
-                MyPagePlanCell(
-                    plan: plan,
-                    metrics: metrics
-                )
-                .padding()
+            ScrollView(.vertical) {
+                ForEach(viewModel.state.plans, id: \.id) { plan in
+                    MyPagePlanCell(
+                        plan: plan,
+                        metrics: metrics
+                    )
+                    .padding()
+                }
             }
             .frame(
                 maxHeight: metrics.size.height * 0.7,
