@@ -48,16 +48,17 @@ fun Content() {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     val currentRoute = navBackStackEntry?.destination?.route
                     screenItems.forEach { screen ->
-                        val route: String = stringResource(id = screen.titleStrResId)
+                        val route: String = stringResource(id = screen.routeStrResId)
+                        val title: String = stringResource(id = screen.titleStrResId)
                         val isSelected: Boolean = currentRoute == route
                         BottomNavigationItem(
                             icon = {
                                 Icon(
                                     imageVector = screen.icon,
-                                    contentDescription = route
+                                    contentDescription = title
                                 )
                             },
-                            label = { Text(route) },
+                            label = { Text(title) },
                             selected = isSelected,
                             onClick = {
                                 navController.navigate(route) {

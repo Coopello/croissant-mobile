@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="home_route">home</string>
-    <string name="home_title">Home</string>
+    <string name="home_title">募集一覧</string>
 
     <string name="mypage_route">mypage</string>
-    <string name="mypage_title">Mypage</string>
+    <string name="mypage_title">マイページ</string>
 </resources>
