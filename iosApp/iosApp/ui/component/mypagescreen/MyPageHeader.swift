@@ -2,7 +2,6 @@ import SwiftUI
 import shared
 
 struct MyPageHeader: View {
-    private let metrics: GeometryProxy
     private let user: User
     @Binding var selectedTabIndex: Int
     private let onTabClicked: (Int) -> Void
@@ -23,55 +22,55 @@ struct MyPageHeader: View {
     ]
     
     init(
-        metrics: GeometryProxy,
         user: User,
         selectedTabIndex: Binding<Int>,
         onTabClicked: @escaping (Int) -> Void
     ) {
-        self.metrics = metrics
         self.user = user
         self._selectedTabIndex = selectedTabIndex
         self.onTabClicked = onTabClicked
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(user.name)
-                    .modifier(LargeText(textColor: .white))
+        GeometryReader { metrics in
+            VStack {
+                HStack {
+                    Text(user.name)
+                        .modifier(LargeText(textColor: .white))
+                        .padding()
+                    
+                    Spacer()
+                    
+                    CircleImage(
+                        imagePath: MainActivityString.imagePathOfPerson,
+                        baseColor: Color(Colors.primaryYellow.name)
+                    )
+                    .scaledToFit()
                     .padding()
-                
-                Spacer()
-                
-                CircleImage(
-                    imagePath: MainActivityString.imagePathOfPerson,
-                    baseColor: Color(Colors.primaryYellow.name)
+                }.frame(
+                    maxWidth: .infinity,
+                    maxHeight: metrics.size.height * 0.6,
+                    alignment: .top
                 )
-                .scaledToFit()
-                .padding()
-            }.frame(
-                maxWidth: .infinity,
-                maxHeight: metrics.size.height * 0.12,
-                alignment: .top
-            )
 
-            TabLayout(
-                tabList: tabList,
-                metrics: metrics,
-                selectedTabIndex: $selectedTabIndex,
-                onTabClicked: { index in
-                    onTabClicked(index)
-                }
-            )
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: metrics.size.height * 0.8,
-                alignment: .bottom
-            )
+                TabLayout(
+                    tabList: tabList,
+                    metrics: metrics,
+                    selectedTabIndex: $selectedTabIndex,
+                    onTabClicked: { index in
+                        onTabClicked(index)
+                    }
+                )
+                .frame(
+                    maxWidth: .infinity,
+                    maxHeight: metrics.size.height * 0.4,
+                    alignment: .bottom
+                )
+            }
         }
         .frame(
             maxWidth: .infinity,
-            maxHeight: metrics.size.height * 0.2
+            maxHeight: .infinity
         )
         .background(
             Color(Colors.primaryOrange.name)

@@ -3,15 +3,10 @@ import shared
 
 struct MyPagePlanCell: View {
     private let plan: Plan
-    private let metrics: GeometryProxy
     private let unixTimeFormatter = UnixTimeFormatter()
     
-    init (
-        plan: Plan,
-        metrics: GeometryProxy
-    ) {
+    init (plan: Plan) {
         self.plan = plan
-        self.metrics = metrics
     }
     
     var body: some View {
@@ -39,9 +34,6 @@ struct MyPagePlanCell: View {
             )
             MyPagePlanCard(plan: plan)
         }
-        .frame(
-            height: metrics.size.height * 0.28
-        )
     }
 }
 

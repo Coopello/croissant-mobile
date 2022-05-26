@@ -16,12 +16,11 @@ struct HomeActivity: View {
                     if viewModel.state.isHomeClicked {
                         HomeScreen(metrics: metrics)
                     } else {
-                        MyPageScreen(metrics: metrics)
+                        MyPageScreen()
                     }
                 }
                 .frame(
-                    maxHeight: metrics.size.height * 0.9,
-                    alignment: .top
+                    height: metrics.size.height * 0.9
                 )
                 
                 BottomTab(
@@ -34,8 +33,7 @@ struct HomeActivity: View {
                     )
                 }
                 .frame(
-                    maxHeight: metrics.size.height * 0.1,
-                    alignment: .bottom
+                    height: metrics.size.height * 0.1
                 )
             }
         }

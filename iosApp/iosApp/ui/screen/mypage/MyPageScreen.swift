@@ -2,16 +2,13 @@ import SwiftUI
 import shared
 
 struct MyPageScreen: View {
-    private let metrics: GeometryProxy
     private let planRepository: PlanRepository
     private let fetchMyPlansUseCase: FetchMyPlansUseCase
     @State var selectedTabIndex: Int = 0
     
     @ObservedObject var viewModel: MyPageScreenViewModel
     
-    init(metrics: GeometryProxy) {
-        self.metrics = metrics
-        
+    init() {
         planRepository = FakePlanRepository()
         fetchMyPlansUseCase = FetchMyPlansUseCase(
             planRepository: planRepository
@@ -30,35 +27,35 @@ struct MyPageScreen: View {
     )
     
     var body: some View {
-        LazyVStack {
-            MyPageHeader(
-                metrics: metrics,
-                user: mockUserData,
-                selectedTabIndex: $selectedTabIndex
-            ) { index in
-                selectedTabIndex = index
-                viewModel.onTabClicked(tabIndex: index)
-            }
-            .frame(
-                maxHeight: metrics.size.height * 0.2,
-                alignment: .top
-            )
-            
-            ScrollView(.vertical) {
-                ForEach(viewModel.state.plans, id: \.id) { plan in
-                    MyPagePlanCell(
-                        plan: plan,
-                        metrics: metrics
-                    )
-                    .padding()
+        GeometryReader { metrics in
+            LazyVStack {
+                MyPageHeader(
+                    user: mockUserData,
+                    selectedTabIndex: $selectedTabIndex
+                ) { index in
+                    selectedTabIndex = index
+                    viewModel.onTabClicked(tabIndex: index)
                 }
+                .frame(
+                    height: metrics.size.height * 0.2
+                )
+                
+                ScrollView(.vertical) {
+                    ForEach(viewModel.state.plans, id: \.id) { plan in
+                        MyPagePlanCell(plan: plan)
+                        .frame(
+                            height: metrics.size.height * 0.28
+                        )
+                        .padding()
+                    }
+                }
+                .frame(
+                    height: metrics.size.height * 0.8
+                )
             }
-            .frame(
-                maxHeight: metrics.size.height * 0.7,
-                alignment: .bottom
-            )
-        }.frame(
-            maxHeight: metrics.size.height * 0.9,
+        }
+        .frame(
+            maxHeight: .infinity,
             alignment: .top
         )
     }
