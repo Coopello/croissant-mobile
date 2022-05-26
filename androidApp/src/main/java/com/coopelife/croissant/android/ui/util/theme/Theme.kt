@@ -34,6 +34,7 @@ fun CroissantTheme(
 ) {
     MaterialTheme(
         colors = if (darkTheme) DarkColors else LightColors,
+        typography = CroissantTypography,
         content = content,
     )
 }
