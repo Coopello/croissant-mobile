@@ -9,10 +9,10 @@ import androidx.compose.ui.graphics.Color
 private val LightColors = lightColors(
     primary = Orange,
     primaryVariant = OrangeDark,
-    onPrimary = Color.Black,
+    onPrimary = Color.White,
     secondary = Pink,
     secondaryVariant = PinkDark,
-    onSecondary = Color.Black,
+    onSecondary = Color.White,
     error = OrangeLight,
 )
 
@@ -20,10 +20,10 @@ private val LightColors = lightColors(
 private val DarkColors = lightColors(
     primary = Orange,
     primaryVariant = OrangeDark,
-    onPrimary = Color.Black,
+    onPrimary = Color.White,
     secondary = Pink,
     secondaryVariant = PinkDark,
-    onSecondary = Color.Black,
+    onSecondary = Color.White,
     error = OrangeLight,
 )
 
