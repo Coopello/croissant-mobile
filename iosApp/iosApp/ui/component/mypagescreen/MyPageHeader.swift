@@ -47,31 +47,19 @@ struct MyPageHeader: View {
                     )
                     .scaledToFit()
                     .padding()
-                }.frame(
-                    maxWidth: .infinity,
-                    maxHeight: metrics.size.height * 0.6,
-                    alignment: .top
-                )
+                }
 
                 TabLayout(
                     tabList: tabList,
-                    metrics: metrics,
                     selectedTabIndex: $selectedTabIndex,
                     onTabClicked: { index in
                         onTabClicked(index)
                     }
                 )
-                .frame(
-                    maxWidth: .infinity,
-                    maxHeight: metrics.size.height * 0.4,
-                    alignment: .bottom
-                )
+                
+                Spacer()
             }
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
         .background(
             Color(Colors.primaryOrange.name)
         )
@@ -137,42 +125,44 @@ private struct TabItem: View {
 
 private struct TabLayout: View {
     private let tabList: [Tab]
-    private let metrics: GeometryProxy
     @Binding var selectedTabIndex: Int
     private let onTabClicked: (Int) -> Void
     
     init(
         tabList: [Tab],
-        metrics: GeometryProxy,
         selectedTabIndex: Binding<Int>,
         onTabClicked: @escaping (Int) -> Void
     ) {
         self.tabList = tabList
-        self.metrics = metrics
         self._selectedTabIndex = selectedTabIndex
         self.onTabClicked = onTabClicked
     }
     
     var body: some View {
-        HStack {
-            ForEach(tabList, id: \.id) { tab in
-                VStack {
-                    let currentIndex = tabList.firstIndex(of: tab)!
-                    
-                    TabItem(
-                        tab: tab,
-                        metrics: metrics
-                    ) {
-                        onTabClicked(currentIndex)
-                    }
-                    
-                    Rectangle()
-                        .fill(
-                            selectedTabIndex == currentIndex ? .white : .clear
-                        )
+        GeometryReader { metrics in
+            HStack {
+                ForEach(tabList, id: \.id) { tab in
+                    VStack {
+                        let currentIndex = tabList.firstIndex(of: tab)!
+                        
+                        TabItem(
+                            tab: tab,
+                            metrics: metrics
+                        ) {
+                            onTabClicked(currentIndex)
+                        }
                         .frame(
-                            height: 4
+                            height: metrics.size.height * 0.9
                         )
+                        
+                        Rectangle()
+                            .fill(
+                                selectedTabIndex == currentIndex ? .white : .clear
+                            )
+                            .frame(
+                                height: metrics.size.height * 0.1
+                            )
+                    }
                 }
             }
         }

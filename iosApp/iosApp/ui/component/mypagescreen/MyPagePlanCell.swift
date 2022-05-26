@@ -10,29 +10,37 @@ struct MyPagePlanCell: View {
     }
     
     var body: some View {
-        HStack {
-            VStack {
-                Text(
-                    unixTimeFormatter.unixTimeToString(
-                        unixTime: Double(plan.meetingTime),
-                        format: MainActivityString.dayOfWeek
+        GeometryReader { metrics in
+            HStack {
+                VStack {
+                    Text(
+                        unixTimeFormatter.unixTimeToString(
+                            unixTime: Double(plan.meetingTime),
+                            format: MainActivityString.dayOfWeek
+                        )
                     )
+                    .modifier(MediumText(textColor: .black))
+                    
+                    Text(
+                        unixTimeFormatter.unixTimeToString(
+                            unixTime: Double(plan.meetingTime),
+                            format: MainActivityString.dayOfMonth
+                        )
+                    )
+                    .modifier(MediumText(textColor: .black))
+                }
+                .frame(
+                    width: metrics.size.width * 0.1,
+                    height: metrics.size.height,
+                    alignment: .top
                 )
-                .modifier(MediumText(textColor: .black))
                 
-                Text(
-                    unixTimeFormatter.unixTimeToString(
-                        unixTime: Double(plan.meetingTime),
-                        format: MainActivityString.dayOfMonth
+                MyPagePlanCard(plan: plan)
+                    .frame(
+                        width: metrics.size.width * 0.8,
+                        height: metrics.size.height
                     )
-                )
-                .modifier(MediumText(textColor: .black))
             }
-            .frame(
-                maxHeight: .infinity,
-                alignment: .top
-            )
-            MyPagePlanCard(plan: plan)
         }
     }
 }
@@ -46,69 +54,74 @@ private struct MyPagePlanCard: View {
     }
     
     var body: some View {
-        VStack {
-            Text(plan.shopName)
-                .modifier(LargeText(textColor: .black))
+        GeometryReader { metrics in
+            VStack {
+                Text(plan.shopName)
+                    .modifier(LargeText(textColor: .black))
+                    .frame(
+                        maxWidth: .infinity,
+                        alignment: .leading
+                    )
+                
+                Text(
+                    unixTimeFormatter.unixTimeToString(
+                        unixTime: Double(plan.meetingTime),
+                        format: MainActivityString.hourAndMinuteFormat
+                    )
+                )
+                .modifier(MediumText(textColor: .black))
                 .frame(
                     maxWidth: .infinity,
                     alignment: .leading
                 )
-            
-            Text(
-                unixTimeFormatter.unixTimeToString(
-                    unixTime: Double(plan.meetingTime),
-                    format: MainActivityString.hourAndMinuteFormat
+                
+                HStack {
+                    ForEach(plan.participantIds.indices.prefix(4)) { index in
+                        if index < 3 {
+                            CircleImage(
+                                imagePath: MainActivityString.imagePathOfPerson,
+                                baseColor: Color(Colors.primaryYellow.name)
+                            )
+                        } else {
+                            CircleText(
+                                text: MainActivityString.howManyOthers(
+                                    plan.participantIds.count - 3
+                                ),
+                                baseColor: .black,
+                                diameter: 64
+                            )
+                        }
+                    }.frame(
+                        width: 64,
+                        height: 64
+                    )
+                }
+                
+                
+                Text(
+                    MainActivityString.howManyMorePeopleToTheMinimum(
+                        plan.minNumberOfPeople - Int32(plan.participantIds.count)
+                    )
                 )
-            )
-            .modifier(MediumText(textColor: .black))
-            .frame(
-                maxWidth: .infinity,
-                alignment: .leading
-            )
-            
-            HStack {
-                ForEach(plan.participantIds.indices.prefix(4)) { index in
-                    if index < 3 {
-                        CircleImage(
-                            imagePath: MainActivityString.imagePathOfPerson,
-                            baseColor: Color(Colors.primaryYellow.name)
-                        )
-                    } else {
-                        CircleText(
-                            text: MainActivityString.howManyOthers(
-                                plan.participantIds.count - 3
-                            ),
-                            baseColor: .black,
-                            diameter: 64
-                        )
-                    }
-                }.frame(
-                    width: 64,
-                    height: 64
-                )
-            }
-            
-            
-            Text(
-                MainActivityString.howManyMorePeopleToTheMinimum(
-                    plan.minNumberOfPeople - Int32(plan.participantIds.count)
-                )
-            )
                 .modifier(MediumText(textColor: .black))
                 .frame(
                     maxWidth: .infinity,
                     alignment: .trailing
                 )
-        
-        }
-        .padding()
-        .overlay(
-            RoundedRectangle(
-                cornerRadius: 20
-            ).stroke(
-                Color(Colors.primaryGray.name),
-                lineWidth: 1
+            
+            }
+            .frame(
+                width: metrics.size.width
             )
-        )
+            .padding()
+            .overlay(
+                RoundedRectangle(
+                    cornerRadius: 20
+                ).stroke(
+                    Color(Colors.primaryGray.name),
+                    lineWidth: 1
+                )
+            )
+        }
     }
 }

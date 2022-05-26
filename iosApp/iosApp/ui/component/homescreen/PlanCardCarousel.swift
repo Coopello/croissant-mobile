@@ -8,7 +8,6 @@ import SwiftUI
 import shared
 
 struct PlanCardCarousel: View {
-    private let metrics: GeometryProxy
     private let plans: [Plan]
     private let viewModel: HomeScreenViewModel
     
@@ -18,63 +17,63 @@ struct PlanCardCarousel: View {
     private let itemPadding: CGFloat = 16
 
     init(
-        metrics: GeometryProxy,
         plans: [Plan],
         viewModel: HomeScreenViewModel
     ) {
-        self.metrics = metrics
         self.plans = plans
         self.viewModel = viewModel
     }
 
     var body: some View {
-        HStack {
-            ForEach(plans, id: \.id) { (plan: Plan) in
-                PlanCard(
-                    metrics: metrics,
-                    plan: plan
-                ) {
-                    viewModel.onPlanParticipateButtonClicked(plan: plan)
+        GeometryReader { metrics in
+            let planCardWidth = metrics.size.width * 0.8
+            HStack {
+                ForEach(plans, id: \.id) { (plan: Plan) in
+                    PlanCard(plan: plan) {
+                        viewModel.onPlanParticipateButtonClicked(plan: plan)
+                    }
+                    .frame(
+                        width: planCardWidth
+                    )
                 }
             }
-        }
-        .offset(x: dragOffset)
-        .offset(x: -CGFloat(self.currentIndex) * (metrics.size.width * 0.6))
-        .offset(x: metrics.size.width * 0.3)
-        .gesture(
-            DragGesture()
-                .updating(self.$dragOffset, body: { (value, state, _) in
-                    if self.currentIndex == 0, value.translation.width < 0 {
-                        state = value.translation.width / 5
-                    } else if self.currentIndex == (self.plans.count - 1), value.translation.width > 0 {
-                        state = value.translation.width / 5
-                    } else {
-                        state = value.translation.width
-                    }
-                })
-                .onEnded({ value in
-                    var newIndex = self.currentIndex
-                    
-                    if abs(value.translation.width) > metrics.size.width * 0.2 {
-                        newIndex = value.translation.width > 0 ? self.currentIndex - 1 : self.currentIndex + 1
-                    }
-                    
-                    if newIndex < 0 {
-                        newIndex = 0
-                    } else if newIndex > (self.plans.count - 1) {
-                        newIndex = self.plans.count - 1
-                    }
-                    
-                    self.currentIndex = newIndex
-                })
-        )
-        .animation(
-            .interpolatingSpring(
-                mass: 0.4,
-                stiffness: 150,
-                damping: 80,
-                initialVelocity: 0.1
+            .offset(x: dragOffset)
+            .offset(x: -CGFloat(self.currentIndex) * (planCardWidth))
+            .gesture(
+                DragGesture()
+                    .updating(self.$dragOffset, body: { (value, state, _) in
+                        if self.currentIndex == 0, value.translation.width < 0 {
+                            state = value.translation.width / 5
+                        } else if self.currentIndex == (self.plans.count - 1), value.translation.width > 0 {
+                            state = value.translation.width / 5
+                        } else {
+                            state = value.translation.width
+                        }
+                    })
+                    .onEnded({ value in
+                        var newIndex = self.currentIndex
+                        
+                        if abs(value.translation.width) > metrics.size.width * 0.2 {
+                            newIndex = value.translation.width > 0 ? self.currentIndex - 1 : self.currentIndex + 1
+                        }
+                        
+                        if newIndex < 0 {
+                            newIndex = 0
+                        } else if newIndex > (self.plans.count - 1) {
+                            newIndex = self.plans.count - 1
+                        }
+                        
+                        self.currentIndex = newIndex
+                    })
             )
-        )
+            .animation(
+                .interpolatingSpring(
+                    mass: 0.4,
+                    stiffness: 150,
+                    damping: 80,
+                    initialVelocity: 0.1
+                )
+            )
+        }
     }
 }

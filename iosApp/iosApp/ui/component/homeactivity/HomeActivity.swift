@@ -14,7 +14,7 @@ struct HomeActivity: View {
             VStack {
                 Group {
                     if viewModel.state.isHomeClicked {
-                        HomeScreen(metrics: metrics)
+                        HomeScreen()
                     } else {
                         MyPageScreen()
                     }
@@ -23,9 +23,7 @@ struct HomeActivity: View {
                     height: metrics.size.height * 0.9
                 )
                 
-                BottomTab(
-                    metrics: metrics
-                ) { tabIndex in
+                BottomTab() { tabIndex in
                     viewModel.onTriggerEvent(
                         event: HomeActivityEvent.OnTabClicked(
                             tabIndex: Int32(tabIndex)
