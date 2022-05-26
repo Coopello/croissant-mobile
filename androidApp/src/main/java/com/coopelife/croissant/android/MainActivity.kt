@@ -40,12 +40,11 @@ sealed class Screen(
     @StringRes val titleStrResId: Int,
     val icon: ImageVector
 ) {
-    object Home :
-        Screen(
-            routeStrResId = R.string.home_route,
-            titleStrResId = R.string.home_title,
-            icon = Icons.Filled.Home
-        )
+    object Home : Screen(
+        routeStrResId = R.string.home_route,
+        titleStrResId = R.string.home_title,
+        icon = Icons.Filled.Home
+    )
 
     object Mypage : Screen(
         routeStrResId = R.string.mypage_route,
