@@ -8,79 +8,71 @@ import SwiftUI
 import shared
 
 struct PlanCard: View {
-    private let metrics: GeometryProxy
     private let confirmButtonAction: () -> Void
     private let plan: Plan
 
     init(
-        metrics: GeometryProxy,
         plan: Plan,
         confirmButtonAction: @escaping () -> Void
     ) {
-        self.metrics = metrics
         self.plan = plan
         self.confirmButtonAction = confirmButtonAction
     }
     
     var body: some View {
-        // FIXME: ハードコーディング修正
-        VStack {
-            Group {
-                TextWithTitle(
-                    title: MainActivityString.destinationShop,
-                    description: plan.shopName
-                )
-                Spacer()
-            }
-            Group {
-                TextWithTitle(
-                    title: MainActivityString.meetingPlace,
-                    description: plan.meetingPlace
-                )
-                Spacer()
-            }
-            Group {
-                TextWithTitle(
-                    title: MainActivityString.meetingTime,
-                    description: UnixTimeFormatter().unixTimeToString(
-                        unixTime: Double(plan.meetingTime),
-                        format: MainActivityString.hourAndMinuteFormat
+        GeometryReader { metrics in
+            VStack {
+                Group {
+                    TextWithTitle(
+                        title: MainActivityString.destinationShop,
+                        description: plan.shopName
                     )
+                    Spacer()
+                }
+                Group {
+                    TextWithTitle(
+                        title: MainActivityString.meetingPlace,
+                        description: plan.meetingPlace
+                    )
+                    Spacer()
+                }
+                Group {
+                    TextWithTitle(
+                        title: MainActivityString.meetingTime,
+                        description: UnixTimeFormatter().unixTimeToString(
+                            unixTime: Double(plan.meetingTime),
+                            format: MainActivityString.hourAndMinuteFormat
+                        )
+                    )
+                    Spacer()
+                }
+                Group {
+                    TextWithTitle(
+                        title: MainActivityString.theTimeRequired,
+                        description: plan.shopName
+                    )
+                    Spacer()
+                }
+                Group {
+                    TextWithTitle(
+                        title: MainActivityString.peopleNumbers,
+                        description: "\(plan.minNumberOfPeople)人/\(plan.maxNumberOfPeople)人"
+                    )
+                    Spacer()
+                }
+                ConfirmButton(
+                    text: MainActivityString.participate,
+                    metrics: metrics,
+                    action: confirmButtonAction
                 )
-                Spacer()
             }
-            Group {
-                TextWithTitle(
-                    title: MainActivityString.theTimeRequired,
-                    description: plan.shopName
-                )
-                Spacer()
-            }
-            Group {
-                TextWithTitle(
-                    title: MainActivityString.peopleNumbers,
-                    description: "\(plan.minNumberOfPeople)人/\(plan.maxNumberOfPeople)人"
-                )
-                Spacer()
-            }
-            ConfirmButton(
-                text: MainActivityString.participate,
-                metrics: metrics,
-                action: confirmButtonAction
-            )
+            .padding()
         }
-        .padding()
-        .frame(
-            width: metrics.size.width * 0.6,
-            height: metrics.size.height * 0.6,
-            alignment: .center
-        )
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(
-                    Color(Colors.primaryGray.name),
-                    lineWidth: 2
-                )
+            RoundedRectangle(cornerRadius: 8).stroke(
+                Color(Colors.primaryGray.name),
+                lineWidth: 2
+            )
         )
     }
 }
@@ -127,8 +119,8 @@ private struct ConfirmButton: View {
             Text(text)
                 .modifier(MediumText(textColor: .white))
                 .frame(
-                    width: metrics.size.width * 0.4,
-                    height: metrics.size.height * 0.05,
+                    width: metrics.size.width * 0.8,
+                    height: metrics.size.height * 0.1,
                     alignment: .center
                 )
         }.background(Color(Colors.primaryOrange.name))

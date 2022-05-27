@@ -9,16 +9,13 @@ import shared
 
 struct DateSelectorContainer: View {
     private let viewModel: HomeScreenViewModel
-    private let metrics: GeometryProxy
     private let onClickDateCircle: (Int32) -> Void
 
     init(
         viewModel: HomeScreenViewModel,
-        metrics: GeometryProxy,
         onClickDateCircle: @escaping (Int32) -> Void
     ) {
         self.viewModel = viewModel
-        self.metrics = metrics
         self.onClickDateCircle = onClickDateCircle
     }
 
@@ -39,12 +36,18 @@ struct DateSelectorContainer: View {
                             index: Int32(index),
                             onClickDateCircle: onClickDateCircle
                         )
+                        .frame(
+                            width: metrics.size.width * 0.20
+                        )
                     default:
                         DateSelectorWhenNotselected(
                             dateText: dateText,
                             metrics: metrics,
                             index: Int32(index),
                             onClickDateCircle: onClickDateCircle
+                        )
+                        .frame(
+                            width: metrics.size.width * 0.14
                         )
                     }
                     Spacer()
@@ -77,10 +80,7 @@ private struct DateSelectorWhenSelected: View {
             Circle().foregroundColor(Color(Colors.primaryOrange.name))
             Text(dateText)
                 .modifier(LargeText(textColor: .white))
-        }.frame(
-            maxWidth: metrics.size.width * 0.20,
-            maxHeight: .infinity
-        ).onTapGesture {
+        }.onTapGesture {
             onClickDateCircle(index)
         }
     }
@@ -111,10 +111,7 @@ private struct DateSelectorWhenNotselected: View {
                 .foregroundColor(.white)
             Text(dateText)
                 .modifier(SmallMediumText(textColor: Color(Colors.primaryOrange.name)))
-        }.frame(
-            maxWidth: metrics.size.width * 0.14,
-            maxHeight: .infinity
-        ).onTapGesture {
+        }.onTapGesture {
             onClickDateCircle(index)
         }
     }

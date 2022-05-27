@@ -7,78 +7,69 @@ import Foundation
 import SwiftUI
 
 struct TabButton: View {
-    private let metrics: GeometryProxy
     private let leftText: String
     private let rightText: String
     private let togglePadding: CGFloat = 4
     private let cornerRadius: CGFloat = 32
     private let onTabClickedBeforeAnimaiton: (Int8) -> Void
-
-    private func getFrameWidth() -> CGFloat {
-        return metrics.size.width * 0.9
-    }
-    
-    private func getFrameHeight() -> CGFloat {
-        return metrics.size.height * 0.08
-    }
     
     @State private var togglePositionX: CGFloat = 0
-    private func onTabClicked(tabIndex: Int8) {
+    private func onTabClicked(
+        tabIndex: Int8,
+        frameWidth: CGFloat
+    ) {
         onTabClickedBeforeAnimaiton(tabIndex)
         switch tabIndex {
         case 0:
             togglePositionX = 0
         default:
-            togglePositionX = getFrameWidth() / 2 - (togglePadding * 2)
+            togglePositionX = frameWidth / 2 - (togglePadding * 2)
         }
     }
     
     init(
-        metrics: GeometryProxy,
         leftText: String,
         rightText: String,
         onTabClicked: @escaping (Int8) -> Void
     ) {
-        self.metrics = metrics
         self.leftText = leftText
         self.rightText = rightText
         self.onTabClickedBeforeAnimaiton = onTabClicked
     }
 
     var body: some View {
-        let frameWidth = getFrameWidth()
-        let frameHeight = getFrameHeight()
-        
-        ZStack {
-            ZStack(alignment: .leading) {
-                BackGroundRoundView(cornerRadius: cornerRadius)
-                ToggleView(
-                    frameWidth: frameWidth / 2,
-                    cornerRadius: cornerRadius
-                )
-                .padding(togglePadding)
-                .offset(x: togglePositionX)
-                .animation(.easeInOut(duration: 0.2), value: togglePositionX)
+        GeometryReader { metrics in
+            ZStack {
+                ZStack(alignment: .leading) {
+                    BackGroundRoundView(cornerRadius: cornerRadius)
+                    ToggleView(
+                        frameWidth: metrics.size.width / 2,
+                        cornerRadius: cornerRadius
+                    )
+                    .padding(togglePadding)
+                    .offset(x: togglePositionX)
+                    .animation(.easeInOut(duration: 0.2), value: togglePositionX)
+                }
+                HStack {
+                    Spacer()
+                    Text(leftText).modifier(LargeText(textColor: .white))
+                    Spacer()
+                    Spacer()
+                    Text(rightText).modifier(LargeText(textColor: .white))
+                    Spacer()
+                }
             }
-            HStack {
-                Spacer()
-                Text(leftText).modifier(LargeText(textColor: .white))
-                Spacer()
-                Spacer()
-                Text(rightText).modifier(LargeText(textColor: .white))
-                Spacer()
-            }
+            .gesture(
+                DragGesture(minimumDistance: 0).onEnded { value in
+                    let centralBorder: CGFloat = (metrics.size.width / 2)
+                    let tabIndex: Int8 = value.location.x < centralBorder ? 0 : 1
+                    onTabClicked(
+                        tabIndex: tabIndex,
+                        frameWidth: metrics.size.width
+                    )
+                }
+            )
         }
-        .frame(
-            maxWidth: frameWidth,
-            maxHeight: frameHeight
-        ).gesture(
-            DragGesture(minimumDistance: 0).onEnded { value in
-                let centralBorder: CGFloat = (frameWidth / 2)
-                let tabIndex: Int8 = value.location.x < centralBorder ? 0 : 1
-                onTabClicked(tabIndex: tabIndex)
-            }
-        )
     }
 }
 
@@ -94,10 +85,6 @@ private struct BackGroundRoundView: View {
             cornerRadius: cornerRadius
         )
         .fill(Color(Colors.primaryYellow.name))
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
     }
 }
 
@@ -117,8 +104,7 @@ private struct ToggleView: View {
         RoundedRectangle(cornerRadius: cornerRadius)
             .fill(Color(Colors.primaryOrange.name))
             .frame(
-                maxWidth: frameWidth,
-                maxHeight: .infinity
+                width: frameWidth
             )
     }
 }

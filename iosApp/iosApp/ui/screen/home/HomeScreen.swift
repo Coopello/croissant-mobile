@@ -8,13 +8,12 @@ import SwiftUI
 import shared
 
 struct HomeScreen: View {
-    private let metrics: GeometryProxy
     private let planRepository: PlanRepository
     private let fetchRecentPlansUseCase: FetchRecentPlansUseCase
     
     @ObservedObject var viewModel: HomeScreenViewModel
     
-    init(metrics: GeometryProxy) {
+    init() {
         planRepository = FakePlanRepository()
         fetchRecentPlansUseCase = FetchRecentPlansUseCase(
                 planRepository: planRepository
@@ -22,46 +21,46 @@ struct HomeScreen: View {
         viewModel = HomeScreenViewModel(
             fetchRecentPlansUseCase: fetchRecentPlansUseCase
         )
-        self.metrics = metrics
         
         viewModel.onViewCreated()
     }
     
     var body: some View {
-        VStack {
-            DateSelectorContainer(
-                viewModel: viewModel,
-                metrics: metrics
-            ) { index in
-                viewModel.onTriggerEvent(
-                    event: HomeScreenEvent.ClickDate(howManyDaysLater: Int32(index))
+        GeometryReader { metrics in
+            VStack(alignment: .center) {
+                DateSelectorContainer(viewModel: viewModel) { index in
+                    viewModel.onTriggerEvent(
+                        event: HomeScreenEvent.ClickDate(howManyDaysLater: Int32(index))
+                    )
+                }
+                .frame(
+                    height: metrics.size.height * 0.2
                 )
-            }
-            .frame(height: metrics.size.height * 0.15)
-            
-            TabButton(
-                metrics: metrics,
-                leftText: MainActivityString.formed,
-                rightText: MainActivityString.unformed
-            ) { index in
                 
+                TabButton(
+                    leftText: MainActivityString.formed,
+                    rightText: MainActivityString.unformed
+                ) { index in
+                    
+                }
+                .frame(
+                    width: metrics.size.width * 0.9,
+                    height: metrics.size.height * 0.08
+                )
+                
+                Spacer()
+                
+                PlanCardCarousel(
+                    plans: viewModel.state.plans,
+                    viewModel: viewModel
+                )
+                .frame(
+                    height: metrics.size.height * 0.64
+                )
+                .padding()
+                
+                Spacer()
             }
-            
-            Spacer()
-            
-            PlanCardCarousel(
-                metrics: metrics,
-                plans: viewModel.state.plans,
-                viewModel: viewModel
-            ).frame(
-                width: metrics.size.width,
-                height: metrics.size.height * 0.6
-            )
-            
-            Spacer()
         }
-        .frame(
-            maxHeight: .infinity
-        )
     }
 }

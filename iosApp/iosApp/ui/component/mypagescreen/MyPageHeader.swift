@@ -2,7 +2,6 @@ import SwiftUI
 import shared
 
 struct MyPageHeader: View {
-    private let metrics: GeometryProxy
     private let user: User
     @Binding var selectedTabIndex: Int
     private let onTabClicked: (Int) -> Void
@@ -23,56 +22,44 @@ struct MyPageHeader: View {
     ]
     
     init(
-        metrics: GeometryProxy,
         user: User,
         selectedTabIndex: Binding<Int>,
         onTabClicked: @escaping (Int) -> Void
     ) {
-        self.metrics = metrics
         self.user = user
         self._selectedTabIndex = selectedTabIndex
         self.onTabClicked = onTabClicked
     }
     
     var body: some View {
-        VStack {
-            HStack {
-                Text(user.name)
-                    .modifier(LargeText(textColor: .white))
+        GeometryReader { metrics in
+            VStack {
+                HStack {
+                    Text(user.name)
+                        .modifier(LargeText(textColor: .white))
+                        .padding()
+                    
+                    Spacer()
+                    
+                    CircleImage(
+                        imagePath: MainActivityString.imagePathOfPerson,
+                        baseColor: Color(Colors.primaryYellow.name)
+                    )
+                    .scaledToFit()
                     .padding()
+                }
+
+                TabLayout(
+                    tabList: tabList,
+                    selectedTabIndex: $selectedTabIndex,
+                    onTabClicked: { index in
+                        onTabClicked(index)
+                    }
+                )
                 
                 Spacer()
-                
-                CircleImage(
-                    imagePath: MainActivityString.imagePathOfPerson,
-                    baseColor: Color(Colors.primaryYellow.name)
-                )
-                .scaledToFit()
-                .padding()
-            }.frame(
-                maxWidth: .infinity,
-                maxHeight: metrics.size.height * 0.12,
-                alignment: .top
-            )
-
-            TabLayout(
-                tabList: tabList,
-                metrics: metrics,
-                selectedTabIndex: $selectedTabIndex,
-                onTabClicked: { index in
-                    onTabClicked(index)
-                }
-            )
-            .frame(
-                maxWidth: .infinity,
-                maxHeight: metrics.size.height * 0.8,
-                alignment: .bottom
-            )
+            }
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: metrics.size.height * 0.2
-        )
         .background(
             Color(Colors.primaryOrange.name)
         )
@@ -138,42 +125,44 @@ private struct TabItem: View {
 
 private struct TabLayout: View {
     private let tabList: [Tab]
-    private let metrics: GeometryProxy
     @Binding var selectedTabIndex: Int
     private let onTabClicked: (Int) -> Void
     
     init(
         tabList: [Tab],
-        metrics: GeometryProxy,
         selectedTabIndex: Binding<Int>,
         onTabClicked: @escaping (Int) -> Void
     ) {
         self.tabList = tabList
-        self.metrics = metrics
         self._selectedTabIndex = selectedTabIndex
         self.onTabClicked = onTabClicked
     }
     
     var body: some View {
-        HStack {
-            ForEach(tabList, id: \.id) { tab in
-                VStack {
-                    let currentIndex = tabList.firstIndex(of: tab)!
-                    
-                    TabItem(
-                        tab: tab,
-                        metrics: metrics
-                    ) {
-                        onTabClicked(currentIndex)
-                    }
-                    
-                    Rectangle()
-                        .fill(
-                            selectedTabIndex == currentIndex ? .white : .clear
-                        )
+        GeometryReader { metrics in
+            HStack {
+                ForEach(tabList, id: \.id) { tab in
+                    VStack {
+                        let currentIndex = tabList.firstIndex(of: tab)!
+                        
+                        TabItem(
+                            tab: tab,
+                            metrics: metrics
+                        ) {
+                            onTabClicked(currentIndex)
+                        }
                         .frame(
-                            height: 4
+                            height: metrics.size.height * 0.9
                         )
+                        
+                        Rectangle()
+                            .fill(
+                                selectedTabIndex == currentIndex ? .white : .clear
+                            )
+                            .frame(
+                                height: metrics.size.height * 0.1
+                            )
+                    }
                 }
             }
         }
