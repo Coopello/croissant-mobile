@@ -31,19 +31,18 @@ import com.coopelife.croissant.android.ui.util.theme.Orange
 
 @Composable
 fun DateSelectRadioGroup(modifier: Modifier = Modifier) {
-    val dateList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
     var selectedIndex: Int by rememberSaveable { mutableStateOf(0) }
-
+    val dateTextList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = modifier.fillMaxWidth(),
     ) {
-        for (i in 0 until dateList.size) {
+        dateTextList.forEachIndexed { index: Int, dateText: String ->
             DateSelectRadioButton(
-                isSelected = i == selectedIndex,
-                onClick = { selectedIndex = i },
-                dateText = dateList[i]
+                isSelected = index == selectedIndex,
+                onClick = { selectedIndex = index },
+                dateText = dateText
             )
         }
     }
