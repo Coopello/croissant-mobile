@@ -16,7 +16,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +32,7 @@ import com.coopelife.croissant.android.ui.util.theme.Orange
 @Composable
 fun DateSelectRadioGroup(modifier: Modifier = Modifier) {
     val dateList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
-    var selectedIndex: Int by remember { mutableStateOf(0) }
+    var selectedIndex: Int by rememberSaveable { mutableStateOf(0) }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
