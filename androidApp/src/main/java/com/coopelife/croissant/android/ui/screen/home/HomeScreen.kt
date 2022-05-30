@@ -24,7 +24,7 @@ fun HomeScreen(
 
 @Composable
 private fun HomeContent(screenName: String, onClick: () -> Unit) {
-    Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_16dp))) {
-        DateSelectRadioGroup()
+    Column {
+        DateSelectRadioGroup(Modifier.padding(top = dimensionResource(R.dimen.padding_16dp)))
     }
 }

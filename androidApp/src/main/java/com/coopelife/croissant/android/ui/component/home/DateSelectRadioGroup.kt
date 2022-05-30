@@ -26,17 +26,18 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.coopelife.croissant.android.R
+import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.android.ui.util.theme.Orange
 
 @Composable
-fun DateSelectRadioGroup() {
+fun DateSelectRadioGroup(modifier: Modifier = Modifier) {
     val dateList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
     var selectedIndex: Int by remember { mutableStateOf(0) }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
     ) {
         for (i in 0 until dateList.size) {
             DateSelectRadioButton(
@@ -70,7 +71,9 @@ private fun DateSelectRadioButton(
             Text(
                 text = dateText,
                 color = Color.White,
-                style = MaterialTheme.typography.h6,
+                style = MaterialTheme.typography.h5.copy(
+                    fontSize = fontDimensionResource(R.dimen.selected_font_size)
+                ),
                 textAlign = TextAlign.Center,
             )
         }
@@ -95,7 +98,9 @@ private fun DateSelectRadioButton(
             Text(
                 text = dateText,
                 color = Orange,
-                style = MaterialTheme.typography.subtitle1,
+                style = MaterialTheme.typography.h6.copy(
+                    fontSize = fontDimensionResource(R.dimen.not_selected_font_size)
+                ),
                 textAlign = TextAlign.Center,
             )
         }
