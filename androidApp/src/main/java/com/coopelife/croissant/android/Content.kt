@@ -48,8 +48,8 @@ fun Content() {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     val currentRoute = navBackStackEntry?.destination?.route
                     screenItems.forEach { screen ->
-                        val route: String = stringResource(id = screen.routeStrResId)
-                        val title: String = stringResource(id = screen.titleStrResId)
+                        val route: String = stringResource(screen.routeStrResId)
+                        val title: String = stringResource(screen.titleStrResId)
                         val isSelected: Boolean = currentRoute == route
                         BottomNavigationItem(
                             icon = {
@@ -76,7 +76,7 @@ fun Content() {
                 }
             }
         ) {
-            NavHost(navController, startDestination = stringResource(id = R.string.home_route)) {
+            NavHost(navController, startDestination = stringResource(R.string.home_route)) {
                 // TODO: ハードコーディングの解消
                 composable("home") { HomeScreen(nacController = navController) }
                 composable("mypage") { MypageScreen(navController = navController) }

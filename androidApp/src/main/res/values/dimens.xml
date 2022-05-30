@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- padding -->
     <dimen name="padding_4dp">4dp</dimen>
     <dimen name="padding_8dp">8dp</dimen>
     <dimen name="padding_16dp">16dp</dimen>
+
+    <!-- DateSelectRadioButton -->
+    <dimen name="selected_size">72dp</dimen>
+    <dimen name="selected_corner_radius">36dp</dimen>
+    <dimen name="selected_font_size">20sp</dimen>
+    <dimen name="not_selected_size">56dp</dimen>
+    <dimen name="not_selected_corner_radius">28dp</dimen>
+    <dimen name="not_selected_font_size">14sp</dimen>
+    <dimen name="not_selected_border_width">2dp</dimen>
 </resources>
