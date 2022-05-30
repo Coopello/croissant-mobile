@@ -15,9 +15,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.theme.Orange
 
 @Composable
@@ -25,7 +26,7 @@ fun DateSelectRadioGroup() {
 }
 
 @Composable
-fun DateSelectRadioButton(
+private fun DateSelectRadioButton(
     isSelected: Boolean,
     onClick: () -> Unit,
     dateText: String,
@@ -33,12 +34,12 @@ fun DateSelectRadioButton(
     if (isSelected)
         Box(
             modifier = Modifier
-                .size(100.dp)
+                .size(dimensionResource(R.dimen.selected_size))
                 .clip(shape = CircleShape)
                 .clickable { onClick() }
                 .background(
                     color = Orange,
-                    shape = RoundedCornerShape(50.dp)
+                    shape = RoundedCornerShape(dimensionResource(R.dimen.selected_corner_radius))
                 ),
             contentAlignment = Alignment.Center,
         ) {
@@ -52,17 +53,17 @@ fun DateSelectRadioButton(
     else
         Box(
             modifier = Modifier
-                .size(80.dp)
+                .size(dimensionResource(R.dimen.not_selected_size))
                 .clip(shape = CircleShape)
                 .clickable { onClick() }
                 .border(
-                    width = 4.dp,
+                    width = dimensionResource(R.dimen.not_selected_border_width),
                     color = Orange,
-                    shape = RoundedCornerShape(40.dp)
+                    shape = RoundedCornerShape(dimensionResource(R.dimen.not_selected_corner_radius))
                 )
                 .background(
                     color = Color.White,
-                    shape = RoundedCornerShape(40.dp)
+                    shape = RoundedCornerShape(dimensionResource(R.dimen.not_selected_corner_radius))
                 ),
             contentAlignment = Alignment.Center,
         ) {
