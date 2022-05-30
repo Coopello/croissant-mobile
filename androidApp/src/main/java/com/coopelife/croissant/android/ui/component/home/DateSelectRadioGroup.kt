@@ -65,7 +65,7 @@ fun DateSelectRadioButton(
         ) {
             Text(
                 text = dateText,
-                color = Color.Black,
+                color = Orange,
                 style = MaterialTheme.typography.h5,
                 textAlign = TextAlign.Center,
             )
