@@ -1,11 +1,13 @@
 package com.coopelife.croissant.android
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.FabPosition
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -44,7 +46,11 @@ fun Content() {
             floatingActionButtonPosition = FabPosition.Center,
             isFloatingActionButtonDocked = true,
             bottomBar = {
-                BottomAppBar {
+                BottomAppBar(
+                    cutoutShape = MaterialTheme.shapes.small.copy(
+                        CornerSize(percent = 50)
+                    )
+                ) {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     val currentRoute = navBackStackEntry?.destination?.route
                     screenItems.forEach { screen ->
