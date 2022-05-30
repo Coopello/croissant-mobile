@@ -36,7 +36,10 @@ fun DateSelectRadioButton(
                 .size(100.dp)
                 .clip(shape = CircleShape)
                 .clickable { onClick() }
-                .background(Orange),
+                .background(
+                    color = Orange,
+                    shape = RoundedCornerShape(50.dp)
+                ),
             contentAlignment = Alignment.Center,
         ) {
             Text(
