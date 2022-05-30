@@ -3,14 +3,21 @@ package com.coopelife.croissant.android.ui.component.home
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,6 +30,22 @@ import com.coopelife.croissant.android.ui.util.theme.Orange
 
 @Composable
 fun DateSelectRadioGroup() {
+    val dateList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
+    var selectedIndex: Int by remember { mutableStateOf(0) }
+
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier.fillMaxWidth(),
+    ) {
+        for (i in 0 until dateList.size) {
+            DateSelectRadioButton(
+                isSelected = i == selectedIndex,
+                onClick = { selectedIndex = i },
+                dateText = dateList[i]
+            )
+        }
+    }
 }
 
 @Composable
@@ -40,13 +63,14 @@ private fun DateSelectRadioButton(
                 .background(
                     color = Orange,
                     shape = RoundedCornerShape(dimensionResource(R.dimen.selected_corner_radius))
-                ),
+                )
+                .padding(dimensionResource(R.dimen.padding_4dp)),
             contentAlignment = Alignment.Center,
         ) {
             Text(
                 text = dateText,
                 color = Color.White,
-                style = MaterialTheme.typography.h4,
+                style = MaterialTheme.typography.h6,
                 textAlign = TextAlign.Center,
             )
         }
@@ -64,13 +88,14 @@ private fun DateSelectRadioButton(
                 .background(
                     color = Color.White,
                     shape = RoundedCornerShape(dimensionResource(R.dimen.not_selected_corner_radius))
-                ),
+                )
+                .padding(dimensionResource(R.dimen.padding_4dp)),
             contentAlignment = Alignment.Center,
         ) {
             Text(
                 text = dateText,
                 color = Orange,
-                style = MaterialTheme.typography.h5,
+                style = MaterialTheme.typography.subtitle1,
                 textAlign = TextAlign.Center,
             )
         }
@@ -79,10 +104,5 @@ private fun DateSelectRadioButton(
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        DateSelectRadioButton(isSelected = true, dateText = "5/28", onClick = {})
-        DateSelectRadioButton(isSelected = false, dateText = "5/29", onClick = {})
-    }
+    DateSelectRadioGroup()
 }
