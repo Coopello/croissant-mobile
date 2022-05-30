@@ -25,7 +25,12 @@ fun HomeScreen(
 @Composable
 private fun HomeContent(screenName: String, onClick: () -> Unit) {
     Column {
-        DateSelectRadioGroup(Modifier.padding(top = dimensionResource(R.dimen.padding_16dp)))
-        HomeTabLayout(Modifier.padding(top = dimensionResource(R.dimen.padding_16dp)))
+        DateSelectRadioGroup(
+            Modifier.padding(
+                top = dimensionResource(R.dimen.padding_16dp),
+                bottom = dimensionResource(R.dimen.padding_16dp)
+            )
+        )
+        HomeTabLayout()
     }
 }

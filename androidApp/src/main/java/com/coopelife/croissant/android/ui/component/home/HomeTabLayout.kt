@@ -8,10 +8,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 
 @Composable
-fun HomeTabLayout(modifier: Modifier = Modifier) {
+fun HomeTabLayout() {
     var tabIndex by rememberSaveable { mutableStateOf(0) }
     val tabTitleList: List<String> = listOf("未成立", "成立済")
     TabRow(selectedTabIndex = tabIndex) {
