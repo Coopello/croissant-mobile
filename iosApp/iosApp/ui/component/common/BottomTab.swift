@@ -7,15 +7,12 @@ import Foundation
 import SwiftUI
 
 struct BottomTab: View {
-    private let metrics: GeometryProxy
     private let onClickTab: (Int8) -> Void
     @State private var selectedIndex: Int8 = 0
     
     init(
-        metrics: GeometryProxy,
         onClickTab: @escaping (Int8) -> Void
     ) {
-        self.metrics = metrics
         self.onClickTab = onClickTab
     }
     
@@ -48,10 +45,6 @@ struct BottomTab: View {
                 .padding()
             }.background(Color(Colors.primaryOrange.name))
         }
-        .frame(
-            maxWidth: .infinity,
-            maxHeight: .infinity
-        )
     }
 }
 
