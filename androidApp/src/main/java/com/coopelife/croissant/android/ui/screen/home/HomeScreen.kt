@@ -26,11 +26,17 @@ fun HomeScreen(
 private fun HomeContent(screenName: String, onClick: () -> Unit) {
     Column {
         DateSelectRadioGroup(
-            Modifier.padding(
-                top = dimensionResource(R.dimen.padding_16dp),
-                bottom = dimensionResource(R.dimen.padding_16dp)
-            )
+            Modifier
+                .padding(
+                    top = dimensionResource(R.dimen.padding_16dp),
+                )
         )
-        HomeTabLayout()
+        HomeTabLayout(
+            Modifier
+                .padding(
+                    vertical = dimensionResource(R.dimen.padding_16dp),
+                    horizontal = dimensionResource(R.dimen.padding_16dp),
+                )
+        )
     }
 }
