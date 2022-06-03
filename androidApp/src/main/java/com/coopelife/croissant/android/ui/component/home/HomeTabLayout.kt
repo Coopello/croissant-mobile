@@ -1,6 +1,7 @@
 package com.coopelife.croissant.android.ui.component.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.theme.Orange
 import com.coopelife.croissant.android.ui.util.theme.OrangeLight
@@ -31,41 +31,42 @@ fun HomeTabLayout(modifier: Modifier = Modifier) {
     val tabTitleList: List<String> = listOf("未成立", "成立済")
 
     Box(
-        modifier = modifier,
+        modifier = modifier
+            .fillMaxWidth(),
         contentAlignment = Alignment.CenterStart,
     ) {
         EllipseBackground()
-        EllipseIndicator()
-        TabTitle(tabTitleList = tabTitleList)
-    }
-}
-
-@Composable
-private fun TabTitle(tabTitleList: List<String>) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-    ) {
-        tabTitleList.forEach { tabTitle: String ->
-            Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = tabTitle,
-                style = MaterialTheme.typography.h5,
-                color = Color.White,
-            )
-            Spacer(modifier = Modifier.weight(1f))
+        EllipseIndicator(tabTitleList.size)
+        Row(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            tabTitleList.forEachIndexed { index: Int, tabTitle: String ->
+                Spacer(modifier = Modifier.weight(1f))
+                Text(
+                    text = tabTitle,
+                    style = MaterialTheme.typography.h5,
+                    color = Color.White,
+                    modifier = Modifier.clickable(
+                        onClick = {
+                            tabIndex = index
+                        },
+                    )
+                )
+                Spacer(modifier = Modifier.weight(1f))
+            }
         }
     }
 }
 
 @Composable
-private fun EllipseIndicator() {
+private fun EllipseIndicator(tabCount: Int) {
     Box(
-        modifier = Modifier.padding(dimensionResource(R.dimen.home_tab_layout_ellipse_indicator_margin))
+        modifier = Modifier
+            .padding(dimensionResource(R.dimen.home_tab_layout_ellipse_indicator_margin))
     ) {
         Box(
             modifier = Modifier
-                .fillMaxWidth(0.5f)
+                .fillMaxWidth(1f / tabCount)
                 .height(dimensionResource(R.dimen.home_tab_layout_ellipse_indicator_height))
                 .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.home_tab_layout_ellipse_indicator_corner_radius)))
                 .background(Orange)
@@ -82,10 +83,4 @@ private fun EllipseBackground() {
             .clip(shape = RoundedCornerShape(dimensionResource(R.dimen.home_tab_layout_ellipse_background_corner_radius)))
             .background(OrangeLight)
     )
-}
-
-@Preview
-@Composable
-private fun TabLayoutPreview() {
-    HomeTabLayout(Modifier)
 }
