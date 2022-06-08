@@ -1,28 +1,36 @@
 package com.coopelife.croissant.android.ui.component.home
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextAlign
 import com.coopelife.croissant.android.R
+import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.data.entitiy.Plan
 
 @Composable
 fun PlanCardsPager() {
+    PlanCard(plan = mockPlan)
 }
 
 @Composable
 private fun PlanCard(modifier: Modifier = Modifier, plan: Plan) {
     Card(
-        shape = RoundedCornerShape(dimensionResource(R.dimen.plan_card_corner_radius))
+        shape = RoundedCornerShape(dimensionResource(R.dimen.plan_card_corner_radius)),
     ) {
-        Column {
+        Column(
+            modifier = Modifier.padding(dimensionResource(R.dimen.padding_16dp))
+        ) {
             PlanItem(
                 title = stringResource(R.string.plan_card_shop_name_title),
                 content = plan.shopName
@@ -53,32 +61,39 @@ private fun PlanCard(modifier: Modifier = Modifier, plan: Plan) {
 @Composable
 private fun PlanItem(title: String, content: String) {
     Column {
-        Text(text = title)
-        Text(text = content)
+        Text(
+            text = title,
+            style = MaterialTheme.typography.h2.copy(
+                fontSize = fontDimensionResource(R.dimen.plan_item_title_text_size),
+            ),
+            textAlign = TextAlign.Center,
+        )
+        Text(
+            text = content,
+            style = MaterialTheme.typography.h5.copy(
+                fontSize = fontDimensionResource(R.dimen.plan_item_content_text_size),
+            ),
+            textAlign = TextAlign.Center,
+        )
+        Spacer(
+            modifier = Modifier
+                .height(dimensionResource(R.dimen.plan_item_spacer_height))
+        )
     }
 }
 
 @Composable
 private fun JoinButton(onClick: () -> Unit) {
-    Button(onClick = onClick) {
-        Text(text = stringResource(R.string.join_button_text))
-    }
-}
-
-@Preview
-@Composable
-fun PlanCardsPagerPreview() {
-    PlanCard(
-        plan = Plan(
-            id = 0,
-            shopName = "Coopello",
-            maxNumberOfPeople = 3,
-            minNumberOfPeople = 1,
-            proposerId = 0,
-            participantIds = listOf(),
-            meetingTime = 0L,
-            status = Plan.PlanStatus.NOT_ESTABLISHED,
-            meetingPlace = "中目黒"
+    Button(
+        onClick = onClick,
+        shape = RoundedCornerShape(dimensionResource(R.dimen.join_button_corner_radius)),
+    ) {
+        Text(
+            text = stringResource(R.string.join_button_text),
+            style = MaterialTheme.typography.button.copy(
+                fontSize = fontDimensionResource(R.dimen.join_button_text_size)
+            ),
+            textAlign = TextAlign.Center,
         )
-    )
+    }
 }

@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.component.home.DateSelectRadioGroup
 import com.coopelife.croissant.android.ui.component.home.HomeTabLayout
+import com.coopelife.croissant.android.ui.component.home.PlanCardsPager
 
 @Composable
 fun HomeScreen(
@@ -38,5 +39,6 @@ private fun HomeContent(screenName: String, onClick: () -> Unit) {
                     horizontal = dimensionResource(R.dimen.padding_16dp),
                 )
         )
+        PlanCardsPager()
     }
 }
