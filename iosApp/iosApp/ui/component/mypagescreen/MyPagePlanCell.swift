@@ -5,7 +5,7 @@ struct MyPagePlanCell: View {
     private let plan: Plan
     private let unixTimeFormatter = UnixTimeFormatter()
     
-    init (plan: Plan) {
+    init(plan: Plan) {
         self.plan = plan
     }
     
@@ -36,10 +36,10 @@ struct MyPagePlanCell: View {
                 )
                 
                 MyPagePlanCard(plan: plan)
-                    .frame(
-                        width: metrics.size.width * 0.8,
-                        height: metrics.size.height
-                    )
+                .frame(
+                    width: metrics.size.width * 0.8,
+                    height: metrics.size.height
+                )
             }
         }
     }
@@ -48,8 +48,9 @@ struct MyPagePlanCell: View {
 private struct MyPagePlanCard: View {
     private let plan: Plan
     private let unixTimeFormatter = UnixTimeFormatter()
+    @State var showingModal: Bool = false
     
-    init(plan: Plan) {
+    init (plan: Plan) {
         self.plan = plan
     }
     
@@ -60,7 +61,17 @@ private struct MyPagePlanCard: View {
                     Text(plan.shopName)
                         .modifier(LargeText(textColor: .black))
                     Spacer()
-                    Image(Images.moreVertMoreVertSymbol.name)
+                    Image(Images.moreVertMoreVertSymbol.name).onTapGesture {
+                        showingModal.toggle()
+                    }.sheet(isPresented: $showingModal) {
+                        PlanCard(
+                            plan: plan,
+                            confirmButtonAction: nil
+                        ).frame(
+                            width: metrics.size.width,
+                            alignment: .center
+                        ).padding()
+                    }
                 }.frame(
                     maxWidth: .infinity
                 )

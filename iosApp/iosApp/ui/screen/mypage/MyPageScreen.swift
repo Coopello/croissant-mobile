@@ -43,10 +43,10 @@ struct MyPageScreen: View {
                 ScrollView(.vertical) {
                     ForEach(viewModel.state.plans, id: \.id) { plan in
                         MyPagePlanCell(plan: plan)
-                            .frame(
-                                height: metrics.size.height * 0.28
-                            )
-                            .padding()
+                        .frame(
+                            height: metrics.size.height * 0.28
+                        )
+                        .padding()
                     }
                 }
                 .frame(

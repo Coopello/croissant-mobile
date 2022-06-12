@@ -69,13 +69,13 @@ struct PlanCard: View {
                 }
             }
             .padding()
-        }
-        .overlay(
-            RoundedRectangle(cornerRadius: 8).stroke(
-                Color(Colors.primaryGray.name),
-                lineWidth: 2
+            .overlay(
+                RoundedRectangle(cornerRadius: 8).stroke(
+                    Color(Colors.primaryGray.name),
+                    lineWidth: 2
+                )
             )
-        )
+        }
     }
 }
 
