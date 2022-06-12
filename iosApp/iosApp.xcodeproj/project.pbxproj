@@ -11,12 +11,12 @@
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		2B06E25B84ECD87DDBEAC914 /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A51B4C197FA59B96F39C4F5E /* Pods_iosApp.framework */; };
+		550A72B0284CCBA700CC41B6 /* HomeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550A72AF284CCBA700CC41B6 /* HomeActivity.swift */; };
 		550D5C4A283C50C10035FBAD /* MyPagePlanCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D5C49283C50C10035FBAD /* MyPagePlanCell.swift */; };
 		550D5C4C283C60CF0035FBAD /* MyPageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */; };
 		550D5C50283C6EBC0035FBAD /* MyPageScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550D5C4F283C6EBC0035FBAD /* MyPageScreenViewModel.swift */; };
 		55176DA52838ECDB0050D42C /* UnixTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */; };
 		55176DA82838FDB80050D42C /* HomeActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DA72838FDB80050D42C /* HomeActivityViewModel.swift */; };
-		55176DAC2839013C0050D42C /* HomeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55176DAB2839013C0050D42C /* HomeActivity.swift */; };
 		5526F7F02815280400EE8303 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 5526F7EF2815280400EE8303 /* swiftgen.yml */; };
 		5526F7F82815281400EE8303 /* Color-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F32815281400EE8303 /* Color-Constants.swift */; };
 		5526F7F92815281400EE8303 /* Image-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5526F7F42815281400EE8303 /* Image-Constants.swift */; };
@@ -53,12 +53,12 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		550A72AF284CCBA700CC41B6 /* HomeActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeActivity.swift; path = iosApp/ui/activity/HomeActivity.swift; sourceTree = "<group>"; };
 		550D5C49283C50C10035FBAD /* MyPagePlanCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPagePlanCell.swift; path = iosApp/ui/component/mypagescreen/MyPagePlanCell.swift; sourceTree = "<group>"; };
 		550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPageScreen.swift; path = iosApp/ui/screen/mypage/MyPageScreen.swift; sourceTree = "<group>"; };
 		550D5C4F283C6EBC0035FBAD /* MyPageScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyPageScreenViewModel.swift; path = iosApp/ui/screen/mypage/MyPageScreenViewModel.swift; sourceTree = "<group>"; };
 		55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnixTimeFormatter.swift; path = iosApp/ui/util/UnixTimeFormatter.swift; sourceTree = "<group>"; };
 		55176DA72838FDB80050D42C /* HomeActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeActivityViewModel.swift; path = iosApp/ui/activity/HomeActivityViewModel.swift; sourceTree = "<group>"; };
-		55176DAB2839013C0050D42C /* HomeActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeActivity.swift; path = iosApp/ui/component/homeactivity/HomeActivity.swift; sourceTree = "<group>"; };
 		5526F7EF2815280400EE8303 /* swiftgen.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		5526F7F32815281400EE8303 /* Color-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color-Constants.swift"; sourceTree = "<group>"; };
 		5526F7F42815281400EE8303 /* Image-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Image-Constants.swift"; sourceTree = "<group>"; };
@@ -190,6 +190,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				550A72AF284CCBA700CC41B6 /* HomeActivity.swift */,
 				55FEE1CC283DA6B6004A7BD6 /* MyPageHeader.swift */,
 				550D5C4F283C6EBC0035FBAD /* MyPageScreenViewModel.swift */,
 				550D5C4B283C60CF0035FBAD /* MyPageScreen.swift */,
@@ -197,7 +198,6 @@
 				557E5B282839CE640097D58F /* MyPagePlanCard.swift */,
 				557E5B262839CA900097D58F /* CircleText.swift */,
 				557E5B242839C3F00097D58F /* CircleImage.swift */,
-				55176DAB2839013C0050D42C /* HomeActivity.swift */,
 				55176DA72838FDB80050D42C /* HomeActivityViewModel.swift */,
 				55176DA42838ECDA0050D42C /* UnixTimeFormatter.swift */,
 				5526F7F12815281400EE8303 /* Sources */,
@@ -354,8 +354,8 @@
 				550D5C4C283C60CF0035FBAD /* MyPageScreen.swift in Sources */,
 				550D5C4A283C50C10035FBAD /* MyPagePlanCell.swift in Sources */,
 				557E5B272839CA900097D58F /* CircleText.swift in Sources */,
+				550A72B0284CCBA700CC41B6 /* HomeActivity.swift in Sources */,
 				557E5B252839C3F00097D58F /* CircleImage.swift in Sources */,
-				55176DAC2839013C0050D42C /* HomeActivity.swift in Sources */,
 				55176DA82838FDB80050D42C /* HomeActivityViewModel.swift in Sources */,
 				55176DA52838ECDB0050D42C /* UnixTimeFormatter.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
