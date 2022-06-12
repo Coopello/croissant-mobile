@@ -56,12 +56,14 @@ private struct MyPagePlanCard: View {
     var body: some View {
         GeometryReader { metrics in
             VStack {
-                Text(plan.shopName)
-                    .modifier(LargeText(textColor: .black))
-                    .frame(
-                        maxWidth: .infinity,
-                        alignment: .leading
-                    )
+                HStack {
+                    Text(plan.shopName)
+                        .modifier(LargeText(textColor: .black))
+                    Spacer()
+                    Image(Images.moreVertMoreVertSymbol.name)
+                }.frame(
+                    maxWidth: .infinity
+                )
                 
                 Text(
                     unixTimeFormatter.unixTimeToString(

@@ -20,6 +20,7 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Images {
   internal static let bottomTabButton = ImageAsset(name: "bottom_tab_button")
+  internal static let moreVertMoreVertSymbol = SymbolAsset(name: "more_vert-more_vert_symbol")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
@@ -77,6 +78,39 @@ internal extension ImageAsset.Image {
     self.init(named: asset.name)
     #endif
   }
+}
+
+internal struct SymbolAsset {
+  internal fileprivate(set) var name: String
+
+  #if os(iOS) || os(tvOS) || os(watchOS)
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  internal typealias Configuration = UIImage.SymbolConfiguration
+  internal typealias Image = UIImage
+
+  @available(iOS 12.0, tvOS 12.0, watchOS 5.0, *)
+  internal var image: Image {
+    let bundle = BundleToken.bundle
+    #if os(iOS) || os(tvOS)
+    let image = Image(named: name, in: bundle, compatibleWith: nil)
+    #elseif os(watchOS)
+    let image = Image(named: name)
+    #endif
+    guard let result = image else {
+      fatalError("Unable to load symbol asset named \(name).")
+    }
+    return result
+  }
+
+  @available(iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+  internal func image(with configuration: Configuration) -> Image {
+    let bundle = BundleToken.bundle
+    guard let result = Image(named: name, in: bundle, with: configuration) else {
+      fatalError("Unable to load symbol asset named \(name).")
+    }
+    return result
+  }
+  #endif
 }
 
 // swiftlint:disable convenience_type
