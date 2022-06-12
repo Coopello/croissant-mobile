@@ -8,12 +8,12 @@ import SwiftUI
 import shared
 
 struct PlanCard: View {
-    private let confirmButtonAction: () -> Void
+    private let confirmButtonAction: (() -> Void)?
     private let plan: Plan
 
     init(
         plan: Plan,
-        confirmButtonAction: @escaping () -> Void
+        confirmButtonAction: (() -> Void)?
     ) {
         self.plan = plan
         self.confirmButtonAction = confirmButtonAction
@@ -60,11 +60,13 @@ struct PlanCard: View {
                     )
                     Spacer()
                 }
-                ConfirmButton(
-                    text: MainActivityString.participate,
-                    metrics: metrics,
-                    action: confirmButtonAction
-                )
+                if let confirmButtonAction = confirmButtonAction {
+                    ConfirmButton(
+                        text: MainActivityString.participate,
+                        metrics: metrics,
+                        action: confirmButtonAction
+                    )
+                }
             }
             .padding()
         }
