@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DateSelectRadioButton -->
+    <dimen name="selected_size">72dp</dimen>
+    <dimen name="selected_corner_radius">36dp</dimen>
+    <dimen name="selected_font_size">20sp</dimen>
+    <dimen name="not_selected_size">56dp</dimen>
+    <dimen name="not_selected_corner_radius">28dp</dimen>
+    <dimen name="not_selected_font_size">14sp</dimen>
+    <dimen name="not_selected_border_width">2dp</dimen>
+
+    <!-- HomeTabLayout -->
+    <dimen name="home_tab_layout_ellipse_indicator_height">46dp</dimen>
+    <dimen name="home_tab_layout_ellipse_indicator_corner_radius">23dp</dimen>
+    <dimen name="home_tab_layout_ellipse_indicator_margin">5dp</dimen>
+    <dimen name="home_tab_layout_ellipse_background_height">56dp</dimen>
+    <dimen name="home_tab_layout_ellipse_background_corner_radius">28dp</dimen>
+    <dimen name="home_tab_layout_title_text_size">20sp</dimen>
+
+    <!-- PlanCard -->
+    <dimen name="plan_card_corner_radius">16dp</dimen>
+    <dimen name="plan_item_spacer_height">8dp</dimen>
+    <dimen name="plan_item_title_text_size">16sp</dimen>
+    <dimen name="plan_item_content_text_size">28sp</dimen>
+    <dimen name="join_button_corner_radius">24dp</dimen>
+    <dimen name="join_button_text_size">20sp</dimen>
+</resources>

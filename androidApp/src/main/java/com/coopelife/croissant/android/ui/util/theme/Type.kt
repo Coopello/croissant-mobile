@@ -8,7 +8,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.coopelife.croissant.android.R
 
-// FIXME: 不要な太さを削除
 private val M1PLUS1p = FontFamily(
     Font(R.font.m_plus_1p_light, FontWeight.W300),
     Font(R.font.m_plus_1p_regular, FontWeight.W400),

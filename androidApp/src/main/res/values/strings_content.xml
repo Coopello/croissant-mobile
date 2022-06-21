@@ -2,7 +2,6 @@
 <resources>
     <string name="home_route">home</string>
     <string name="home_title">募集一覧</string>
-
     <string name="mypage_route">mypage</string>
     <string name="mypage_title">マイページ</string>
 </resources>

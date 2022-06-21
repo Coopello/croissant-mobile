@@ -23,9 +23,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.coopelife.croissant.android.ui.screen.home.HomeScreen
+import com.coopelife.croissant.android.ui.screen.home.HomeScreenViewModel
 import com.coopelife.croissant.android.ui.screen.mypage.MypageScreen
 import com.coopelife.croissant.android.ui.util.theme.CroissantTheme
+import com.google.accompanist.pager.ExperimentalPagerApi
 
+@ExperimentalPagerApi
 @Composable
 fun Content() {
     val navController = rememberNavController()
@@ -54,8 +57,8 @@ fun Content() {
                     val navBackStackEntry by navController.currentBackStackEntryAsState()
                     val currentRoute = navBackStackEntry?.destination?.route
                     screenItems.forEach { screen ->
-                        val route: String = stringResource(id = screen.routeStrResId)
-                        val title: String = stringResource(id = screen.titleStrResId)
+                        val route: String = stringResource(screen.routeStrResId)
+                        val title: String = stringResource(screen.titleStrResId)
                         val isSelected: Boolean = currentRoute == route
                         BottomNavigationItem(
                             icon = {
@@ -82,9 +85,9 @@ fun Content() {
                 }
             }
         ) {
-            NavHost(navController, startDestination = stringResource(id = R.string.home_route)) {
+            NavHost(navController, startDestination = stringResource(R.string.home_route)) {
                 // TODO: ハードコーディングの解消
-                composable("home") { HomeScreen(nacController = navController) }
+                composable("home") { HomeScreen(nacController = navController, viewModel = HomeScreenViewModel()) }
                 composable("mypage") { MypageScreen(navController = navController) }
             }
         }

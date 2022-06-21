@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="plan_card_shop_name_title">行くお店</string>
+    <string name="plan_card_meeting_place_title">集合場所</string>
+    <string name="plan_card_meeting_time_title">集合時刻</string>
+    <string name="plan_card_duration_title">所要時間</string>
+    <string name="plan_card_number_of_people_title">最高人数/最低人数</string>
+    <string name="join_button_text">参加する</string>
+</resources>

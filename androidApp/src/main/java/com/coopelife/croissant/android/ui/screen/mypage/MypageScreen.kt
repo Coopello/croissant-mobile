@@ -26,10 +26,10 @@ fun MypageScreen(
 
 @Composable
 fun MypageContent(previewText: String, onValueChanged: (String) -> Unit) {
-    Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_16dp))) {
+    Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_16dp))) {
         Text(
             text = previewText,
-            modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_8dp)),
+            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_8dp)),
             style = MaterialTheme.typography.h3
         )
         OutlinedTextField(
