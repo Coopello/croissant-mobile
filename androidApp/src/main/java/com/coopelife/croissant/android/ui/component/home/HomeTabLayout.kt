@@ -28,6 +28,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.coopelife.croissant.android.R
+import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.android.ui.util.theme.Orange
 import com.coopelife.croissant.android.ui.util.theme.OrangeLight
 
@@ -52,7 +53,9 @@ fun HomeTabLayout(modifier: Modifier = Modifier) {
             tabTitleList.forEachIndexed { index: Int, tabTitle: String ->
                 Text(
                     text = tabTitle,
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.h5.copy(
+                        fontSize = fontDimensionResource(R.dimen.home_tab_layout_title_text_size)
+                    ),
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
