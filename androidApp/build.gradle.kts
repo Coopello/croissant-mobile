@@ -57,11 +57,16 @@ dependencies {
 
     // Integration with observables
     implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
-    implementation("androidx.compose.runtime:runtime-rxjava2:1.1.1") // TODO: Coroutine に変更する
 
     // UI Tests
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.1.1")
 
     // Bottom Navigation
     implementation("androidx.navigation:navigation-compose:2.4.2")
+
+    // Pager
+    implementation("com.google.accompanist:accompanist-pager:0.15.0")
+
+    // kotlin coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
 }
