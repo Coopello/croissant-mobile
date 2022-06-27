@@ -69,4 +69,7 @@ dependencies {
 
     // kotlin coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0-native-mt")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.1.0")
 }
