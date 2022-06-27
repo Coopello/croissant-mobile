@@ -1,18 +1,13 @@
 package com.coopelife.croissant.android.ui.screen.mypage
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.coopelife.croissant.android.R
+import com.coopelife.croissant.android.ui.component.mypage.MypageAppBar
+import com.coopelife.croissant.android.ui.component.mypage.TabLayout
 
 @Composable
 fun MypageScreen(
@@ -26,15 +21,11 @@ fun MypageScreen(
 
 @Composable
 fun MypageContent(previewText: String, onValueChanged: (String) -> Unit) {
-    Column(modifier = Modifier.padding(dimensionResource(R.dimen.padding_16dp))) {
-        Text(
-            text = previewText,
-            modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_8dp)),
-            style = MaterialTheme.typography.h3
+    Column {
+        MypageAppBar(
+            userName = "秘密結社こぺろ",
+            userImageUrl = "https://lohas.nicoseiga.jp/thumb/946062i"
         )
-        OutlinedTextField(
-            value = previewText,
-            onValueChange = onValueChanged,
-        )
+        TabLayout()
     }
 }
