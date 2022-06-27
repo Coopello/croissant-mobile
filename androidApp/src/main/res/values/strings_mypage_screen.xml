@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="mypage_tab_title_not_established">未成立</string>
+    <string name="mypage_tab_title_established">成立</string>
+    <string name="mypage_tab_title_history">参加履歴</string>
+</resources>
