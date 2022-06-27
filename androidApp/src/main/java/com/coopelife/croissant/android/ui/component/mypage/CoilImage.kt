@@ -4,7 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
-import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
 
 @Composable
 fun CoilImage(
@@ -13,7 +13,7 @@ fun CoilImage(
     modifier: Modifier = Modifier,
 ) {
     Image(
-        painter = rememberAsyncImagePainter(imageUrl),
+        painter = rememberImagePainter(imageUrl),
         contentDescription = contentDescription,
         contentScale = ContentScale.Crop,
         modifier = modifier
