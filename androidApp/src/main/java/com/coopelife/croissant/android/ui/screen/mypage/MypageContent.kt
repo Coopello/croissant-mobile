@@ -9,7 +9,7 @@ import com.coopelife.croissant.android.ui.component.mypage.TabLayout
 import com.coopelife.croissant.data.entitiy.Plan
 
 @Composable
-internal fun MypageContgitent(
+internal fun MypageContent(
     previewText: String,
     onValueChanged: (String) -> Unit,
     planList: List<Plan>
