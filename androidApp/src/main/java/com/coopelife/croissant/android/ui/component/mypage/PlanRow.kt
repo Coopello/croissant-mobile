@@ -17,25 +17,28 @@ import com.coopelife.croissant.data.entitiy.Plan
 @Composable
 internal fun PlanRow(
     plan: Plan,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     Row(
         modifier = modifier
     ) {
         DayOfWeekAndDayOfMonth(
-            meetingTime = plan.meetingTime
+            plan = plan,
         )
     }
 }
 
 @Composable
-private fun PlanCard() {
+private fun PlanCard(
+    plan: Plan,
+    modifier: Modifier = Modifier,
+) {
 }
 
 @Composable
 private fun DayOfWeekAndDayOfMonth(
-    meetingTime: Long,
-    modifier: Modifier = Modifier
+    plan: Plan,
+    modifier: Modifier = Modifier,
 ) {
     Column(
         modifier = modifier
