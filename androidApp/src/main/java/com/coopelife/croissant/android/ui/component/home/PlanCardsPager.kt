@@ -28,7 +28,11 @@ import com.google.accompanist.pager.PagerState
 
 @ExperimentalPagerApi
 @Composable
-fun PlanCardsPager(modifier: Modifier = Modifier, planList: List<Plan>, pagerState: PagerState) {
+internal fun PlanCardsPager(
+    modifier: Modifier = Modifier,
+    planList: List<Plan>,
+    pagerState: PagerState
+) {
     HorizontalPager(
         modifier = modifier
             .fillMaxWidth(),

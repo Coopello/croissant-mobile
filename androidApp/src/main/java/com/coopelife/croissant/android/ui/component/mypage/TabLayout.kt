@@ -9,11 +9,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.coopelife.croissant.android.R
 
 @Composable
-fun TabLayout() {
+internal fun TabLayout() {
     var tabIndex by remember { mutableStateOf(0) }
 
     val tabTitleList: List<String> = listOf(
@@ -35,10 +34,4 @@ fun TabLayout() {
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun Preview() {
-    TabLayout()
 }

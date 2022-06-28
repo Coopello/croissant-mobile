@@ -33,7 +33,7 @@ import com.coopelife.croissant.android.ui.util.theme.Orange
 import com.coopelife.croissant.android.ui.util.theme.OrangeLight
 
 @Composable
-fun HomeTabLayout(modifier: Modifier = Modifier) {
+internal fun HomeTabLayout(modifier: Modifier = Modifier) {
     var tabIndex by rememberSaveable { mutableStateOf(0) }
     val tabTitleList: List<String> = listOf("未成立", "成立済")
 

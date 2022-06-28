@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.coopelife.croissant.android.R
 
 @Composable
-fun MypageAppBar(
+internal fun MypageAppBar(
     userName: String,
     userImageUrl: String,
     modifier: Modifier = Modifier

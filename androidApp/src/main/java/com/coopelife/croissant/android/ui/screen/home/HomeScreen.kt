@@ -1,26 +1,17 @@
 package com.coopelife.croissant.android.ui.screen.home
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.dimensionResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.coopelife.croissant.android.R
-import com.coopelife.croissant.android.ui.component.home.DateSelectRadioGroup
-import com.coopelife.croissant.android.ui.component.home.HomeTabLayout
-import com.coopelife.croissant.android.ui.component.home.PlanCardsPager
 import com.coopelife.croissant.data.entitiy.Plan
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 
 @ExperimentalPagerApi
 @Composable
-fun HomeScreen(
+internal fun HomeScreen(
     nacController: NavController,
     viewModel: HomeScreenViewModel = viewModel()
 ) {
@@ -30,37 +21,9 @@ fun HomeScreen(
     HomeContent(
         screenName = previewText,
         onClick = { viewModel.onButtonClicked() },
-        pagerState = pagerState
+        pagerState = pagerState,
+        mockPlanList,
     )
-}
-
-@ExperimentalPagerApi
-@Composable
-private fun HomeContent(screenName: String, onClick: () -> Unit, pagerState: PagerState) {
-    Column {
-        DateSelectRadioGroup(
-            Modifier
-                .padding(
-                    top = dimensionResource(R.dimen.padding_16dp),
-                )
-        )
-        HomeTabLayout(
-            Modifier
-                .padding(
-                    top = dimensionResource(R.dimen.padding_16dp),
-                    start = dimensionResource(R.dimen.padding_16dp),
-                    end = dimensionResource(R.dimen.padding_16dp),
-                )
-        )
-        PlanCardsPager(
-            modifier = Modifier
-                .padding(
-                    vertical = dimensionResource(R.dimen.padding_16dp),
-                ),
-            mockPlanList,
-            pagerState
-        )
-    }
 }
 
 private val mockPlanList = listOf(
