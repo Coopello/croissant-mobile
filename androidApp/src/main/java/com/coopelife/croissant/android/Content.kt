@@ -1,6 +1,7 @@
 package com.coopelife.croissant.android
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
@@ -16,7 +17,9 @@ import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -85,7 +88,12 @@ internal fun Content() {
                 }
             }
         ) {
-            NavHost(navController, startDestination = stringResource(R.string.home_route)) {
+            NavHost(
+                navController = navController,
+                startDestination = stringResource(R.string.home_route),
+                modifier = Modifier
+                    .padding(bottom = dimensionResource(R.dimen.padding_bottom_navigation_height))
+            ) {
                 // TODO: ハードコーディングの解消
                 composable("home") {
                     HomeScreen(
@@ -93,7 +101,9 @@ internal fun Content() {
                         viewModel = HomeScreenViewModel()
                     )
                 }
-                composable("mypage") { MypageScreen(navController = navController) }
+                composable("mypage") {
+                    MypageScreen(navController = navController)
+                }
             }
         }
     }

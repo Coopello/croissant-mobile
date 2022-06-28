@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="mypage_app_bar_text_size">32sp</dimen>
+    <dimen name="mypage_app_bar_image_size">64dp</dimen>
+    <dimen name="mypage_participants_row_image_size">56dp</dimen>
 </resources>

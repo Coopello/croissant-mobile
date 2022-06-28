@@ -3,4 +3,5 @@
     <string name="mypage_tab_title_not_established">未成立</string>
     <string name="mypage_tab_title_established">成立</string>
     <string name="mypage_tab_title_history">参加履歴</string>
+    <string name="mypage_count_until_minimum_participants">最低人数まであと%d人</string>
 </resources>
