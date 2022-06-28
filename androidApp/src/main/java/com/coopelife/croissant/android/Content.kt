@@ -30,7 +30,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
 @Composable
-fun Content() {
+internal fun Content() {
     val navController = rememberNavController()
     val screenItems = listOf(
         Screen.Home,
@@ -87,25 +87,30 @@ fun Content() {
         ) {
             NavHost(navController, startDestination = stringResource(R.string.home_route)) {
                 // TODO: ハードコーディングの解消
-                composable("home") { HomeScreen(nacController = navController, viewModel = HomeScreenViewModel()) }
+                composable("home") {
+                    HomeScreen(
+                        nacController = navController,
+                        viewModel = HomeScreenViewModel()
+                    )
+                }
                 composable("mypage") { MypageScreen(navController = navController) }
             }
         }
     }
 }
 
-sealed class Screen(
+internal sealed class Screen(
     @StringRes val routeStrResId: Int,
     @StringRes val titleStrResId: Int,
     val icon: ImageVector
 ) {
-    object Home : Screen(
+    internal object Home : Screen(
         routeStrResId = R.string.home_route,
         titleStrResId = R.string.home_title,
         icon = Icons.Filled.Home
     )
 
-    object Mypage : Screen(
+    internal object Mypage : Screen(
         routeStrResId = R.string.mypage_route,
         titleStrResId = R.string.mypage_title,
         icon = Icons.Filled.Face

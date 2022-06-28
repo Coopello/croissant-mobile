@@ -15,7 +15,7 @@ private val M1PLUS1p = FontFamily(
     Font(R.font.m_plus_1p_bold, FontWeight.W700),
 )
 
-val CroissantTypography = Typography(
+internal val CroissantTypography = Typography(
     h1 = TextStyle(
         fontFamily = M1PLUS1p,
         fontWeight = FontWeight.W400,

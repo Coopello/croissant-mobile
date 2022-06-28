@@ -9,4 +9,5 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 @ReadOnlyComposable
-fun fontDimensionResource(@DimenRes id: Int): TextUnit = dimensionResource(id = id).value.sp
+internal fun fontDimensionResource(@DimenRes id: Int): TextUnit =
+    dimensionResource(id = id).value.sp

@@ -7,7 +7,7 @@ import androidx.compose.material.Surface
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
-class MainActivity : ComponentActivity() {
+internal class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
