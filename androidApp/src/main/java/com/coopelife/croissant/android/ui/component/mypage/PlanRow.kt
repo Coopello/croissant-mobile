@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -51,6 +52,34 @@ internal fun PlanRow(
 }
 
 @Composable
+private fun DayOfWeekAndDayOfMonth(
+    plan: Plan,
+    modifier: Modifier = Modifier,
+) {
+    Column(
+        modifier = modifier
+            .width(IntrinsicSize.Min)
+    ) {
+        Text(
+            // TODO: ハードコードを解消
+            text = "月",
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier
+                .fillMaxWidth()
+        )
+        Text(
+            // TODO: ハードコードを解消
+            text = "24",
+            textAlign = TextAlign.Center,
+            style = MaterialTheme.typography.body1,
+            modifier = Modifier
+                .fillMaxWidth()
+        )
+    }
+}
+
+@Composable
 private fun PlanCard(
     plan: Plan,
     modifier: Modifier = Modifier,
@@ -85,37 +114,36 @@ private fun PlanCard(
                 text = stringResource(
                     id = R.string.mypage_count_until_minimum_participants,
                     formatArgs = arrayOf(countUntilMinimumParticipants)
-                )
+                ),
+                style = MaterialTheme.typography.h2.copy(
+                    fontSize = fontDimensionResource(R.dimen.plan_item_title_text_size),
+                ),
+                textAlign = TextAlign.End,
+                modifier = Modifier
+                    .fillMaxWidth()
             )
         }
     }
 }
 
 @Composable
-private fun DayOfWeekAndDayOfMonth(
-    plan: Plan,
+private fun ParticipantsImageRow(
+    participantsIds: List<Int>,
     modifier: Modifier = Modifier,
 ) {
-    Column(
+    Row(
         modifier = modifier
-            .width(IntrinsicSize.Min)
+            .fillMaxWidth()
     ) {
-        Text(
-            // TODO: ハードコードを解消
-            text = "月",
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.body1,
-            modifier = Modifier
-                .fillMaxWidth()
-        )
-        Text(
-            // TODO: ハードコードを解消
-            text = "24",
-            textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.body1,
-            modifier = Modifier
-                .fillMaxWidth()
-        )
+        participantsIds.forEach { id ->
+            CoilImage(
+                // TODO: User の情報に差し替える
+                imageUrl = "https://lohas.nicoseiga.jp/thumb/946062i",
+                contentDescription = id.toString(),
+                modifier = Modifier
+                    .size(dimensionResource(R.dimen.mypage_participants_row_image_size))
+            )
+        }
     }
 }
 
@@ -130,7 +158,7 @@ fun PreviewPlanRow() {
                 maxNumberOfPeople = 6,
                 minNumberOfPeople = 1,
                 proposerId = 0,
-                participantIds = listOf(),
+                participantIds = listOf(0, 1, 2),
                 meetingTime = 0L,
                 status = Plan.PlanStatus.NOT_ESTABLISHED,
                 meetingPlace = "中目黒駅"
