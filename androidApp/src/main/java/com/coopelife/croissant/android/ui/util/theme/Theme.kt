@@ -28,7 +28,7 @@ private val DarkColors = lightColors(
 )
 
 @Composable
-fun CroissantTheme(
+internal fun CroissantTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {

@@ -16,11 +16,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.unit.dp
 import com.coopelife.croissant.android.R
 
 @Composable
-fun MypageAppBar(
+internal fun MypageAppBar(
     userName: String,
     userImageUrl: String,
     modifier: Modifier = Modifier
@@ -52,7 +51,7 @@ fun MypageAppBar(
             imageUrl = userImageUrl,
             contentDescription = userName,
             modifier = Modifier
-                .size(64.dp)
+                .size(dimensionResource(R.dimen.mypage_app_bar_image_size))
                 .clip(shape = CircleShape)
         )
     }

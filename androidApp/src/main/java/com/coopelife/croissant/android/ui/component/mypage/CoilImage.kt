@@ -7,7 +7,7 @@ import androidx.compose.ui.layout.ContentScale
 import coil.compose.rememberImagePainter
 
 @Composable
-fun CoilImage(
+internal fun CoilImage(
     imageUrl: String,
     contentDescription: String,
     modifier: Modifier = Modifier,

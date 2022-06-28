@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MypageScreenViewModel : ViewModel() {
+internal class MypageScreenViewModel : ViewModel() {
     private val _previewText = MutableLiveData<String>("MypageScreen")
     val previewText: LiveData<String> = _previewText
 

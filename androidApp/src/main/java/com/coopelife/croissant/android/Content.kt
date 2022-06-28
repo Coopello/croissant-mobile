@@ -1,6 +1,7 @@
 package com.coopelife.croissant.android
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigationItem
@@ -16,7 +17,9 @@ import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,7 +33,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
 @Composable
-fun Content() {
+internal fun Content() {
     val navController = rememberNavController()
     val screenItems = listOf(
         Screen.Home,
@@ -85,27 +88,39 @@ fun Content() {
                 }
             }
         ) {
-            NavHost(navController, startDestination = stringResource(R.string.home_route)) {
+            NavHost(
+                navController = navController,
+                startDestination = stringResource(R.string.home_route),
+                modifier = Modifier
+                    .padding(bottom = dimensionResource(R.dimen.padding_bottom_navigation_height))
+            ) {
                 // TODO: ハードコーディングの解消
-                composable("home") { HomeScreen(nacController = navController, viewModel = HomeScreenViewModel()) }
-                composable("mypage") { MypageScreen(navController = navController) }
+                composable("home") {
+                    HomeScreen(
+                        nacController = navController,
+                        viewModel = HomeScreenViewModel()
+                    )
+                }
+                composable("mypage") {
+                    MypageScreen(navController = navController)
+                }
             }
         }
     }
 }
 
-sealed class Screen(
+internal sealed class Screen(
     @StringRes val routeStrResId: Int,
     @StringRes val titleStrResId: Int,
     val icon: ImageVector
 ) {
-    object Home : Screen(
+    internal object Home : Screen(
         routeStrResId = R.string.home_route,
         titleStrResId = R.string.home_title,
         icon = Icons.Filled.Home
     )
 
-    object Mypage : Screen(
+    internal object Mypage : Screen(
         routeStrResId = R.string.mypage_route,
         titleStrResId = R.string.mypage_title,
         icon = Icons.Filled.Face

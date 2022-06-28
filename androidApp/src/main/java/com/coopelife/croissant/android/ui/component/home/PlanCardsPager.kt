@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.data.entitiy.Plan
@@ -28,7 +27,11 @@ import com.google.accompanist.pager.PagerState
 
 @ExperimentalPagerApi
 @Composable
-fun PlanCardsPager(modifier: Modifier = Modifier, planList: List<Plan>, pagerState: PagerState) {
+internal fun PlanCardsPager(
+    modifier: Modifier = Modifier,
+    planList: List<Plan>,
+    pagerState: PagerState
+) {
     HorizontalPager(
         modifier = modifier
             .fillMaxWidth(),
@@ -46,8 +49,7 @@ private fun PlanCard(modifier: Modifier = Modifier, plan: Plan) {
                 .width(maxWidth * 0.7F)
                 .padding(dimensionResource(R.dimen.padding_8dp)),
             shape = RoundedCornerShape(dimensionResource(R.dimen.plan_card_corner_radius)),
-            // FIXME: ハードコードを解消する
-            elevation = 2.dp,
+            elevation = dimensionResource(R.dimen.card_elevation),
         ) {
             Column(
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_16dp)),
