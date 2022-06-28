@@ -102,6 +102,8 @@ private fun PlanCard(
                 style = MaterialTheme.typography.h5.copy(
                     fontSize = fontDimensionResource(R.dimen.plan_item_content_text_size),
                 ),
+                modifier = Modifier
+                    .fillMaxWidth()
             )
             Text(
                 // TODO: ハードコードを解消
@@ -109,9 +111,14 @@ private fun PlanCard(
                 style = MaterialTheme.typography.h2.copy(
                     fontSize = fontDimensionResource(R.dimen.plan_item_title_text_size),
                 ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = dimensionResource(R.dimen.padding_8dp))
             )
             ParticipantsImageRow(
-                participantsIds = plan.participantIds
+                participantsIds = plan.participantIds,
+                modifier = Modifier
+                    .padding(bottom = dimensionResource(R.dimen.padding_8dp))
             )
             val countUntilMinimumParticipants =
                 if (plan.minNumberOfPeople > plan.participantIds.size) plan.minNumberOfPeople - plan.participantIds.size
