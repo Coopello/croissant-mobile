@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.data.entitiy.Plan
@@ -50,8 +49,7 @@ private fun PlanCard(modifier: Modifier = Modifier, plan: Plan) {
                 .width(maxWidth * 0.7F)
                 .padding(dimensionResource(R.dimen.padding_8dp)),
             shape = RoundedCornerShape(dimensionResource(R.dimen.plan_card_corner_radius)),
-            // FIXME: ハードコードを解消する
-            elevation = 2.dp,
+            elevation = dimensionResource(R.dimen.card_elevation),
         ) {
             Column(
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_16dp)),
