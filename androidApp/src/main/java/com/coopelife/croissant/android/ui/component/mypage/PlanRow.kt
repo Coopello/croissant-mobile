@@ -7,12 +7,15 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -107,6 +110,9 @@ private fun PlanCard(
                     fontSize = fontDimensionResource(R.dimen.plan_item_title_text_size),
                 ),
             )
+            ParticipantsImageRow(
+                participantsIds = plan.participantIds
+            )
             val countUntilMinimumParticipants =
                 if (plan.minNumberOfPeople > plan.participantIds.size) plan.minNumberOfPeople - plan.participantIds.size
                 else 0
@@ -131,17 +137,19 @@ private fun ParticipantsImageRow(
     participantsIds: List<Int>,
     modifier: Modifier = Modifier,
 ) {
-    Row(
+    LazyRow(
         modifier = modifier
             .fillMaxWidth()
     ) {
-        participantsIds.forEach { id ->
+        items(count = participantsIds.size) {
             CoilImage(
                 // TODO: User の情報に差し替える
                 imageUrl = "https://lohas.nicoseiga.jp/thumb/946062i",
-                contentDescription = id.toString(),
+                contentDescription = "",
                 modifier = Modifier
+                    .padding(end = dimensionResource(R.dimen.padding_8dp))
                     .size(dimensionResource(R.dimen.mypage_participants_row_image_size))
+                    .clip(shape = CircleShape)
             )
         }
     }
