@@ -17,7 +17,7 @@ internal fun MypageContent(
     Column {
         MypageAppBar(
             userName = "秘密結社こぺろ",
-            userImageUrl = "https://lohas.nicoseiga.jp/thumb/946062i"
+            userImageUrl = String(),
         )
         TabLayout()
         LazyColumn {
