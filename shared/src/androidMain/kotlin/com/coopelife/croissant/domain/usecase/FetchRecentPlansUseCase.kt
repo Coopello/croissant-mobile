@@ -6,5 +6,5 @@ import com.coopelife.croissant.data.repository.PlanRepository
 actual class FetchRecentPlansUseCase actual constructor(
     private val planRepository: PlanRepository
 ) {
-    suspend fun fetchMyPlans(): List<Plan> = planRepository.fetchRecentPlans()
+    suspend fun fetchRecentPlans(): List<Plan> = planRepository.fetchRecentPlans()
 }
