@@ -24,6 +24,9 @@ import com.coopelife.croissant.data.entitiy.Plan
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 @ExperimentalPagerApi
 @Composable
@@ -65,11 +68,11 @@ private fun PlanCard(modifier: Modifier = Modifier, plan: Plan) {
                 )
                 PlanItem(
                     title = stringResource(R.string.plan_card_meeting_time_title),
-                    content = plan.meetingTime.toString()
+                    content = plan.meetingTime.toStringWithSimpleDateFormat()
                 )
                 PlanItem(
                     title = stringResource(R.string.plan_card_duration_title),
-                    content = plan.meetingTime.toString()
+                    content = plan.meetingTime.toStringWithSimpleDateFormat()
                 )
                 PlanItem(
                     title = stringResource(R.string.plan_card_number_of_people_title),
@@ -95,6 +98,7 @@ private fun PlanItem(title: String, content: String) {
                 fontSize = fontDimensionResource(R.dimen.plan_item_title_text_size),
             ),
             textAlign = TextAlign.Center,
+            maxLines = 1,
         )
         Text(
             text = content,
@@ -102,6 +106,7 @@ private fun PlanItem(title: String, content: String) {
                 fontSize = fontDimensionResource(R.dimen.plan_item_content_text_size),
             ),
             textAlign = TextAlign.Center,
+            maxLines = 1,
         )
         Spacer(
             modifier = Modifier
@@ -125,3 +130,10 @@ private fun JoinButton(onClick: () -> Unit) {
         )
     }
 }
+
+private const val PLAN_CARD_PATTERN = "hh:mm"
+private fun Long.toStringWithSimpleDateFormat(): String =
+    SimpleDateFormat(
+        PLAN_CARD_PATTERN,
+        Locale.getDefault()
+    ).format(Date(this))

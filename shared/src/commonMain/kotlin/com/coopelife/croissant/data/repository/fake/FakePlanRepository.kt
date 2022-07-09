@@ -31,7 +31,40 @@ class FakePlanRepository : PlanRepository {
             meetingTime = currentUnixTime + threeDaysSeconds,
             status = Plan.PlanStatus.ESTABLISHED,
             meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"
-        )
+        ),
+        Plan(
+            id = 3,
+            shopName = "SITA",
+            maxNumberOfPeople = 6,
+            minNumberOfPeople = 3,
+            proposerId = 3,
+            participantIds = listOf(3, 4),
+            meetingTime = currentUnixTime + threeDaysSeconds,
+            status = Plan.PlanStatus.NOT_ESTABLISHED,
+            meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"
+        ),
+        Plan(
+            id = 4,
+            shopName = "まんてん",
+            maxNumberOfPeople = 6,
+            minNumberOfPeople = 3,
+            proposerId = 3,
+            participantIds = listOf(3, 4, 5),
+            meetingTime = currentUnixTime + threeDaysSeconds,
+            status = Plan.PlanStatus.ESTABLISHED,
+            meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"
+        ),
+        Plan(
+            id = 5,
+            shopName = "おにやんま",
+            maxNumberOfPeople = 999,
+            minNumberOfPeople = 999,
+            proposerId = 3,
+            participantIds = listOf(3, 4),
+            meetingTime = currentUnixTime + threeDaysSeconds,
+            status = Plan.PlanStatus.NOT_ESTABLISHED,
+            meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"
+        ),
     )
 
     override suspend fun fetchMyPlans(): List<Plan> = listOf(
@@ -41,7 +74,7 @@ class FakePlanRepository : PlanRepository {
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,
             proposerId = 3,
-            participantIds = listOf(3, 4, 5),
+            participantIds = listOf(3, 4),
             meetingTime = currentUnixTime + aHourSeconds,
             status = Plan.PlanStatus.NOT_ESTABLISHED,
             meetingPlace = "https://tabelog.com/tokyo/A1319/A131901/13114121/"
@@ -52,7 +85,7 @@ class FakePlanRepository : PlanRepository {
             maxNumberOfPeople = 6,
             minNumberOfPeople = 3,
             proposerId = 3,
-            participantIds = listOf(3, 4, 5),
+            participantIds = listOf(3, 4),
             meetingTime = currentUnixTime + threeDaysSeconds,
             status = Plan.PlanStatus.NOT_ESTABLISHED,
             meetingPlace = "https://tabelog.com/tokyo/A1317/A131701/13112185/"

@@ -26,13 +26,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.coopelife.croissant.android.ui.screen.home.HomeScreen
-import com.coopelife.croissant.android.ui.screen.home.HomeScreenViewModel
+import com.coopelife.croissant.android.ui.screen.home.HomeViewModel
 import com.coopelife.croissant.android.ui.screen.mypage.MypageScreen
 import com.coopelife.croissant.android.ui.screen.mypage.MypageViewModel
 import com.coopelife.croissant.android.ui.util.theme.CroissantTheme
 import com.coopelife.croissant.data.repository.PlanRepository
 import com.coopelife.croissant.data.repository.fake.FakePlanRepository
 import com.coopelife.croissant.domain.usecase.FetchMyPlansUseCase
+import com.coopelife.croissant.domain.usecase.FetchRecentPlansUseCase
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
@@ -98,21 +99,25 @@ internal fun Content() {
                 modifier = Modifier
                     .padding(bottom = dimensionResource(R.dimen.padding_bottom_navigation_height))
             ) {
+                val planRepository: PlanRepository = FakePlanRepository()
+                val fetchRecentPlansUseCase = FetchRecentPlansUseCase(planRepository)
+                val fetchMyPlansUseCase = FetchMyPlansUseCase(planRepository)
+
                 // TODO: ハードコーディングの解消
                 composable("home") {
                     HomeScreen(
                         nacController = navController,
-                        viewModel = HomeScreenViewModel()
+                        viewModel = HomeViewModel(
+                            fetchRecentPlansUseCase = fetchRecentPlansUseCase,
+                        ),
                     )
                 }
                 composable("mypage") {
-                    val planRepository: PlanRepository = FakePlanRepository()
-                    val fetchMyPlanUseCase = FetchMyPlansUseCase(planRepository)
                     MypageScreen(
                         navController = navController,
                         viewModel = MypageViewModel(
-                            fetchMyPlansUseCase = fetchMyPlanUseCase,
-                        )
+                            fetchMyPlansUseCase = fetchMyPlansUseCase,
+                        ),
                     )
                 }
             }

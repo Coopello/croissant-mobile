@@ -5,7 +5,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.coopelife.croissant.android.ui.mockPlanList
+import com.coopelife.croissant.ui.screen.home.HomeScreenEvent
+import com.coopelife.croissant.ui.screen.home.HomeScreenState
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
@@ -13,15 +14,16 @@ import com.google.accompanist.pager.rememberPagerState
 @Composable
 internal fun HomeScreen(
     nacController: NavController,
-    viewModel: HomeScreenViewModel = viewModel()
+    viewModel: HomeViewModel = viewModel()
 ) {
-    val previewText: String by viewModel.previewText.observeAsState("")
-    val pagerState = rememberPagerState(mockPlanList.size)
+    val state: HomeScreenState by viewModel.state.observeAsState(HomeScreenState.generateInitialState())
+    val pagerState = rememberPagerState(state.plans.size)
 
     HomeContent(
-        screenName = previewText,
-        onClick = { viewModel.onButtonClicked() },
+        screenName = String(),
+        onTriggerEvent = { event: HomeScreenEvent -> viewModel.onTriggerEvent(event) },
         pagerState = pagerState,
-        mockPlanList,
+        planList = state.plans,
+        dateTextList = state.dates,
     )
 }

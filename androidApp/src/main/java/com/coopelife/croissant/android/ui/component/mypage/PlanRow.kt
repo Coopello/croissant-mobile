@@ -19,10 +19,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
-import com.coopelife.croissant.android.ui.util.theme.CroissantTheme
 import com.coopelife.croissant.data.entitiy.Plan
 
 @Composable
@@ -158,25 +156,5 @@ private fun ParticipantsImageRow(
                     .clip(shape = CircleShape)
             )
         }
-    }
-}
-
-@Preview
-@Composable
-fun PreviewPlanRow() {
-    CroissantTheme {
-        PlanRow(
-            plan = Plan(
-                id = 0,
-                shopName = "SITA",
-                maxNumberOfPeople = 6,
-                minNumberOfPeople = 1,
-                proposerId = 0,
-                participantIds = listOf(0, 1, 2),
-                meetingTime = 0L,
-                status = Plan.PlanStatus.NOT_ESTABLISHED,
-                meetingPlace = "中目黒駅"
-            )
-        )
     }
 }

@@ -1,5 +1,6 @@
 package com.coopelife.croissant.android.ui.component.home
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -25,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import com.coopelife.croissant.android.R
@@ -33,9 +35,11 @@ import com.coopelife.croissant.android.ui.util.theme.Orange
 import com.coopelife.croissant.android.ui.util.theme.OrangeLight
 
 @Composable
-internal fun HomeTabLayout(modifier: Modifier = Modifier) {
+internal fun HomeTabLayout(
+    tabUiModelList: List<HomeTabUiModel>,
+    modifier: Modifier = Modifier
+) {
     var tabIndex by rememberSaveable { mutableStateOf(0) }
-    val tabTitleList: List<String> = listOf("未成立", "成立済")
 
     BoxWithConstraints(
         modifier = modifier
@@ -44,15 +48,15 @@ internal fun HomeTabLayout(modifier: Modifier = Modifier) {
     ) {
         EllipseBackground()
         EllipseIndicator(
-            width = maxWidth / tabTitleList.size * (1 + tabIndex),
-            paddingStart = maxWidth / tabTitleList.size * tabIndex,
+            width = maxWidth / tabUiModelList.size * (1 + tabIndex),
+            paddingStart = maxWidth / tabUiModelList.size * tabIndex,
         )
         Row(
             modifier = Modifier.fillMaxWidth()
         ) {
-            tabTitleList.forEachIndexed { index: Int, tabTitle: String ->
+            tabUiModelList.forEachIndexed { index: Int, tabUiModel: HomeTabUiModel ->
                 Text(
-                    text = tabTitle,
+                    text = stringResource(id = tabUiModel.titleStringRes),
                     style = MaterialTheme.typography.h5.copy(
                         fontSize = fontDimensionResource(R.dimen.home_tab_layout_title_text_size)
                     ),
@@ -66,6 +70,7 @@ internal fun HomeTabLayout(modifier: Modifier = Modifier) {
                             interactionSource = remember { MutableInteractionSource() },
                             onClick = {
                                 tabIndex = index
+                                tabUiModel.onClick()
                             },
                         )
                 )
@@ -101,3 +106,8 @@ private fun EllipseBackground() {
             .background(OrangeLight)
     )
 }
+
+internal class HomeTabUiModel(
+    @StringRes val titleStringRes: Int,
+    val onClick: () -> Unit,
+)

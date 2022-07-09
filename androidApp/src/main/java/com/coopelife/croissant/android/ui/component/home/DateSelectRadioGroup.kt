@@ -24,15 +24,16 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.android.ui.util.theme.Orange
 
 @Composable
-internal fun DateSelectRadioGroup(modifier: Modifier = Modifier) {
+internal fun DateSelectRadioGroup(
+    dateTextList: List<String>,
+    modifier: Modifier = Modifier,
+) {
     var selectedIndex: Int by rememberSaveable { mutableStateOf(0) }
-    val dateTextList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
@@ -103,10 +104,4 @@ private fun DateSelectRadioButton(
                 textAlign = TextAlign.Center,
             )
         }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    DateSelectRadioGroup()
 }
