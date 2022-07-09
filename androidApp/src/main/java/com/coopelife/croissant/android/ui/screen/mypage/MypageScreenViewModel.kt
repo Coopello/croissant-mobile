@@ -4,14 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.coopelife.croissant.domain.usecase.FetchMyPlansUseCase
+import com.coopelife.croissant.ui.screen.mypage.MyPageScreenState
 
 internal class MypageScreenViewModel(
     private val fetchMyPlanUseCase: FetchMyPlansUseCase,
 ) : ViewModel() {
-    private val _previewText = MutableLiveData<String>("MypageScreen")
-    val previewText: LiveData<String> = _previewText
-
-    fun onValueChanged(value: String) {
-        _previewText.value = value
-    }
+    private val _state: MutableLiveData<MyPageScreenState> =
+        MutableLiveData(MyPageScreenState.generateInitialState())
+    val state: LiveData<MyPageScreenState> = _state
 }

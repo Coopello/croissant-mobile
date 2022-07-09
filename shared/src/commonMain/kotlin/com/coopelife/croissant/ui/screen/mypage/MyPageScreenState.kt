@@ -7,6 +7,13 @@ data class MyPageScreenState(
     val plans: List<Plan>,
     val error: ErrorState
 ) {
+    companion object {
+        fun generateInitialState(): MyPageScreenState = MyPageScreenState(
+            plans = emptyList(),
+            error = ErrorState.generateInitialErrorState()
+        )
+    }
+
     fun errorOccurred(message: String?) = this.copy(
         error = ErrorState(
             errorOccurred = true,
