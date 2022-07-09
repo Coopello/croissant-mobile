@@ -41,6 +41,7 @@ internal class HomeViewModel(
             is HomeScreenEvent.OnClickDate -> {}
             is HomeScreenEvent.OnUnFormedTabSelected -> onTabSelected(Plan.PlanStatus.NOT_ESTABLISHED)
             is HomeScreenEvent.OnFormedTabSelected -> onTabSelected(Plan.PlanStatus.ESTABLISHED)
+            is HomeScreenEvent.OnClickParticipateButton -> {}
             is HomeScreenEvent.DoNothing -> {
                 // 何もしない
             }
