@@ -10,8 +10,6 @@ import com.coopelife.croissant.data.entitiy.Plan
 
 @Composable
 internal fun MypageContent(
-    previewText: String,
-    onValueChanged: (String) -> Unit,
     planList: List<Plan>
 ) {
     Column {

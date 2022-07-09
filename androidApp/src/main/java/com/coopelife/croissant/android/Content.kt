@@ -111,7 +111,7 @@ internal fun Content() {
                     MypageScreen(
                         navController = navController,
                         viewModel = MypageViewModel(
-                            fetchMyPlanUseCase = fetchMyPlanUseCase,
+                            fetchMyPlansUseCase = fetchMyPlanUseCase,
                         )
                     )
                 }
