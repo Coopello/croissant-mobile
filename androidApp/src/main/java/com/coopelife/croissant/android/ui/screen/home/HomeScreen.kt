@@ -24,5 +24,6 @@ internal fun HomeScreen(
         onTriggerEvent = { event: HomeScreenEvent -> viewModel.onTriggerEvent(event) },
         pagerState = pagerState,
         planList = state.plans,
+        dateTextList = state.dates,
     )
 }

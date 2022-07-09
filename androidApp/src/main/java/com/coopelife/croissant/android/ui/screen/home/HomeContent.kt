@@ -21,7 +21,8 @@ internal fun HomeContent(
     screenName: String,
     onTriggerEvent: (event: HomeScreenEvent) -> Unit,
     pagerState: PagerState,
-    planList: List<Plan>
+    planList: List<Plan>,
+    dateTextList: List<String>,
 ) {
     val tabUiModelList: List<HomeTabUiModel> = listOf(
         HomeTabUiModel(
@@ -36,10 +37,11 @@ internal fun HomeContent(
 
     Column {
         DateSelectRadioGroup(
-            Modifier
+            dateTextList = dateTextList,
+            modifier = Modifier
                 .padding(
                     top = dimensionResource(R.dimen.padding_16dp),
-                )
+                ),
         )
         HomeTabLayout(
             tabUiModelList = tabUiModelList,

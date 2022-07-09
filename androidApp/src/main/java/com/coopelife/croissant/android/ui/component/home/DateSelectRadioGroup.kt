@@ -30,9 +30,11 @@ import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.android.ui.util.theme.Orange
 
 @Composable
-internal fun DateSelectRadioGroup(modifier: Modifier = Modifier) {
+internal fun DateSelectRadioGroup(
+    dateTextList: List<String>,
+    modifier: Modifier = Modifier,
+) {
     var selectedIndex: Int by rememberSaveable { mutableStateOf(0) }
-    val dateTextList: List<String> = listOf("12/28", "12/29", "12/30", "12/31", "1/1")
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceEvenly,
