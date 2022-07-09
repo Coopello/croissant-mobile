@@ -13,7 +13,7 @@ import com.google.accompanist.pager.rememberPagerState
 @Composable
 internal fun HomeScreen(
     nacController: NavController,
-    viewModel: HomeScreenViewModel = viewModel()
+    viewModel: HomeViewModel = viewModel()
 ) {
     val previewText: String by viewModel.previewText.observeAsState("")
     val pagerState = rememberPagerState(mockPlanList.size)

@@ -26,7 +26,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.coopelife.croissant.android.ui.screen.home.HomeScreen
-import com.coopelife.croissant.android.ui.screen.home.HomeScreenViewModel
+import com.coopelife.croissant.android.ui.screen.home.HomeViewModel
 import com.coopelife.croissant.android.ui.screen.mypage.MypageScreen
 import com.coopelife.croissant.android.ui.screen.mypage.MypageViewModel
 import com.coopelife.croissant.android.ui.util.theme.CroissantTheme
@@ -102,7 +102,7 @@ internal fun Content() {
                 composable("home") {
                     HomeScreen(
                         nacController = navController,
-                        viewModel = HomeScreenViewModel()
+                        viewModel = HomeViewModel()
                     )
                 }
                 composable("mypage") {
