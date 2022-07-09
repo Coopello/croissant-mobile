@@ -17,6 +17,8 @@ internal class MypageViewModel(
     private val _state: MutableLiveData<MyPageScreenState> =
         MutableLiveData(MyPageScreenState.generateInitialState())
     val state: LiveData<MyPageScreenState> = _state
+    private val _myPlans: MutableList<Plan> = mutableListOf()
+    private val myPlans: List<Plan> = _myPlans
 
     init {
         onInit()
@@ -24,12 +26,16 @@ internal class MypageViewModel(
 
     fun onTriggerEvent(event: MyPageScreenEvent) {
         when (event) {
-            is MyPageScreenEvent.OnInit -> onInit()
-            is MyPageScreenEvent.OnUpdate -> {}
-            is MyPageScreenEvent.OnUnFormedTabSelected -> {}
-            is MyPageScreenEvent.OnHistoryTabSelected -> {}
-            is MyPageScreenEvent.OnFormedTabSelected -> {}
-            is MyPageScreenEvent.DoNothing -> {}
+            is MyPageScreenEvent.OnInit -> onInit() // TODO: Screen で onTrigger を呼ぶように書き換える
+            is MyPageScreenEvent.OnUpdate -> {
+                // TODO: View でこの event を発火する UI を検討する
+            }
+            is MyPageScreenEvent.OnUnFormedTabSelected -> onTabSelected(Plan.PlanStatus.NOT_ESTABLISHED)
+            is MyPageScreenEvent.OnHistoryTabSelected -> onTabSelected(Plan.PlanStatus.FINISHED)
+            is MyPageScreenEvent.OnFormedTabSelected -> onTabSelected(Plan.PlanStatus.ESTABLISHED)
+            is MyPageScreenEvent.DoNothing -> {
+                // 何もしない
+            }
         }
     }
 
@@ -37,7 +43,8 @@ internal class MypageViewModel(
         viewModelScope.launch {
             runCatching {
                 fetchMyPlansUseCase.fetchMyPlans()
-            }.onSuccess { myPlans: List<Plan> ->
+            }.onSuccess { newMyPlans: List<Plan> ->
+                _myPlans.addAll(newMyPlans)
                 _state.value = _state.value?.copy(
                     plans = myPlans.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
                 )
@@ -49,6 +56,20 @@ internal class MypageViewModel(
                     )
                 )
             }
+        }
+    }
+
+    private fun onTabSelected(planStatus: Plan.PlanStatus) {
+        _state.value = when (planStatus) {
+            Plan.PlanStatus.NOT_ESTABLISHED -> _state.value?.copy(
+                plans = myPlans.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
+            )
+            Plan.PlanStatus.ESTABLISHED -> _state.value?.copy(
+                plans = myPlans.filter { it.status == Plan.PlanStatus.ESTABLISHED }
+            )
+            Plan.PlanStatus.FINISHED -> _state.value?.copy(
+                plans = myPlans.filter { it.status == Plan.PlanStatus.FINISHED }
+            )
         }
     }
 }
