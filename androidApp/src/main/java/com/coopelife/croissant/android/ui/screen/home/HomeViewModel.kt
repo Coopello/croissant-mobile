@@ -29,20 +29,25 @@ internal class HomeViewModel(
     private val myPlanList: List<Plan> = _myPlanlist
 
     init {
-        onInit()
+        onInit(
+            tabIndex = 0
+        )
     }
 
     fun onTriggerEvent(event: HomeScreenEvent) {
         when (event) {
-            is HomeScreenEvent.UpdatePlans -> {}
-            is HomeScreenEvent.ClickDate -> {}
+            is HomeScreenEvent.OnInit -> onInit(event.tabIndex)
+            is HomeScreenEvent.OnUpdatePlans -> {}
+            is HomeScreenEvent.OnClickDate -> {}
+            is HomeScreenEvent.OnUnFormedTabSelected -> onTabSelected(Plan.PlanStatus.NOT_ESTABLISHED)
+            is HomeScreenEvent.OnFormedTabSelected -> onTabSelected(Plan.PlanStatus.ESTABLISHED)
             is HomeScreenEvent.DoNothing -> {
                 // 何もしない
             }
         }
     }
 
-    private fun onInit() {
+    private fun onInit(tabIndex: Int) {
         viewModelScope.launch {
             runCatching {
                 fetchRecentPlansUseCase.fetchRecentPlans()
@@ -60,6 +65,18 @@ internal class HomeViewModel(
                     )
                 )
             }
+        }
+    }
+
+    private fun onTabSelected(planStatus: Plan.PlanStatus) {
+        _state.value = when (planStatus) {
+            Plan.PlanStatus.NOT_ESTABLISHED -> _state.value?.copy(
+                plans = myPlanList.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
+            )
+            Plan.PlanStatus.ESTABLISHED -> _state.value?.copy(
+                plans = myPlanList.filter { it.status == Plan.PlanStatus.ESTABLISHED }
+            )
+            else -> _state.value
         }
     }
 

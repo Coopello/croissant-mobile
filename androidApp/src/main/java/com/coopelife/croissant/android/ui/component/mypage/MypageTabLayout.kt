@@ -12,13 +12,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.res.stringResource
 
 @Composable
-internal fun TabLayout(
-    tabUiModelList: List<TabUiModel>,
+internal fun MypageTabLayout(
+    tabUiModelList: List<MypageTabUiModel>,
 ) {
     var tabIndex by rememberSaveable { mutableStateOf(0) }
 
     TabRow(selectedTabIndex = tabIndex) {
-        tabUiModelList.forEachIndexed { index: Int, tabUiModel: TabUiModel ->
+        tabUiModelList.forEachIndexed { index: Int, tabUiModel: MypageTabUiModel ->
             Tab(
                 selected = tabIndex == index,
                 onClick = {
@@ -33,7 +33,7 @@ internal fun TabLayout(
     }
 }
 
-internal class TabUiModel(
+internal class MypageTabUiModel(
     @StringRes val titleStringRes: Int,
     val onClick: () -> Unit,
 )

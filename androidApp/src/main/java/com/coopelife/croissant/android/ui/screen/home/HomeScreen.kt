@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.coopelife.croissant.ui.screen.home.HomeScreenEvent
 import com.coopelife.croissant.ui.screen.home.HomeScreenState
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
@@ -20,7 +21,7 @@ internal fun HomeScreen(
 
     HomeContent(
         screenName = String(),
-        onClick = {},
+        onTriggerEvent = { event: HomeScreenEvent -> viewModel.onTriggerEvent(event) },
         pagerState = pagerState,
         planList = state.plans,
     )

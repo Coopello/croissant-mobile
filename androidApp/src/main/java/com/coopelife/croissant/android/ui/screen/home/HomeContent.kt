@@ -8,8 +8,10 @@ import androidx.compose.ui.res.dimensionResource
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.component.home.DateSelectRadioGroup
 import com.coopelife.croissant.android.ui.component.home.HomeTabLayout
+import com.coopelife.croissant.android.ui.component.home.HomeTabUiModel
 import com.coopelife.croissant.android.ui.component.home.PlanCardsPager
 import com.coopelife.croissant.data.entitiy.Plan
+import com.coopelife.croissant.ui.screen.home.HomeScreenEvent
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.PagerState
 
@@ -17,10 +19,21 @@ import com.google.accompanist.pager.PagerState
 @Composable
 internal fun HomeContent(
     screenName: String,
-    onClick: () -> Unit,
+    onTriggerEvent: (event: HomeScreenEvent) -> Unit,
     pagerState: PagerState,
     planList: List<Plan>
 ) {
+    val tabUiModelList: List<HomeTabUiModel> = listOf(
+        HomeTabUiModel(
+            titleStringRes = R.string.mypage_tab_title_not_established,
+            onClick = { onTriggerEvent(HomeScreenEvent.OnUnFormedTabSelected) },
+        ),
+        HomeTabUiModel(
+            titleStringRes = R.string.mypage_tab_title_established,
+            onClick = { onTriggerEvent(HomeScreenEvent.OnFormedTabSelected) },
+        ),
+    )
+
     Column {
         DateSelectRadioGroup(
             Modifier
@@ -29,7 +42,8 @@ internal fun HomeContent(
                 )
         )
         HomeTabLayout(
-            Modifier
+            tabUiModelList = tabUiModelList,
+            modifier = Modifier
                 .padding(
                     top = dimensionResource(R.dimen.padding_16dp),
                     start = dimensionResource(R.dimen.padding_16dp),
