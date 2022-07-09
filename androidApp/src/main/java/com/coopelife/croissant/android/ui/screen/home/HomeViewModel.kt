@@ -4,18 +4,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.coopelife.croissant.android.util.toStringWithSimpleDateFormat
 import com.coopelife.croissant.data.entitiy.Plan
 import com.coopelife.croissant.domain.usecase.FetchRecentPlansUseCase
 import com.coopelife.croissant.ui.screen.home.ErrorState
 import com.coopelife.croissant.ui.screen.home.HomeScreenEvent
 import com.coopelife.croissant.ui.screen.home.HomeScreenState
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 internal class HomeViewModel(
     private val fetchRecentPlansUseCase: FetchRecentPlansUseCase,
 ) : ViewModel() {
+    companion object {
+        private const val DATE_SELECT_PATTERN = "MM/dd"
+    }
+
     private val _state: MutableLiveData<HomeScreenState> =
         MutableLiveData(HomeScreenState.generateInitialState())
     val state: LiveData<HomeScreenState> = _state
@@ -62,4 +68,10 @@ internal class HomeViewModel(
             add(Calendar.DATE, howManyLater)
         }.time.toStringWithSimpleDateFormat()
     }
+
+    private fun Date.toStringWithSimpleDateFormat(): String =
+        SimpleDateFormat(
+            DATE_SELECT_PATTERN,
+            Locale.getDefault()
+        ).format(this)
 }
