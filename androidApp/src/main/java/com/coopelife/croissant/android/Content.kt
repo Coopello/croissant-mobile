@@ -28,7 +28,11 @@ import androidx.navigation.compose.rememberNavController
 import com.coopelife.croissant.android.ui.screen.home.HomeScreen
 import com.coopelife.croissant.android.ui.screen.home.HomeScreenViewModel
 import com.coopelife.croissant.android.ui.screen.mypage.MypageScreen
+import com.coopelife.croissant.android.ui.screen.mypage.MypageScreenViewModel
 import com.coopelife.croissant.android.ui.util.theme.CroissantTheme
+import com.coopelife.croissant.data.repository.PlanRepository
+import com.coopelife.croissant.data.repository.fake.FakePlanRepository
+import com.coopelife.croissant.domain.usecase.FetchMyPlansUseCase
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 @ExperimentalPagerApi
@@ -102,7 +106,14 @@ internal fun Content() {
                     )
                 }
                 composable("mypage") {
-                    MypageScreen(navController = navController)
+                    val planRepository: PlanRepository = FakePlanRepository()
+                    val fetchMyPlanUseCase = FetchMyPlansUseCase(planRepository)
+                    MypageScreen(
+                        navController = navController,
+                        viewModel = MypageScreenViewModel(
+                            fetchMyPlanUseCase = fetchMyPlanUseCase,
+                        )
+                    )
                 }
             }
         }
