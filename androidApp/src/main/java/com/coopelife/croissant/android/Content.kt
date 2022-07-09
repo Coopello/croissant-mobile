@@ -28,7 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.coopelife.croissant.android.ui.screen.home.HomeScreen
 import com.coopelife.croissant.android.ui.screen.home.HomeScreenViewModel
 import com.coopelife.croissant.android.ui.screen.mypage.MypageScreen
-import com.coopelife.croissant.android.ui.screen.mypage.MypageScreenViewModel
+import com.coopelife.croissant.android.ui.screen.mypage.MypageViewModel
 import com.coopelife.croissant.android.ui.util.theme.CroissantTheme
 import com.coopelife.croissant.data.repository.PlanRepository
 import com.coopelife.croissant.data.repository.fake.FakePlanRepository
@@ -110,7 +110,7 @@ internal fun Content() {
                     val fetchMyPlanUseCase = FetchMyPlansUseCase(planRepository)
                     MypageScreen(
                         navController = navController,
-                        viewModel = MypageScreenViewModel(
+                        viewModel = MypageViewModel(
                             fetchMyPlanUseCase = fetchMyPlanUseCase,
                         )
                     )

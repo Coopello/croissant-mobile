@@ -10,7 +10,7 @@ import com.coopelife.croissant.android.ui.mockPlanList
 @Composable
 internal fun MypageScreen(
     navController: NavController,
-    viewModel: MypageScreenViewModel = viewModel()
+    viewModel: MypageViewModel = viewModel()
 ) {
     val previewText: String by viewModel.previewText.observeAsState("")
 
