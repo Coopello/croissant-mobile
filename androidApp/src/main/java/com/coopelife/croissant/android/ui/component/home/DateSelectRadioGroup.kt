@@ -24,7 +24,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import com.coopelife.croissant.android.R
 import com.coopelife.croissant.android.ui.util.extension.fontDimensionResource
 import com.coopelife.croissant.android.ui.util.theme.Orange
@@ -105,10 +104,4 @@ private fun DateSelectRadioButton(
                 textAlign = TextAlign.Center,
             )
         }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun Preview() {
-    DateSelectRadioGroup()
 }
