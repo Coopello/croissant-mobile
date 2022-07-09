@@ -52,7 +52,7 @@ internal class MypageViewModel(
                 _state.value = _state.value?.copy(
                     error = ErrorState(
                         errorOccurred = true,
-                        message = "データの取得に失敗しました" // TODO: ハードコードの解消
+                        message = "プランの取得に失敗しました" // TODO: ハードコードの解消
                     )
                 )
             }

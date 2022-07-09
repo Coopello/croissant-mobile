@@ -3,11 +3,14 @@ package com.coopelife.croissant.android.ui.screen.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.coopelife.croissant.android.util.toStringWithSimpleDateFormat
 import com.coopelife.croissant.data.entitiy.Plan
 import com.coopelife.croissant.domain.usecase.FetchRecentPlansUseCase
+import com.coopelife.croissant.ui.screen.home.ErrorState
 import com.coopelife.croissant.ui.screen.home.HomeScreenEvent
 import com.coopelife.croissant.ui.screen.home.HomeScreenState
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 internal class HomeViewModel(
@@ -20,6 +23,7 @@ internal class HomeViewModel(
     private val myPlanList: List<Plan> = _myPlanlist
 
     init {
+        onInit()
     }
 
     fun onTriggerEvent(event: HomeScreenEvent) {
@@ -28,6 +32,27 @@ internal class HomeViewModel(
             is HomeScreenEvent.ClickDate -> {}
             is HomeScreenEvent.DoNothing -> {
                 // 何もしない
+            }
+        }
+    }
+
+    private fun onInit() {
+        viewModelScope.launch {
+            runCatching {
+                fetchRecentPlansUseCase.fetchRecentPlans()
+            }.onSuccess { newRecentPlans: List<Plan> ->
+                _myPlanlist.addAll(newRecentPlans)
+                _state.value = _state.value?.copy(
+                    plans = myPlanList,
+                    dates = getDateList(),
+                )
+            }.onFailure {
+                _state.value = _state.value?.copy(
+                    error = ErrorState(
+                        errorOccurred = true,
+                        message = "プランの取得に失敗しました" // TODO: ハードコードの解消
+                    )
+                )
             }
         }
     }
