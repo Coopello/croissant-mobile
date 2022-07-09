@@ -5,18 +5,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.coopelife.croissant.android.ui.mockPlanList
+import com.coopelife.croissant.ui.screen.mypage.MyPageScreenEvent
+import com.coopelife.croissant.ui.screen.mypage.MyPageScreenState
 
 @Composable
 internal fun MypageScreen(
     navController: NavController,
-    viewModel: MypageScreenViewModel = viewModel()
+    viewModel: MypageViewModel = viewModel()
 ) {
-    val previewText: String by viewModel.previewText.observeAsState("")
+    val state: MyPageScreenState by viewModel.state.observeAsState(MyPageScreenState.generateInitialState())
 
     MypageContent(
-        previewText = previewText,
-        onValueChanged = { viewModel.onValueChanged(it) },
-        planList = mockPlanList,
+        planList = state.plans,
+        onTriggerEvent = { event: MyPageScreenEvent -> viewModel.onTriggerEvent(event) }
     )
 }

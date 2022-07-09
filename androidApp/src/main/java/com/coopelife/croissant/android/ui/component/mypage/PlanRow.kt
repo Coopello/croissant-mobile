@@ -150,8 +150,7 @@ private fun ParticipantsImageRow(
     ) {
         items(count = participantsIds.size) {
             CoilImage(
-                // TODO: User の情報に差し替える
-                imageUrl = "https://lohas.nicoseiga.jp/thumb/946062i",
+                imageUrl = String(),
                 contentDescription = "",
                 modifier = Modifier
                     .padding(end = dimensionResource(R.dimen.padding_8dp))
