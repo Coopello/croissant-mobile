@@ -49,7 +49,7 @@ internal class HomeViewModel(
             }.onSuccess { newRecentPlans: List<Plan> ->
                 _myPlanlist.addAll(newRecentPlans)
                 _state.value = _state.value?.copy(
-                    plans = myPlanList,
+                    plans = myPlanList.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED },
                     dates = getDateList(),
                 )
             }.onFailure {
