@@ -17,8 +17,8 @@ internal class MypageViewModel(
     private val _state: MutableLiveData<MyPageScreenState> =
         MutableLiveData(MyPageScreenState.generateInitialState())
     val state: LiveData<MyPageScreenState> = _state
-    private val _myPlans: MutableList<Plan> = mutableListOf()
-    private val myPlans: List<Plan> = _myPlans
+    private val _myPlanList: MutableList<Plan> = mutableListOf()
+    private val myPlanList: List<Plan> = _myPlanList
 
     init {
         onInit()
@@ -44,9 +44,9 @@ internal class MypageViewModel(
             runCatching {
                 fetchMyPlansUseCase.fetchMyPlans()
             }.onSuccess { newMyPlans: List<Plan> ->
-                _myPlans.addAll(newMyPlans)
+                _myPlanList.addAll(newMyPlans)
                 _state.value = _state.value?.copy(
-                    plans = myPlans.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
+                    plans = myPlanList.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
                 )
             }.onFailure {
                 _state.value = _state.value?.copy(
@@ -62,13 +62,13 @@ internal class MypageViewModel(
     private fun onTabSelected(planStatus: Plan.PlanStatus) {
         _state.value = when (planStatus) {
             Plan.PlanStatus.NOT_ESTABLISHED -> _state.value?.copy(
-                plans = myPlans.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
+                plans = myPlanList.filter { it.status == Plan.PlanStatus.NOT_ESTABLISHED }
             )
             Plan.PlanStatus.ESTABLISHED -> _state.value?.copy(
-                plans = myPlans.filter { it.status == Plan.PlanStatus.ESTABLISHED }
+                plans = myPlanList.filter { it.status == Plan.PlanStatus.ESTABLISHED }
             )
             Plan.PlanStatus.FINISHED -> _state.value?.copy(
-                plans = myPlans.filter { it.status == Plan.PlanStatus.FINISHED }
+                plans = myPlanList.filter { it.status == Plan.PlanStatus.FINISHED }
             )
         }
     }
