@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.coopelife.croissant.ui.screen.mypage.MyPageScreenEvent
 import com.coopelife.croissant.ui.screen.mypage.MyPageScreenState
 
 @Composable
@@ -16,5 +17,6 @@ internal fun MypageScreen(
 
     MypageContent(
         planList = state.plans,
+        onTriggerEvent = { event: MyPageScreenEvent -> viewModel.onTriggerEvent(event) }
     )
 }
